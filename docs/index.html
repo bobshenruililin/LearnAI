@@ -8,7 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=20260713c" />
+  <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
+  <link rel="stylesheet" href="./vendor/leaflet.markercluster/MarkerCluster.css" />
+  <link rel="stylesheet" href="./vendor/leaflet.markercluster/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="./styles.css?v=20260713d" />
   <!-- Critical: author CSS must not keep #giftOverlay visible when [hidden] -->
   <style>
     [hidden] { display: none !important; }
@@ -26,6 +29,7 @@
       document.body.classList.remove("gift-locked");
       document.body.style.overflow = "";
       try { localStorage.setItem("fta.gift.opened.v2", "1"); } catch (e) {}
+      try { document.dispatchEvent(new CustomEvent("fta:gift-closed")); } catch (e) {}
       return false;
     };
     window.__openGift = function () {
@@ -179,15 +183,15 @@
       <div class="atlas-head">
         <div>
           <h2>World map</h2>
-          <p class="atlas-sub"><span data-map-count>0</span> pins from the current filters · click a stamp</p>
+          <p class="atlas-sub"><span data-map-count>0</span> real-map pins · pan, zoom, click a stamp</p>
         </div>
         <div class="atlas-key" aria-hidden="true">
-          <span><i class="key-dot open"></i> Open</span>
+          <span><i class="key-dot open"></i> Open / funded</span>
           <span><i class="key-dot verify"></i> Verify</span>
           <span><i class="key-dot trap"></i> Trap</span>
         </div>
       </div>
-      <div class="atlas-stage" data-map-stage></div>
+      <div class="atlas-stage" data-map-stage id="atlasLeaflet" role="application" aria-label="Leaflet world map"></div>
     </section>
 
     <aside class="detail empty" id="detail" aria-live="polite">
@@ -247,6 +251,8 @@
     </div>
   </div>
 
-  <script src="./app.js?v=20260713c" type="module"></script>
+  <script src="./vendor/leaflet/leaflet.js"></script>
+  <script src="./vendor/leaflet.markercluster/leaflet.markercluster.js"></script>
+  <script src="./app.js?v=20260713d" type="module"></script>
 </body>
 </html>
