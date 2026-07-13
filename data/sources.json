@@ -1,9 +1,33 @@
 {
   "sources": [
     {
+      "id": "aalto-tech-international-internship-travel-grant",
+      "name": "Aalto TECH International Internship & Travel Grant",
+      "url": "https://www.aalto.fi/en/other-studies/tech-international-internship",
+      "priority": 1
+    },
+    {
       "id": "amgen-asia",
       "name": "Amgen Scholars Asia",
       "url": "https://amgenscholars.com/asia-program/",
+      "priority": 1
+    },
+    {
+      "id": "amgen-scholars-europe",
+      "name": "Amgen Scholars Europe Programme",
+      "url": "https://amgenscholars.com/europe-programme/",
+      "priority": 1
+    },
+    {
+      "id": "basf-explore-together-internship",
+      "name": "BASF Explore Together (International Internship) & Paid BASF Internships",
+      "url": "https://www.basf.com/global/en/careers/students",
+      "priority": 1
+    },
+    {
+      "id": "cern-technical-studentship-materials",
+      "name": "CERN Technical Studentship (incl. Material & Surface Science)",
+      "url": "https://careers.cern/programmes/technical-studentship/",
       "priority": 1
     },
     {
@@ -16,6 +40,24 @@
       "id": "epfl-e3",
       "name": "EPFL Excellence in Engineering (E3)",
       "url": "https://eee.epfl.ch/",
+      "priority": 1
+    },
+    {
+      "id": "erasmus-mundus-emjm",
+      "name": "Erasmus Mundus Joint Masters (EMJM / EMMBIOME)",
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "priority": 1
+    },
+    {
+      "id": "erasmus-plus-studies-aalto-exchange",
+      "name": "Erasmus+ Studies (Aalto Exchange Partners)",
+      "url": "https://www.aalto.fi/en/other-studies/erasmus-scholarships",
+      "priority": 1
+    },
+    {
+      "id": "erasmus-plus-traineeship-aalto",
+      "name": "Erasmus+ Traineeship (via Aalto TECH)",
+      "url": "https://www.aalto.fi/en/other-studies/tech-international-internship",
       "priority": 1
     },
     {
@@ -34,6 +76,18 @@
       "id": "hku-innovation-academy-travel",
       "name": "HKU Faculty of Engineering Innovation Academy Travel Subsidy",
       "url": "https://innoacademy.engg.hku.hk/funding-scheme/",
+      "priority": 1
+    },
+    {
+      "id": "foss-sigc-non-local-internship",
+      "name": "HKU Faculty of Social Sciences SIGC Non-local Internships",
+      "url": "https://www.socsc.hku.hk/sigc/el-opportunities/sigc-options/local-non-local-internship/",
+      "priority": 1
+    },
+    {
+      "id": "hzb-international-summer-student-programme",
+      "name": "HZB International Summer Student Programme (ISSP)",
+      "url": "https://www.helmholtz-berlin.de/jobskarriere/schule-und-studium/summer-schools/sommerstudierende/index_en.html",
       "priority": 1
     },
     {
@@ -73,9 +127,27 @@
       "priority": 2
     },
     {
+      "id": "aiesec-global-talent",
+      "name": "AIESEC Global Talent",
+      "url": "https://aiesec.org/global-talent",
+      "priority": 2
+    },
+    {
       "id": "asme-sbc-travel",
       "name": "ASME Summer Bioengineering Conference Travel Award + Student Paper Competition",
       "url": "https://event.asme.org/SBC",
+      "priority": 2
+    },
+    {
+      "id": "amgen-us-europe",
+      "name": "Amgen Scholars Program — US & Europe",
+      "url": "https://amgenscholars.com",
+      "priority": 2
+    },
+    {
+      "id": "bmes-annual-meeting-travel",
+      "name": "BMES Annual Meeting Travel Awards",
+      "url": "https://www.bmes.org",
       "priority": 2
     },
     {
@@ -91,6 +163,42 @@
       "priority": 2
     },
     {
+      "id": "charite-bih-summer",
+      "name": "Charité BIH Summer School (Berlin)",
+      "url": "https://www.charite.de/en/",
+      "priority": 2
+    },
+    {
+      "id": "chevening-scholarship",
+      "name": "Chevening Scholarship (UK)",
+      "url": "https://www.chevening.org/scholarship/kazakhstan",
+      "priority": 2
+    },
+    {
+      "id": "citadel-conference-travel",
+      "name": "Citadel Conference Travel Grant",
+      "url": "https://www.citadel.com/careers/programs-and-events/conference-travel-grant",
+      "priority": 2
+    },
+    {
+      "id": "cgi-u",
+      "name": "Clinton Global Initiative University (CGI U)",
+      "url": "https://www.cgiu.org",
+      "priority": 2
+    },
+    {
+      "id": "daad-masters",
+      "name": "DAAD Master's Scholarship (Germany / EPOS)",
+      "url": "https://www.daad.de/en/",
+      "priority": 2
+    },
+    {
+      "id": "edufi-traineeship-abroad",
+      "name": "EDUFI Traineeship Abroad",
+      "url": "https://www.oph.fi/en/education-development-and-internationalisation/kansainvalistymispalvelut-yksiloille/edufi",
+      "priority": 2
+    },
+    {
       "id": "embl-techdev",
       "name": "EMBL TechDev Internship Programme",
       "url": "https://www.embl.org/about/info/scientific-visitor-programme/fellowships/techdev/",
@@ -100,6 +208,30 @@
       "id": "epfl-life-sciences-srp",
       "name": "EPFL Life Sciences Summer Research Program",
       "url": "https://www.epfl.ch/schools/sv/education/summer-research-program/",
+      "priority": 2
+    },
+    {
+      "id": "ewb-hku",
+      "name": "Engineers Without Borders (EWB) HKU Chapter",
+      "url": "https://www.ewb.org.hk",
+      "priority": 2
+    },
+    {
+      "id": "erasmus-mundus-multiphase",
+      "name": "Erasmus Mundus Joint Master MULTIPHASE (Multiphase Systems)",
+      "url": "https://multiphase-master.eu/",
+      "priority": 2
+    },
+    {
+      "id": "erasmus-mundus-sucat",
+      "name": "Erasmus Mundus Joint Master in Sustainable Catalysis (SuCat)",
+      "url": "https://www.master-sucat.eu/how-to-apply/",
+      "priority": 2
+    },
+    {
+      "id": "global-bay-areas-impact-lab",
+      "name": "FOSS Global Bay Areas Impact Lab (GBA / Tokyo Bay / SF Bay)",
+      "url": "https://www.socsc.hku.hk/sigc/get-started/sigc-fulfillment/",
       "priority": 2
     },
     {
@@ -115,9 +247,63 @@
       "priority": 2
     },
     {
+      "id": "fife-fund",
+      "name": "First-in-the-Family Education Fund (FIFE)",
+      "url": "https://fife.hku.hk",
+      "priority": 2
+    },
+    {
+      "id": "fulbright-foreign-student",
+      "name": "Fulbright Foreign Student Program (US)",
+      "url": "https://kz.usembassy.gov/fulbright-foreign-student-program-frequently-asked-questions",
+      "priority": 2
+    },
+    {
+      "id": "gates-cambridge",
+      "name": "Gates Cambridge Scholarship",
+      "url": "https://www.gatescambridge.org/apply/eligibility",
+      "priority": 2
+    },
+    {
+      "id": "basc-ghd-field-placement",
+      "name": "HKU BASc(Global Health and Development) 6-month Field Placement",
+      "url": "https://ghd.sph.hku.hk/field-placement",
+      "priority": 2
+    },
+    {
+      "id": "hku-cds-research-internship",
+      "name": "HKU CDS Research Internship Programme",
+      "url": "https://www.cs.hku.hk/rintern",
+      "priority": 2
+    },
+    {
       "id": "china-10000",
       "name": "HKU China 10,000 Exchange Programme Fund",
       "url": "https://chinavision.hku.hk/china-10-000-student-exchange-progr",
+      "priority": 2
+    },
+    {
+      "id": "hku-horizons-office",
+      "name": "HKU Horizons Experiential Learning Beyond Hong Kong (Office Portfolio)",
+      "url": "https://tl.hku.hk/horizons/",
+      "priority": 2
+    },
+    {
+      "id": "hku-service-100",
+      "name": "HKU Service 100 & Common Core Service-Learning Trips",
+      "url": "https://www.cedars.hku.hk/student-engagement/service-learning",
+      "priority": 2
+    },
+    {
+      "id": "hku-summer-research",
+      "name": "HKU Summer Research Programme",
+      "url": "https://gradsch.hku.hk/news_and_events/news_and_future_events/summer-research-programme-2026",
+      "priority": 2
+    },
+    {
+      "id": "hku-ww-semester-exchange-scholarship",
+      "name": "HKU Worldwide / Faculty Exchange – Scholarship for Semester Exchange",
+      "url": "https://intlaffairs.hku.hk/scholarships-for-semester-exchange",
       "priority": 2
     },
     {
@@ -133,6 +319,24 @@
       "priority": 2
     },
     {
+      "id": "hpair",
+      "name": "HPAIR (Harvard Project for Asian & International Relations)",
+      "url": "https://www.hpair.org",
+      "priority": 2
+    },
+    {
+      "id": "hague-academy-summer-scholarship",
+      "name": "Hague Academy of International Law – Summer Courses Scholarships",
+      "url": "https://www.hagueacademy.nl/scholarships-summer-courses/",
+      "priority": 2
+    },
+    {
+      "id": "hkpfs",
+      "name": "Hong Kong PhD Fellowship Scheme (HKPFS)",
+      "url": "https://cerg1.ugc.edu.hk/hkpfs/index.html",
+      "priority": 2
+    },
+    {
       "id": "project-mingde",
       "name": "Horizons Project Mingde",
       "url": "https://tl.hku.hk/horizons/mingde-2/",
@@ -142,6 +346,12 @@
       "id": "short-term-study-abroad",
       "name": "IAO Scholarships for Short-term Study Abroad (GSP)",
       "url": "https://intlaffairs.hku.hk/short-term-scholarships",
+      "priority": 2
+    },
+    {
+      "id": "ill-esrf-xray-neutron-summer-programme",
+      "name": "ILL/ESRF International Student Summer Programme (X-Ray & Neutron Science)",
+      "url": "https://www.ill.eu/en/education/ill-esrf-summer-programme/",
       "priority": 2
     },
     {
@@ -157,15 +367,63 @@
       "priority": 2
     },
     {
+      "id": "jardine-foundation-oxbridge",
+      "name": "Jardine Foundation Scholarship (Oxford/Cambridge)",
+      "url": "https://www.jardines.com/en/our-foundation/scholarships",
+      "priority": 2
+    },
+    {
+      "id": "kaist-gist-korea-summer",
+      "name": "KAIST Visiting Student + GIST Korea Summer",
+      "url": "https://www.kaist.ac.kr/en/",
+      "priority": 2
+    },
+    {
+      "id": "kaust-fellowship",
+      "name": "KAUST Fellowship (MS/PhD)",
+      "url": "https://www.kaust.edu.sa/en/admissions/financial-support",
+      "priority": 2
+    },
+    {
       "id": "kaust-vsrp",
       "name": "KAUST Visiting Student Research Program",
       "url": "https://www.kaust.edu.sa/en/study/visiting-student-research-program",
       "priority": 2
     },
     {
+      "id": "karolinska-summer-research",
+      "name": "Karolinska Institutet Summer Research School",
+      "url": "https://ki.se/en/education/summer-research-school",
+      "priority": 2
+    },
+    {
+      "id": "knight-hennessy",
+      "name": "Knight-Hennessy Scholars (Stanford)",
+      "url": "https://knight-hennessy.stanford.edu",
+      "priority": 2
+    },
+    {
+      "id": "lindau-nobel",
+      "name": "Lindau Nobel Laureate Meetings",
+      "url": "https://www.lindau-nobel.org/young-scientists",
+      "priority": 2
+    },
+    {
+      "id": "mext-scholarship",
+      "name": "MEXT Scholarship (Japan)",
+      "url": "https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html",
+      "priority": 2
+    },
+    {
       "id": "miccai-travel-grants",
       "name": "MICCAI Society Registration & Travel Grants",
       "url": "https://miccai.org/index.php/about-miccai/awards/miccai-registration-and-travel-grants/",
+      "priority": 2
+    },
+    {
+      "id": "max-planck-matter-to-life-uro",
+      "name": "Max Planck School Matter to Life — Undergraduate Research Opportunities (MtL-URO)",
+      "url": "https://mattertolife.maxplanckschools.org/uro-research-internship",
       "priority": 2
     },
     {
@@ -181,6 +439,12 @@
       "priority": 2
     },
     {
+      "id": "neste-student-internships",
+      "name": "Neste Student / Summer Trainee Positions",
+      "url": "https://www.neste.com/careers",
+      "priority": 2
+    },
+    {
       "id": "oist-internship",
       "name": "OIST Research Internship (Japan)",
       "url": "https://www.oist.jp/admissions/research-internship/apply-research-internship",
@@ -193,15 +457,39 @@
       "priority": 2
     },
     {
+      "id": "operation-smile",
+      "name": "Operation Smile Medical Missions",
+      "url": "https://www.operationsmile.org",
+      "priority": 2
+    },
+    {
+      "id": "jessup-moot-hku",
+      "name": "Philip C. Jessup International Law Moot – HKU Team (HK Rounds → Washington DC)",
+      "url": "https://www.law.hku.hk/experiential-learning/experiential-learning-mooting/",
+      "priority": 2
+    },
+    {
       "id": "rayson-huang-enrichment",
       "name": "Rayson Huang Memorial Student Enrichment Award",
       "url": "https://tl.hku.hk/horizons/award-rh-twt/",
       "priority": 2
     },
     {
+      "id": "rhodes-scholarship",
+      "name": "Rhodes Scholarship (Oxford)",
+      "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/applications",
+      "priority": 2
+    },
+    {
       "id": "sco-youth-campus",
       "name": "SCO Youth Campus / Youth Development Forum",
       "url": "https://eng.sectsco.org",
+      "priority": 2
+    },
+    {
+      "id": "si-eiffel-orange-tulip",
+      "name": "SI / Eiffel / Orange Tulip Scholarships (Sweden, France, Netherlands)",
+      "url": "https://si.se/en/apply/scholarships/",
       "priority": 2
     },
     {
@@ -223,9 +511,45 @@
       "priority": 2
     },
     {
+      "id": "singa-singapore",
+      "name": "Singapore International Graduate Award (SINGA)",
+      "url": "https://www.nus.edu.sg/admissions/scholarships",
+      "priority": 2
+    },
+    {
+      "id": "st-gallen-symposium",
+      "name": "St. Gallen Symposium (Wings of Excellence)",
+      "url": "https://www.symposium.org",
+      "priority": 2
+    },
+    {
+      "id": "stanford-biox-usrp",
+      "name": "Stanford Bio-X Undergraduate Summer Research Program",
+      "url": "https://biox.stanford.edu/education/undergraduate-summer-research",
+      "priority": 2
+    },
+    {
+      "id": "stipendium-hungaricum",
+      "name": "Stipendium Hungaricum",
+      "url": "https://stipendiumhungaricum.hu",
+      "priority": 2
+    },
+    {
+      "id": "swiss-gov-excellence",
+      "name": "Swiss Government Excellence Scholarship",
+      "url": "https://www.sbfi.admin.ch/sbfi/en/home/education/scholarships/swiss-government-excellence-scholarships.html",
+      "priority": 2
+    },
+    {
       "id": "taiwan-huayu",
       "name": "Taiwan Huayu Enrichment Scholarship (HES)",
       "url": "https://taiwanscholarship.moe.gov.tw",
+      "priority": 2
+    },
+    {
+      "id": "taiwan-moe-scholarship",
+      "name": "Taiwan MOE Scholarship",
+      "url": "https://english.moe.gov.tw",
       "priority": 2
     },
     {
@@ -235,9 +559,51 @@
       "priority": 2
     },
     {
+      "id": "tsinghua-icampus-sjtu-visiting",
+      "name": "Tsinghua iCampus & SJTU Visiting Student Programme",
+      "url": "https://www.tsinghua.edu.cn/en/",
+      "priority": 2
+    },
+    {
+      "id": "un-youth-delegate",
+      "name": "UN Youth Delegate Programme",
+      "url": "https://social.desa.un.org/issues/youth/un-youth-delegate-programme",
+      "priority": 2
+    },
+    {
+      "id": "unicef-internship",
+      "name": "UNICEF Internship Programme",
+      "url": "https://www.unicef.org/careers/internships",
+      "priority": 2
+    },
+    {
       "id": "utrip",
       "name": "UTRIP – University of Tokyo Science Summer Research",
       "url": "https://www.s.u-tokyo.ac.jp/en/utrip/",
+      "priority": 2
+    },
+    {
+      "id": "utrecht-eu-summer-schools",
+      "name": "Utrecht University Summer School + EU Summer Schools",
+      "url": "https://www.utrechtsummerschool.nl",
+      "priority": 2
+    },
+    {
+      "id": "who-wpro-internship",
+      "name": "WHO Western Pacific Regional Office Internship & Volunteer Programme",
+      "url": "https://www.who.int/westernpacific/about/careers/internships-and-volunteering",
+      "priority": 2
+    },
+    {
+      "id": "workaway",
+      "name": "Workaway (Work-Exchange)",
+      "url": "https://www.workaway.info",
+      "priority": 2
+    },
+    {
+      "id": "youth-future-summit",
+      "name": "Youth Future Summit (Geneva)",
+      "url": "https://www.iyesf.com",
       "priority": 2
     },
     {
@@ -247,9 +613,21 @@
       "priority": 2
     },
     {
+      "id": "asla-fulbright-graduate-grant-finland",
+      "name": "ASLA-Fulbright Graduate Grant (Finland → USA)",
+      "url": "https://www.fulbright.fi/grant-programs-to-us/grants-masters-studies-us/asla-fulbright-graduate-grant",
+      "priority": 3
+    },
+    {
       "id": "cern-summer",
       "name": "CERN Summer Student Programme",
       "url": "https://careers.cern/summer",
+      "priority": 3
+    },
+    {
+      "id": "chevening-hong-kong",
+      "name": "Chevening Scholarship (Hong Kong)",
+      "url": "https://www.chevening.org/scholarship/hong-kong/",
       "priority": 3
     },
     {
@@ -265,6 +643,18 @@
       "priority": 3
     },
     {
+      "id": "efce-student-mobility-award",
+      "name": "EFCE Student Mobility Award",
+      "url": "https://efce.info/student_mobility_award.html",
+      "priority": 3
+    },
+    {
+      "id": "eit-innoenergy-masters-plus-scholarships",
+      "name": "EIT InnoEnergy Masters+ Scholarships / Fee Waivers",
+      "url": "https://mastersplus.innoenergy.com/fees-and-funding/scholarships/",
+      "priority": 3
+    },
+    {
       "id": "eth-ssrf",
       "name": "ETH Student Summer Research Fellowship",
       "url": "https://www.inf.ethz.ch/",
@@ -274,6 +664,18 @@
       "id": "eureka",
       "name": "EUREKA Undergraduate Research Programme",
       "url": "https://eureka.hku.hk/",
+      "priority": 3
+    },
+    {
+      "id": "fortum-neste-foundation-grants",
+      "name": "Fortum and Neste Foundation Grants",
+      "url": "https://fortumnestefoundation.fi/en/scholarships/",
+      "priority": 3
+    },
+    {
+      "id": "foundation-aalto-science-technology-thesis-grants",
+      "name": "Foundation for Aalto University Science and Technology — Thesis Grants",
+      "url": "https://www.aalto.fi/en/foundation-for-aalto-university-science-and-technology",
       "priority": 3
     },
     {
@@ -325,15 +727,45 @@
       "priority": 3
     },
     {
+      "id": "mext-research-scholarship-hk",
+      "name": "Japanese Government (MEXT) Research Student Scholarship – Embassy Recommendation (Hong Kong)",
+      "url": "https://www.hk.emb-japan.go.jp/itpr_en/MEXT_RS.html",
+      "priority": 3
+    },
+    {
+      "id": "lshtm-fund-scholarship",
+      "name": "LSHTM Fund Scholarship (London-based MSc)",
+      "url": "https://www.lshtm.ac.uk/study/fees-and-funding/funding-scholarships/2026-27-lshtm-fund-scholarship",
+      "priority": 3
+    },
+    {
+      "id": "lky-spp-graduate-scholarships",
+      "name": "Lee Kuan Yew School of Public Policy (NUS) – Merit Graduate Scholarships",
+      "url": "https://lkyspp.nus.edu.sg/graduate-admissions/fees-and-funding",
+      "priority": 3
+    },
+    {
       "id": "mpi-internships",
       "name": "Max Planck Institute Internships",
       "url": "https://www.mpg.de/en",
       "priority": 3
     },
     {
+      "id": "max-planck-summer-internship-maxsip",
+      "name": "Max Planck Summer Internship Program (MaxSIP)",
+      "url": "https://www.bi.mpg.de/maxsip",
+      "priority": 3
+    },
+    {
       "id": "nu-issai-srp",
       "name": "Nazarbayev University ISSAI Summer Research Program",
       "url": "https://issai.nu.edu.kz",
+      "priority": 3
+    },
+    {
+      "id": "nordplus-higher-education-mobility",
+      "name": "Nordplus Higher Education Mobility",
+      "url": "https://nordplusonline.org/apply-for-funding/activities-you-can-apply-for/nordplus-higher-education/",
       "priority": 3
     },
     {
@@ -373,6 +805,12 @@
       "priority": 3
     },
     {
+      "id": "gba-learning-subsidy",
+      "name": "Subsidy Scheme for Student Learning Activities in the GBA",
+      "url": "https://www.chinavision.hku.hk/subsidy-scheme-for-student-learning-acti",
+      "priority": 3
+    },
+    {
       "id": "tkp-horizons-iicct",
       "name": "TKP–Horizons Chinese Culture Immersion & Internship",
       "url": "https://tl.hku.hk/horizons/tkp-internship/",
@@ -394,6 +832,12 @@
       "id": "urfp",
       "name": "Undergraduate Research Fellowship Programme (URFP)",
       "url": "https://tl.hku.hk/urfp/",
+      "priority": 3
+    },
+    {
+      "id": "un-secretariat-internship",
+      "name": "United Nations Secretariat Internship Programme",
+      "url": "https://www.un.org/en/academic-impact/page/internships",
       "priority": 3
     },
     {
@@ -433,6 +877,24 @@
       "priority": 4
     },
     {
+      "id": "aiche-chem-e-car-competition",
+      "name": "AIChE Chem-E-Car Competition",
+      "url": "https://www.aiche.org/community/awards/chem-e-car-competitionr-award",
+      "priority": 4
+    },
+    {
+      "id": "aiche-international-student-chapter-travel-grant",
+      "name": "AIChE International Student Chapter Leadership Development Travel Grant",
+      "url": "https://www.aiche.org/community/awards/international-student-chapter-leadership-development-travel-grant",
+      "priority": 4
+    },
+    {
+      "id": "cedars-student-travel-loan",
+      "name": "CEDARS Interest-Free Student Travel Loan",
+      "url": "https://www.cedars.hku.hk/campuslife/finances/student-travel-loan",
+      "priority": 4
+    },
+    {
       "id": "caltech-surf",
       "name": "Caltech SURF",
       "url": "https://sfp.caltech.edu/programs/surf",
@@ -448,6 +910,12 @@
       "id": "spain-consulate-hku",
       "name": "Consulate General of Spain Prize (HKU Spanish Programme)",
       "url": "https://spanish.hku.hk/students/scholarships/",
+      "priority": 4
+    },
+    {
+      "id": "daad-university-summer-courses",
+      "name": "DAAD University Summer Courses in Germany for Foreign Students and Graduates",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50035295",
       "priority": 4
     },
     {
@@ -481,6 +949,18 @@
       "priority": 4
     },
     {
+      "id": "jhu-bloomberg-summer-institutes",
+      "name": "Johns Hopkins Bloomberg School of Public Health – Summer Institutes",
+      "url": "https://publichealth.jhu.edu/academics/accelerated-learning-institutes/summer-institutes",
+      "priority": 4
+    },
+    {
+      "id": "rotary-peace-fellowship",
+      "name": "Rotary Peace Fellowship (Master’s / Professional Certificate)",
+      "url": "https://www.rotary.org/en/our-programs/peace-fellowships/",
+      "priority": 4
+    },
+    {
       "id": "turksoy-youth",
       "name": "TÜRKSOY / Turkic World Youth Forum",
       "url": "https://www.turksoy.org/",
@@ -493,9 +973,21 @@
       "priority": 5
     },
     {
+      "id": "eth-zurich-student-summer-research-fellowship-cs",
+      "name": "ETH Zurich Student Summer Research Fellowship (Computer Science)",
+      "url": "https://inf.ethz.ch/studies/summer-research-fellowship.html",
+      "priority": 5
+    },
+    {
       "id": "famelab",
       "name": "FameLab",
       "url": "https://www.cheltenhamfestivals.org/",
+      "priority": 5
+    },
+    {
+      "id": "fulbright-hong-kong-suspended",
+      "name": "Fulbright Programme (Hong Kong / China exchanges)",
+      "url": "https://us.fulbrightonline.org/countries/east-asia-pacific",
       "priority": 5
     },
     {
@@ -526,6 +1018,12 @@
       "id": "yenching-later",
       "name": "Yenching Academy",
       "url": "https://yenchingacademy.pku.edu.cn",
+      "priority": 5
+    },
+    {
+      "id": "nawa-zawacka-outgoing",
+      "name": "Zawacka NAWA (Outgoing Bilateral Mobility)",
+      "url": "https://nawa.gov.pl/en/wspolpraca-i-wymiana-miedzynarodowa/zawacka-nawa/wyjazdy/oferta-na-rok-akademicki-2026-2027",
       "priority": 5
     },
     {
@@ -607,5 +1105,5 @@
       "priority": 9
     }
   ],
-  "checked_at": "2026-07-13T07:37:21.039611+00:00"
+  "checked_at": "2026-07-13T09:43:24.864501+00:00"
 }
