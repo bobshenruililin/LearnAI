@@ -1,5 +1,7 @@
+import { renderAtlasMap } from "./atlas-map.js";
+
 const STORAGE_KEY = "fta.v1";
-const GIFT_OPENED_KEY = "fta.gift.opened";
+const GIFT_OPENED_KEY = "fta.gift.opened.v2";
 const GIFT_EXPLORER_KEY = "fta.gift.explorer";
 const SHORTLIST_STATUSES = ["Interested", "Drafting", "Applied", "Outcome"];
 const REGIONS = [
@@ -333,45 +335,35 @@ function storageSet(key, value) {
 }
 
 function openGiftOverlay(force = false) {
-  let overlay = $("#giftOverlay");
+  const overlay = $("#giftOverlay");
+  if (!overlay) return;
   if (!force && storageGet(GIFT_OPENED_KEY) === "1") {
-    if (overlay) overlay.remove();
+    overlay.hidden = true;
+    overlay.classList.remove("is-open");
     document.body.classList.remove("gift-locked");
     document.body.style.overflow = "";
     return;
   }
-  // Replay: rebuild overlay if it was removed after first open
-  if (!overlay && force) {
-    const wrap = document.createElement("div");
-    wrap.className = "gift-overlay";
-    wrap.id = "giftOverlay";
-    wrap.innerHTML = `
-      <div class="gift-envelope" role="dialog" aria-labelledby="giftTitle" aria-modal="true">
-        <p class="gift-seal">Sealed for one explorer</p>
-        <h2 id="giftTitle">For Merey Yeskara</h2>
-        <p class="gift-body">Your atlas awaits — research summers, Horizons routes, Kazakh unlocks, and every stamp-worthy detour we could find.</p>
-        <p class="gift-from">A gift expedition. Open when ready.</p>
-        <button type="button" class="btn" id="openGiftBtn" onclick="return window.__dismissGift()">Open the map</button>
-        <button type="button" class="linkish gift-skip" id="skipGiftBtn" onclick="return window.__dismissGift()">Skip intro</button>
-      </div>`;
-    document.body.prepend(wrap);
-    overlay = wrap;
-    wireGiftButtons();
+  if (typeof window.__openGift === "function") {
+    window.__openGift();
+  } else {
+    overlay.hidden = false;
+    overlay.classList.add("is-open");
+    document.body.classList.add("gift-locked");
   }
-  if (!overlay) return;
-  overlay.hidden = false;
-  overlay.classList.add("is-open");
-  document.body.classList.add("gift-locked");
+  queueMicrotask(() => $("#openGiftBtn")?.focus?.());
 }
 
 function closeGiftOverlay() {
-  // Prefer the shared failsafe (removes node entirely so CSS cannot keep it visible)
   if (typeof window.__dismissGift === "function") {
     window.__dismissGift();
     return;
   }
   const overlay = $("#giftOverlay");
-  if (overlay) overlay.remove();
+  if (overlay) {
+    overlay.hidden = true;
+    overlay.classList.remove("is-open");
+  }
   document.body.classList.remove("gift-locked");
   document.body.style.overflow = "";
   storageSet(GIFT_OPENED_KEY, "1");
@@ -913,6 +905,18 @@ function render() {
 
   wireResultsClicks(root);
 
+  renderAtlasMap({
+    root: $("#atlasPanel"),
+    list,
+    selectedId: state.selectedId,
+    regionsFor,
+    onSelect: (id) => {
+      state.selectedId = id;
+      render();
+      $("#detail")?.scrollIntoView?.({ behavior: "smooth", block: "nearest" });
+    },
+  });
+
   if (state.selectedId) {
     const op = state.data.opportunities.find((o) => o.id === state.selectedId);
     if (op) renderDetail(op);
@@ -1014,6 +1018,7 @@ function bind() {
 
   wireGiftButtons();
   $("#replayGift")?.addEventListener("click", () => openGiftOverlay(true));
+  $("#headerGiftBtn")?.addEventListener("click", () => openGiftOverlay(true));
 
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;

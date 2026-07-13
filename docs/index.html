@@ -8,21 +8,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=20260713b" />
-  <!-- Critical: author CSS used to set .gift-overlay { display:grid }, which beats [hidden] and trapped the page -->
+  <link rel="stylesheet" href="./styles.css?v=20260713c" />
+  <!-- Critical: author CSS must not keep #giftOverlay visible when [hidden] -->
   <style>
     [hidden] { display: none !important; }
     #giftOverlay { display: none !important; }
     #giftOverlay.is-open:not([hidden]) { display: grid !important; place-items: center; }
   </style>
   <script>
-    // Non-module failsafe: works even if app.js fails to load or is cached
+    // Failsafe: hide (do not destroy) so Replay / header envelope can reopen it
     window.__dismissGift = function () {
       var el = document.getElementById("giftOverlay");
-      if (el) el.remove();
+      if (el) {
+        el.hidden = true;
+        el.classList.remove("is-open");
+      }
       document.body.classList.remove("gift-locked");
       document.body.style.overflow = "";
-      try { localStorage.setItem("fta.gift.opened", "1"); } catch (e) {}
+      try { localStorage.setItem("fta.gift.opened.v2", "1"); } catch (e) {}
+      return false;
+    };
+    window.__openGift = function () {
+      var el = document.getElementById("giftOverlay");
+      if (!el) return false;
+      el.hidden = false;
+      el.classList.add("is-open");
+      document.body.classList.add("gift-locked");
       return false;
     };
   </script>
@@ -55,6 +66,7 @@
       <div class="pill" id="lastUpdated">Loading data…</div>
       <div class="pill" id="healthPill">Link health: —</div>
       <div class="pill stamp-pill" id="explorerStamp" hidden>Merey · explorer</div>
+      <button type="button" class="btn ghost" id="headerGiftBtn" title="Open the gift envelope">Envelope</button>
       <button type="button" class="btn ghost" id="shortlistToggle">Notebook · 0</button>
       <button type="button" class="btn ghost" id="refreshBtn" title="Reload opportunities + status">Refresh</button>
     </div>
@@ -163,6 +175,21 @@
       <div id="results" class="card-grid"></div>
     </section>
 
+    <section class="atlas-panel" id="atlasPanel" aria-label="Interactive world map">
+      <div class="atlas-head">
+        <div>
+          <h2>World map</h2>
+          <p class="atlas-sub"><span data-map-count>0</span> pins from the current filters · click a stamp</p>
+        </div>
+        <div class="atlas-key" aria-hidden="true">
+          <span><i class="key-dot open"></i> Open</span>
+          <span><i class="key-dot verify"></i> Verify</span>
+          <span><i class="key-dot trap"></i> Trap</span>
+        </div>
+      </div>
+      <div class="atlas-stage" data-map-stage></div>
+    </section>
+
     <aside class="detail empty" id="detail" aria-live="polite">
       <p class="detail-placeholder" id="detailPlaceholder">Click any opportunity for the full briefing, eligibility traps, and creative angle.</p>
     </aside>
@@ -220,6 +247,6 @@
     </div>
   </div>
 
-  <script src="./app.js?v=20260713b" type="module"></script>
+  <script src="./app.js?v=20260713c" type="module"></script>
 </body>
 </html>
