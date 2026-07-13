@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-07-13T05:22:39.878383+00:00",
+  "checked_at": "2026-07-13T07:32:10.037314+00:00",
   "summary": {
-    "total": 71,
-    "ok": 63,
-    "fail": 8,
-    "redirect": 12
+    "total": 87,
+    "ok": 76,
+    "fail": 11,
+    "redirect": 1
   },
   "results": [
     {
@@ -36,7 +36,7 @@
       "final_url": "https://eee.epfl.ch/",
       "elapsed_ms": 581,
       "bytes": 10534,
-      "title_hint": "EEE – EPFL Excellence in Engineering - E3 homepage",
+      "title_hint": "EEE \u2013 EPFL Excellence in Engineering - E3 homepage",
       "deadline_mentions": [],
       "error": null
     },
@@ -226,9 +226,9 @@
       "deadline_mentions": [
         "deadline",
         "deadline, you may submit the proof as a supporting document",
-        "Deadline Online application – Deadline Late Dec Interview Selected candidates invited fo",
-        "Deadline HKUWW Late-Round Application (Application for 2026/27 – Semester 1 and Semester",
-        "Deadline Online application – Deadline Apr 2 (Thu) Results Release Release of placement"
+        "Deadline Online application \u2013 Deadline Late Dec Interview Selected candidates invited fo",
+        "Deadline HKUWW Late-Round Application (Application for 2026/27 \u2013 Semester 1 and Semester",
+        "Deadline Online application \u2013 Deadline Apr 2 (Thu) Results Release Release of placement"
       ],
       "error": null
     },
@@ -439,7 +439,7 @@
       "final_url": "https://taiwanscholarship.moe.gov.tw/web/index.aspx",
       "elapsed_ms": 4117,
       "bytes": 62378,
-      "title_hint": "Taiwan Scholarship and Huayu Enrichment Scholarship Program 臺灣獎學金及華語文獎學金計畫網站",
+      "title_hint": "Taiwan Scholarship and Huayu Enrichment Scholarship Program \u81fa\u7063\u734e\u5b78\u91d1\u53ca\u83ef\u8a9e\u6587\u734e\u5b78\u91d1\u8a08\u756b\u7db2\u7ad9",
       "deadline_mentions": [
         "2026-01-22"
       ],
@@ -463,7 +463,7 @@
     },
     {
       "id": "utrip",
-      "name": "UTRIP – University of Tokyo Science Summer Research",
+      "name": "UTRIP \u2013 University of Tokyo Science Summer Research",
       "url": "https://www.s.u-tokyo.ac.jp/en/utrip/",
       "checked_at": "2026-07-13T05:22:39.878383+00:00",
       "ok": true,
@@ -529,7 +529,7 @@
       "final_url": "https://inf.ethz.ch/",
       "elapsed_ms": 1731,
       "bytes": 58603,
-      "title_hint": "Department of Computer Science – Department of Computer Science | ETH Zurich",
+      "title_hint": "Department of Computer Science \u2013 Department of Computer Science | ETH Zurich",
       "deadline_mentions": [],
       "error": null
     },
@@ -569,7 +569,7 @@
     },
     {
       "id": "common-purpose-ldp",
-      "name": "HKU–Common Purpose Leadership Development Programme",
+      "name": "HKU\u2013Common Purpose Leadership Development Programme",
       "url": "https://tl.hku.hk/horizons/ldp/",
       "checked_at": "2026-07-13T05:22:39.878383+00:00",
       "ok": true,
@@ -670,13 +670,13 @@
       "final_url": "https://oq.gov.kz",
       "elapsed_ms": 1818,
       "bytes": 200000,
-      "title_hint": "Отандастар қоры / Otandastar Qory / Фонд Отандастар",
+      "title_hint": "\u041e\u0442\u0430\u043d\u0434\u0430\u0441\u0442\u0430\u0440 \u049b\u043e\u0440\u044b / Otandastar Qory / \u0424\u043e\u043d\u0434 \u041e\u0442\u0430\u043d\u0434\u0430\u0441\u0442\u0430\u0440",
       "deadline_mentions": [],
       "error": null
     },
     {
       "id": "otandastar-jas-qazaq",
-      "name": "Otandastar «Jas Qazaq» Ethno-Camp",
+      "name": "Otandastar \u00abJas Qazaq\u00bb Ethno-Camp",
       "url": "https://oq.gov.kz",
       "checked_at": "2026-07-13T05:22:39.878383+00:00",
       "ok": true,
@@ -684,7 +684,7 @@
       "final_url": "https://oq.gov.kz",
       "elapsed_ms": 1448,
       "bytes": 200000,
-      "title_hint": "Отандастар қоры / Otandastar Qory / Фонд Отандастар",
+      "title_hint": "\u041e\u0442\u0430\u043d\u0434\u0430\u0441\u0442\u0430\u0440 \u049b\u043e\u0440\u044b / Otandastar Qory / \u0424\u043e\u043d\u0434 \u041e\u0442\u0430\u043d\u0434\u0430\u0441\u0442\u0430\u0440",
       "deadline_mentions": [],
       "error": null
     },
@@ -714,7 +714,7 @@
       "final_url": "https://cbs.riken.jp/jp/index.html",
       "elapsed_ms": 647,
       "bytes": 37111,
-      "title_hint": "理化学研究所 脳神経科学研究センター（理研CBS） | 理化学研究所 脳神経科学研究センター（理研CBS）",
+      "title_hint": "\u7406\u5316\u5b66\u7814\u7a76\u6240 \u8133\u795e\u7d4c\u79d1\u5b66\u7814\u7a76\u30bb\u30f3\u30bf\u30fc\uff08\u7406\u7814CBS\uff09 | \u7406\u5316\u5b66\u7814\u7a76\u6240 \u8133\u795e\u7d4c\u79d1\u5b66\u7814\u7a76\u30bb\u30f3\u30bf\u30fc\uff08\u7406\u7814CBS\uff09",
       "deadline_mentions": [],
       "error": null
     },
@@ -728,7 +728,7 @@
       "final_url": "https://www.redbull.com/us-en",
       "elapsed_ms": 164,
       "bytes": 200000,
-      "title_hint": "Red Bull Energy Drink – Gives You Wiiings",
+      "title_hint": "Red Bull Energy Drink \u2013 Gives You Wiiings",
       "deadline_mentions": [],
       "error": null
     },
@@ -748,7 +748,7 @@
     },
     {
       "id": "tkp-horizons-iicct",
-      "name": "TKP–Horizons Chinese Culture Immersion & Internship",
+      "name": "TKP\u2013Horizons Chinese Culture Immersion & Internship",
       "url": "https://tl.hku.hk/horizons/tkp-internship/",
       "checked_at": "2026-07-13T05:22:39.878383+00:00",
       "ok": true,
@@ -762,7 +762,7 @@
     },
     {
       "id": "un-mgcy",
-      "name": "UN Major Group for Children and Youth — Funded Nominations",
+      "name": "UN Major Group for Children and Youth \u2014 Funded Nominations",
       "url": "https://www.unmgcy.org",
       "checked_at": "2026-07-13T05:22:39.878383+00:00",
       "ok": true,
@@ -798,7 +798,7 @@
     },
     {
       "id": "global-shapers-hk",
-      "name": "WEF Global Shapers — Hong Kong Hub",
+      "name": "WEF Global Shapers \u2014 Hong Kong Hub",
       "url": "https://globalshapers.org/hubs/hong-kong-hub",
       "checked_at": "2026-07-13T05:22:39.878383+00:00",
       "ok": true,
@@ -858,7 +858,7 @@
     },
     {
       "id": "3-campus-east-asia",
-      "name": "3 Campus East Asia (Keio–Yonsei–HKU)",
+      "name": "3 Campus East Asia (Keio\u2013Yonsei\u2013HKU)",
       "url": "https://tl.hku.hk/horizons/3campus/",
       "checked_at": "2026-07-13T05:22:39.878383+00:00",
       "ok": true,
@@ -1030,7 +1030,7 @@
       "final_url": "https://www.cedars.hku.hk/unv",
       "elapsed_ms": 1601,
       "bytes": 35103,
-      "title_hint": "HYAB – United Nations Volunteer Internship Programme 2026",
+      "title_hint": "HYAB \u2013 United Nations Volunteer Internship Programme 2026",
       "deadline_mentions": [],
       "error": null
     },
@@ -1076,7 +1076,7 @@
       "deadline_mentions": [
         "deadline",
         "deadline, you may submit the proof as a supporting document",
-        "Deadline\\u003c/td\\u003e\\n\\u003ctd style=\\\"text-align: left;\\\"\\u003eOnline application –",
+        "Deadline\\u003c/td\\u003e\\n\\u003ctd style=\\\"text-align: left;\\\"\\u003eOnline application \u2013",
         "Deadline\\u003c/td\\u003e\\n\\u003c/tr\\u003e\\n\\u003ctr\\u003e\\n\\u003ctd style=\\\"text-align: c",
         "Deadline\\u003c/td\\u003e\\n\\u003c/tr\\u003e\\n\\u003c/tbody\\u003e\\n\\u003c/table\\u003e\\u003c/d"
       ],
@@ -1130,7 +1130,231 @@
         "September 1, 2025"
       ],
       "error": null
+    },
+    {
+      "id": "french-plus-sciences",
+      "name": "French + Sciences (Consulate General of France in HK/Macau)",
+      "url": "https://hongkong.diplomatie.gouv.fr/en/relations-bilaterales/higher-education-and-science-0/scholarships/french-sciences-short-programme",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://hongkong.diplomatie.gouv.fr/en/relations-bilaterales/higher-education-and-science-0/scholarships/french-sciences-short-programme",
+      "elapsed_ms": 0,
+      "bytes": 34094,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "embl-lautenschlager",
+      "name": "EMBL Lautenschl\u00e4ger Summer School (Visualising Life)",
+      "url": "https://www.embl.org/about/info/undergraduates/events/2026-visualising-life/",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://www.embl.org/about/info/undergraduates/events/2026-visualising-life/",
+      "elapsed_ms": 0,
+      "bytes": 40000,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "embl-techdev",
+      "name": "EMBL TechDev Internship Programme",
+      "url": "https://www.embl.org/about/info/scientific-visitor-programme/fellowships/techdev/",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://www.embl.org/about/info/scientific-visitor-programme/fellowships/techdev/",
+      "elapsed_ms": 0,
+      "bytes": 40000,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "nims-internship",
+      "name": "NIMS Internship Program (Japan)",
+      "url": "https://www.nims.go.jp/eng/hr-development/internship.html",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://www.nims.go.jp/eng/hr-development/internship.html",
+      "elapsed_ms": 0,
+      "bytes": 40000,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "sakura-science",
+      "name": "JST Sakura Science Exchange Program",
+      "url": "https://ssp.jst.go.jp/en/",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://ssp.jst.go.jp/en/",
+      "elapsed_ms": 0,
+      "bytes": 39928,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "ismrm-educational-stipend",
+      "name": "ISMRM Educational Stipend (Annual Meeting)",
+      "url": "https://www.ismrm.org/26m/stipends/educational-program/",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://www.ismrm.org/26m/stipends/educational-program/",
+      "elapsed_ms": 0,
+      "bytes": 40000,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "miccai-travel-grants",
+      "name": "MICCAI Society Registration & Travel Grants",
+      "url": "https://miccai.org/index.php/about-miccai/awards/miccai-registration-and-travel-grants/",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://miccai.org/conference-awards/miccai-registration-and-travel-grants/",
+      "elapsed_ms": 0,
+      "bytes": 40000,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "spie-medical-imaging",
+      "name": "SPIE Student Conference Support (Medical Imaging)",
+      "url": "https://spie.org/membership/student-hub/student-conference-support",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://spie.org/membership/student-hub/student-conference-support",
+      "elapsed_ms": 0,
+      "bytes": 1161,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "asme-sbc-travel",
+      "name": "ASME Summer Bioengineering Conference Travel Award + Student Paper Competition",
+      "url": "https://event.asme.org/SBC",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://event.asme.org/SBC",
+      "elapsed_ms": 0,
+      "bytes": 40000,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "hku-innovation-academy-travel",
+      "name": "HKU Faculty of Engineering Innovation Academy Travel Subsidy",
+      "url": "https://innoacademy.engg.hku.hk/funding-scheme/",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://innoacademy.engg.hku.hk/funding-scheme/",
+      "elapsed_ms": 0,
+      "bytes": 40000,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "hku-idendron-competition-subsidy",
+      "name": "HKU iDendron / TEC Competition Subsidies",
+      "url": "https://tec.hku.hk/competition-subsidies/",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://tec.hku.hk/competition-subsidies/",
+      "elapsed_ms": 0,
+      "bytes": 40000,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "falling-walls-lab",
+      "name": "Falling Walls Lab",
+      "url": "https://falling-walls.com/lab/",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://falling-walls.com/lab",
+      "elapsed_ms": 0,
+      "bytes": 40000,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "james-dyson-award",
+      "name": "James Dyson Award",
+      "url": "https://www.jamesdysonaward.org/en-hk/how-to-enter/",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": false,
+      "status": null,
+      "final_url": "https://www.jamesdysonaward.org/en-hk/how-to-enter/",
+      "elapsed_ms": 0,
+      "bytes": 0,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "id": "youth4climate",
+      "name": "Youth4Climate Call for Solutions (UNDP / Italy)",
+      "url": "https://www.undp.org/romecentre/our-programmes/youth4climate",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://www.undp.org/romecentre/our-programmes/youth4climate",
+      "elapsed_ms": 0,
+      "bytes": 40000,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": null
+    },
+    {
+      "id": "csc-china-link",
+      "name": "CSC China Link Short-term Scientific Exchange Scholarship",
+      "url": "https://www.campuschina.org/",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": false,
+      "status": null,
+      "final_url": "https://www.campuschina.org/",
+      "elapsed_ms": 0,
+      "bytes": 0,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": "<urlopen error [Errno 101] Network is unreachable>"
+    },
+    {
+      "id": "csc-summer-schools",
+      "name": "Chinese Government Scholarship International Summer School Programs",
+      "url": "https://www.campuschina.org/",
+      "checked_at": "2026-07-13T07:32:10.037314+00:00",
+      "ok": false,
+      "status": null,
+      "final_url": "https://www.campuschina.org/",
+      "elapsed_ms": 0,
+      "bytes": 0,
+      "title_hint": null,
+      "deadline_mentions": [],
+      "error": "HTTP Error 412: Precondition Failed"
     }
   ],
-  "notes": "Automated link reachability + rough deadline mention scrape. Always verify official pages."
+  "notes": "Merged prior checks with new opportunity bootstrap."
 }

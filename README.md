@@ -6,9 +6,12 @@ Live site (after Pages is enabled): `https://bobshenruililin.github.io/learnai/`
 
 ## What’s inside
 
-- **74 curated opportunities** with eligibility, funding level, destinations, deadlines, residency traps, and creative angles
+- **100+ curated opportunities** with eligibility, funding level, destinations, deadlines, residency traps, and creative angles
 - Interactive filters: best-fit, hide HK-PR-only traps, Kazakh unlocks, fully funded, deadline season
-- Card / table / calendar views
+- **Clickable tags**, **destination region chips**, and active-lens filters
+- Card / table / **year timeline (Gantt)** / agenda views
+- **Shortlist** (localStorage) with Interested → Drafting → Applied → Outcome + export
+- **Compare tray** for up to 3 opportunities side-by-side
 - Detail drawer with official links + last link-health check
 - **GitHub Actions** routine checker (Mon/Thu + manual) that refreshes `docs/data/status.json`
 

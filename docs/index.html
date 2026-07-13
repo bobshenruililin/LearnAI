@@ -23,6 +23,7 @@
     <div class="header-meta">
       <div class="pill" id="lastUpdated">Loading data…</div>
       <div class="pill" id="healthPill">Link health: —</div>
+      <button type="button" class="btn ghost" id="shortlistToggle">Shortlist · 0</button>
       <button type="button" class="btn ghost" id="refreshBtn" title="Reload opportunities + status">Refresh</button>
     </div>
   </header>
@@ -35,6 +36,10 @@
     <div class="profile-chip" data-preset="soon">Deadlines soon</div>
     <div class="profile-chip" data-preset="showTraps">Show residency traps</div>
   </section>
+
+  <section class="active-lenses" id="activeLenses" aria-label="Active tag and region filters" hidden></section>
+
+  <section class="region-strip" id="regionStrip" aria-label="Destination regions"></section>
 
   <section class="stats" id="stats" aria-live="polite"></section>
 
@@ -96,6 +101,11 @@
         </select>
       </label>
 
+      <div class="tag-facets">
+        <h3>Popular tags</h3>
+        <div id="tagFacets" class="chip-cloud"></div>
+      </div>
+
       <div class="legend">
         <p><span class="dot open"></span> Open to non-HKPR</p>
         <p><span class="dot closed"></span> Closed / trap</p>
@@ -103,7 +113,7 @@
         <p><span class="dot later"></span> Later (postgrad)</p>
       </div>
 
-      <p class="aside-note">Routine checks run via GitHub Actions (weekly). Status timestamps update in <code>data/status.json</code>.</p>
+      <p class="aside-note">Pins and compare selections save in your browser. Link checks update via GitHub Actions.</p>
     </aside>
 
     <section class="results" aria-label="Opportunities">
@@ -112,7 +122,8 @@
         <div class="view-toggle" role="group" aria-label="View mode">
           <button type="button" class="btn small on" data-view="cards">Cards</button>
           <button type="button" class="btn small" data-view="table">Table</button>
-          <button type="button" class="btn small" data-view="calendar">Calendar</button>
+          <button type="button" class="btn small" data-view="timeline">Timeline</button>
+          <button type="button" class="btn small" data-view="agenda">Agenda</button>
         </div>
       </div>
       <div id="results" class="card-grid"></div>
@@ -123,21 +134,55 @@
     </aside>
   </main>
 
+  <section class="shortlist-panel" id="shortlistPanel" hidden>
+    <div class="shortlist-head">
+      <h2>Field notebook — shortlist</h2>
+      <div class="shortlist-actions">
+        <button type="button" class="btn small" id="exportShortlist">Export JSON</button>
+        <button type="button" class="btn small" id="clearShortlist">Clear</button>
+        <button type="button" class="btn small" id="closeShortlist">Close</button>
+      </div>
+    </div>
+    <div id="shortlistBody" class="shortlist-body"></div>
+  </section>
+
   <section class="playbook">
     <h2>Suggested stack</h2>
     <ol>
       <li><strong>Y1–Y2:</strong> Laidlaw + EUREKA pipeline + Mandarin start + one China Vision / Mingde / WZQ trip → claim MES once.</li>
       <li><strong>Every summer:</strong> Mitacs (via IAO) <em>or</em> Amgen Asia / EPFL E3 / OIST / KAUST — one fully funded research trip.</li>
-      <li><strong>Top-ups:</strong> ROA + Horizons enrichment + Experience Award video cash.</li>
-      <li><strong>Kazakh unlocks:</strong> SCO Youth, Otandastar, Taiwan Huayu (as KZ, not as HK), embassy camps.</li>
-      <li><strong>Win a ticket:</strong> Imagine Cup / iGEM / IEEE EMBC paper → travel grant.</li>
-      <li><strong>Ignore:</strong> HSBC/Hang Seng PR awards, SSE/SSEBR, DAAD RISE from HKU, influencer “ambassador” DMs.</li>
+      <li><strong>Top-ups:</strong> ROA + Horizons enrichment + Innovation Academy travel + Experience Award video cash.</li>
+      <li><strong>Kazakh unlocks:</strong> SCO Youth, Otandastar, Taiwan Huayu (as KZ, not as HK), TÜRKSOY, embassy camps.</li>
+      <li><strong>Win a ticket:</strong> Imagine Cup / iGEM / Falling Walls / IEEE EMBC or ISMRM paper → travel grant.</li>
+      <li><strong>Ignore:</strong> HSBC/Hang Seng PR awards, SSE/SSEBR, DAAD RISE from HKU, Crick/Pasteur Europe tracks, influencer DMs.</li>
     </ol>
   </section>
 
   <footer class="site-footer">
     <p>Built for GitHub Pages. Data is research-curated — always verify official pages before applying. Not affiliated with HKU.</p>
   </footer>
+
+  <div class="compare-tray" id="compareTray" hidden>
+    <div class="compare-tray-inner">
+      <div class="compare-tray-head">
+        <strong>Compare</strong>
+        <span id="compareCount">0 / 3</span>
+        <button type="button" class="btn small" id="openCompare">Open matrix</button>
+        <button type="button" class="btn small" id="clearCompare">Clear</button>
+      </div>
+      <div id="compareChips" class="compare-chips"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="compareModal" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Side-by-side briefing</h2>
+        <button type="button" class="btn small" id="closeCompare">Close</button>
+      </div>
+      <div id="compareMatrix" class="compare-matrix"></div>
+    </div>
+  </div>
 
   <script src="./app.js" type="module"></script>
 </body>

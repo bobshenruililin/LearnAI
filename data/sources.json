@@ -1,431 +1,712 @@
 {
   "sources": [
     {
-      "id": "amgen-asia",
-      "name": "Amgen Scholars Asia",
-      "url": "https://amgenscholars.com/asia-program/",
-      "priority": 1
-    },
-    {
-      "id": "epfl-e3",
-      "name": "EPFL Excellence in Engineering (E3)",
-      "url": "https://eee.epfl.ch/",
-      "priority": 1
-    },
-    {
-      "id": "reaching-out-award",
-      "name": "HKSAR Reaching Out Award (ROA)",
-      "url": "https://scholar.aas.hku.hk/?action=showonesscheme&ss_id=397",
-      "priority": 1
-    },
-    {
-      "id": "ieee-embs-travel",
-      "name": "IEEE EMBS / EMBC Student Travel Grants",
-      "url": "https://www.embs.org/student-travel-grants/",
-      "priority": 1
-    },
-    {
       "id": "laidlaw-scholars",
       "name": "Laidlaw Undergraduate Research & Leadership Programme",
       "url": "https://tl.hku.hk/horizons/laidlaw/",
-      "priority": 1
+      "priority": 1,
+      "status": "open"
     },
     {
       "id": "mitacs-globalink",
       "name": "Mitacs Globalink Research Internship (via HKU)",
       "url": "https://intlaffairs.hku.hk/globalink-research-internship",
-      "priority": 1
+      "priority": 1,
+      "status": "open"
     },
     {
-      "id": "non-means-tested-mes",
-      "name": "Non-means-tested Mainland Experience Scheme (MES)",
-      "url": "https://www.chinavision.hku.hk/non-means-tested-mainland-experienc",
-      "priority": 1
+      "id": "amgen-asia",
+      "name": "Amgen Scholars Asia",
+      "url": "https://amgenscholars.com/asia-program/",
+      "priority": 1,
+      "status": "open"
     },
     {
-      "id": "astar-sipga",
-      "name": "A*STAR SIPGA (Singapore)",
-      "url": "https://www.a-star.edu.sg/",
-      "priority": 2
-    },
-    {
-      "id": "cedars-cgcss",
-      "name": "CEDARS Global Career Springboard Scheme",
-      "url": "https://www.cedars-cp.hku.hk/careerspringboard",
-      "priority": 2
+      "id": "epfl-e3",
+      "name": "EPFL Excellence in Engineering (E3)",
+      "url": "https://eee.epfl.ch/",
+      "priority": 1,
+      "status": "open"
     },
     {
       "id": "epfl-life-sciences-srp",
       "name": "EPFL Life Sciences Summer Research Program",
       "url": "https://www.epfl.ch/schools/sv/education/summer-research-program/",
-      "priority": 2
-    },
-    {
-      "id": "engg-faculty-exchange",
-      "name": "Faculty of Engineering Exchange Programme",
-      "url": "https://engg.hku.hk/Teaching-Learning/BEng/Faculty-Exchange-Programme",
-      "priority": 2
-    },
-    {
-      "id": "china-10000",
-      "name": "HKU China 10,000 Exchange Programme Fund",
-      "url": "https://chinavision.hku.hk/china-10-000-student-exchange-progr",
-      "priority": 2
-    },
-    {
-      "id": "hkuww-exchange",
-      "name": "HKU Worldwide Student Exchange (HKUWW)",
-      "url": "https://intlaffairs.hku.hk/hku-worldwide-student-exchange",
-      "priority": 2
-    },
-    {
-      "id": "wu-zhi-qiao",
-      "name": "HKU Wu Zhi Qiao (Bridge to China) Programme",
-      "url": "https://tl.hku.hk/horizons/wzq/",
-      "priority": 2
-    },
-    {
-      "id": "project-mingde",
-      "name": "Horizons Project Mingde",
-      "url": "https://tl.hku.hk/horizons/mingde-2/",
-      "priority": 2
-    },
-    {
-      "id": "short-term-study-abroad",
-      "name": "IAO Scholarships for Short-term Study Abroad (GSP)",
-      "url": "https://intlaffairs.hku.hk/short-term-scholarships",
-      "priority": 2
-    },
-    {
-      "id": "jasso-exchange",
-      "name": "JASSO Student Exchange Support Program",
-      "url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html",
-      "priority": 2
-    },
-    {
-      "id": "kaust-vsrp",
-      "name": "KAUST Visiting Student Research Program",
-      "url": "https://www.kaust.edu.sa/en/study/visiting-student-research-program",
-      "priority": 2
-    },
-    {
-      "id": "imagine-cup",
-      "name": "Microsoft Imagine Cup",
-      "url": "https://imaginecup.microsoft.com",
-      "priority": 2
+      "priority": 2,
+      "status": "open"
     },
     {
       "id": "oist-internship",
       "name": "OIST Research Internship (Japan)",
       "url": "https://www.oist.jp/admissions/research-internship/apply-research-internship",
-      "priority": 2
+      "priority": 2,
+      "status": "open"
     },
     {
-      "id": "one-young-world",
-      "name": "One Young World Summit Scholarships",
-      "url": "https://www.oneyoungworld.com/scholarships",
-      "priority": 2
-    },
-    {
-      "id": "rayson-huang-enrichment",
-      "name": "Rayson Huang Memorial Student Enrichment Award",
-      "url": "https://tl.hku.hk/horizons/award-rh-twt/",
-      "priority": 2
-    },
-    {
-      "id": "sco-youth-campus",
-      "name": "SCO Youth Campus / Youth Development Forum",
-      "url": "https://eng.sectsco.org",
-      "priority": 2
-    },
-    {
-      "id": "sau-ching-exchange",
-      "name": "Sau Ching Foundation Scholarship for Student Exchange",
-      "url": "https://scholar.aas.hku.hk/?action=showonesscheme&ss_id=846",
-      "priority": 2
-    },
-    {
-      "id": "szu-liyuan",
-      "name": "Shenzhen University Summer in Liyuan / International Youth Study",
-      "url": "https://en.szu.edu.cn",
-      "priority": 2
-    },
-    {
-      "id": "taiwan-huayu",
-      "name": "Taiwan Huayu Enrichment Scholarship (HES)",
-      "url": "https://taiwanscholarship.moe.gov.tw",
-      "priority": 2
-    },
-    {
-      "id": "tam-wun-tsun-enrichment",
-      "name": "Tam Wun Tsun HKU Horizons Student Enrichment Award",
-      "url": "https://tl.hku.hk/horizons/award-rh-twt/",
-      "priority": 2
+      "id": "kaust-vsrp",
+      "name": "KAUST Visiting Student Research Program",
+      "url": "https://www.kaust.edu.sa/en/study/visiting-student-research-program",
+      "priority": 2,
+      "status": "open"
     },
     {
       "id": "utrip",
-      "name": "UTRIP – University of Tokyo Science Summer Research",
+      "name": "UTRIP \u2013 University of Tokyo Science Summer Research",
       "url": "https://www.s.u-tokyo.ac.jp/en/utrip/",
-      "priority": 2
-    },
-    {
-      "id": "igem-jamboree",
-      "name": "iGEM Grand Jamboree",
-      "url": "https://igem.org",
-      "priority": 2
+      "priority": 2,
+      "status": "open"
     },
     {
       "id": "cern-summer",
       "name": "CERN Summer Student Programme",
       "url": "https://careers.cern/summer",
-      "priority": 3
+      "priority": 3,
+      "status": "open"
     },
     {
-      "id": "daad-kz-database",
-      "name": "DAAD Scholarship Database (Kazakhstan filter)",
-      "url": "https://www.daad.de/en/studying-in-germany/scholarships/",
-      "priority": 3
-    },
-    {
-      "id": "eth-ssrf",
-      "name": "ETH Student Summer Research Fellowship",
-      "url": "https://www.inf.ethz.ch/",
-      "priority": 3
-    },
-    {
-      "id": "eureka",
-      "name": "EUREKA Undergraduate Research Programme",
-      "url": "https://eureka.hku.hk/",
-      "priority": 3
-    },
-    {
-      "id": "horizons-experience-award",
-      "name": "HKU Horizons Experience Award",
-      "url": "https://tl.hku.hk/horizons/overview/hkuhea/",
-      "priority": 3
-    },
-    {
-      "id": "common-purpose-ldp",
-      "name": "HKU–Common Purpose Leadership Development Programme",
-      "url": "https://tl.hku.hk/horizons/ldp/",
-      "priority": 3
-    },
-    {
-      "id": "huawei-seeds",
-      "name": "Huawei Seeds for the Future",
-      "url": "https://www.huawei.com/",
-      "priority": 3
-    },
-    {
-      "id": "hult-prize",
-      "name": "Hult Prize",
-      "url": "https://www.hultprize.org",
-      "priority": 3
-    },
-    {
-      "id": "iaeste",
-      "name": "IAESTE Internships",
-      "url": "https://iaeste.org",
-      "priority": 3
-    },
-    {
-      "id": "mpi-internships",
-      "name": "Max Planck Institute Internships",
-      "url": "https://www.mpg.de/en",
-      "priority": 3
-    },
-    {
-      "id": "nu-issai-srp",
-      "name": "Nazarbayev University ISSAI Summer Research Program",
-      "url": "https://issai.nu.edu.kz",
-      "priority": 3
-    },
-    {
-      "id": "otandastar-scholars",
-      "name": "Otandastar Scholars Forum (NU)",
-      "url": "https://oq.gov.kz",
-      "priority": 3
-    },
-    {
-      "id": "otandastar-jas-qazaq",
-      "name": "Otandastar «Jas Qazaq» Ethno-Camp",
-      "url": "https://oq.gov.kz",
-      "priority": 3
-    },
-    {
-      "id": "philip-kh-wong",
-      "name": "Philip K H Wong Foundation Student Enrichment Scholarships",
-      "url": "https://scholar.aas.hku.hk/?action=showonesscheme&ss_id=389",
-      "priority": 3
-    },
-    {
-      "id": "riken-cbs",
-      "name": "RIKEN CBS Summer Program",
-      "url": "https://cbs.riken.jp/",
-      "priority": 3
-    },
-    {
-      "id": "red-bull-basement",
-      "name": "Red Bull Basement",
-      "url": "https://www.redbull.com",
-      "priority": 3
-    },
-    {
-      "id": "sgac-scholarships",
-      "name": "Space Generation Advisory Council Scholarships",
-      "url": "https://spacegeneration.org/scholarships",
-      "priority": 3
-    },
-    {
-      "id": "tkp-horizons-iicct",
-      "name": "TKP–Horizons Chinese Culture Immersion & Internship",
-      "url": "https://tl.hku.hk/horizons/tkp-internship/",
-      "priority": 3
-    },
-    {
-      "id": "un-mgcy",
-      "name": "UN Major Group for Children and Youth — Funded Nominations",
-      "url": "https://www.unmgcy.org",
-      "priority": 3
-    },
-    {
-      "id": "urfp",
-      "name": "Undergraduate Research Fellowship Programme (URFP)",
-      "url": "https://tl.hku.hk/urfp/",
-      "priority": 3
-    },
-    {
-      "id": "global-shapers-hk",
-      "name": "WEF Global Shapers — Hong Kong Hub",
-      "url": "https://globalshapers.org/hubs/hong-kong-hub",
-      "priority": 3
-    },
-    {
-      "id": "who-internship",
-      "name": "WHO Internship Programme",
-      "url": "https://www.who.int/careers/internship-programme",
-      "priority": 3
+      "id": "astar-sipga",
+      "name": "A*STAR SIPGA (Singapore)",
+      "url": "https://www.a-star.edu.sg/",
+      "priority": 2,
+      "status": "open"
     },
     {
       "id": "weizmann-kupcinet",
       "name": "Weizmann Kupcinet-Getz International Summer School",
       "url": "https://www.weizmann.ac.il/feinberg/admissions/kupcinet-getz-international-summer-school",
-      "priority": 3
-    },
-    {
-      "id": "yc-cheng-engineering",
-      "name": "YC Cheng Engineering Scholarship",
-      "url": "https://scholar.aas.hku.hk/?action=showonesscheme&ss_id=463",
-      "priority": 3
-    },
-    {
-      "id": "3-campus-east-asia",
-      "name": "3 Campus East Asia (Keio–Yonsei–HKU)",
-      "url": "https://tl.hku.hk/horizons/3campus/",
-      "priority": 4
+      "priority": 3,
+      "status": "open"
     },
     {
       "id": "caltech-surf",
       "name": "Caltech SURF",
       "url": "https://sfp.caltech.edu/programs/surf",
-      "priority": 4
+      "priority": 4,
+      "status": "verify"
+    },
+    {
+      "id": "riken-cbs",
+      "name": "RIKEN CBS Summer Program",
+      "url": "https://cbs.riken.jp/",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "non-means-tested-mes",
+      "name": "Non-means-tested Mainland Experience Scheme (MES)",
+      "url": "https://www.chinavision.hku.hk/non-means-tested-mainland-experienc",
+      "priority": 1,
+      "status": "open"
+    },
+    {
+      "id": "reaching-out-award",
+      "name": "HKSAR Reaching Out Award (ROA)",
+      "url": "https://scholar.aas.hku.hk/?action=showonesscheme&ss_id=397",
+      "priority": 1,
+      "status": "open"
+    },
+    {
+      "id": "engg-faculty-exchange",
+      "name": "Faculty of Engineering Exchange Programme",
+      "url": "https://engg.hku.hk/Teaching-Learning/BEng/Faculty-Exchange-Programme",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "hkuww-exchange",
+      "name": "HKU Worldwide Student Exchange (HKUWW)",
+      "url": "https://intlaffairs.hku.hk/hku-worldwide-student-exchange",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "short-term-study-abroad",
+      "name": "IAO Scholarships for Short-term Study Abroad (GSP)",
+      "url": "https://intlaffairs.hku.hk/short-term-scholarships",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "common-purpose-ldp",
+      "name": "HKU\u2013Common Purpose Leadership Development Programme",
+      "url": "https://tl.hku.hk/horizons/ldp/",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "project-mingde",
+      "name": "Horizons Project Mingde",
+      "url": "https://tl.hku.hk/horizons/mingde-2/",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "wu-zhi-qiao",
+      "name": "HKU Wu Zhi Qiao (Bridge to China) Programme",
+      "url": "https://tl.hku.hk/horizons/wzq/",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "tkp-horizons-iicct",
+      "name": "TKP\u2013Horizons Chinese Culture Immersion & Internship",
+      "url": "https://tl.hku.hk/horizons/tkp-internship/",
+      "priority": 3,
+      "status": "verify"
+    },
+    {
+      "id": "horizons-experience-award",
+      "name": "HKU Horizons Experience Award",
+      "url": "https://tl.hku.hk/horizons/overview/hkuhea/",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "rayson-huang-enrichment",
+      "name": "Rayson Huang Memorial Student Enrichment Award",
+      "url": "https://tl.hku.hk/horizons/award-rh-twt/",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "tam-wun-tsun-enrichment",
+      "name": "Tam Wun Tsun HKU Horizons Student Enrichment Award",
+      "url": "https://tl.hku.hk/horizons/award-rh-twt/",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "sau-ching-exchange",
+      "name": "Sau Ching Foundation Scholarship for Student Exchange",
+      "url": "https://scholar.aas.hku.hk/?action=showonesscheme&ss_id=846",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "cedars-cgcss",
+      "name": "CEDARS Global Career Springboard Scheme",
+      "url": "https://www.cedars-cp.hku.hk/careerspringboard",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "urfp",
+      "name": "Undergraduate Research Fellowship Programme (URFP)",
+      "url": "https://tl.hku.hk/urfp/",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "eureka",
+      "name": "EUREKA Undergraduate Research Programme",
+      "url": "https://eureka.hku.hk/",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "3-campus-east-asia",
+      "name": "3 Campus East Asia (Keio\u2013Yonsei\u2013HKU)",
+      "url": "https://tl.hku.hk/horizons/3campus/",
+      "priority": 4,
+      "status": "open"
+    },
+    {
+      "id": "china-10000",
+      "name": "HKU China 10,000 Exchange Programme Fund",
+      "url": "https://chinavision.hku.hk/china-10-000-student-exchange-progr",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "philip-kh-wong",
+      "name": "Philip K H Wong Foundation Student Enrichment Scholarships",
+      "url": "https://scholar.aas.hku.hk/?action=showonesscheme&ss_id=389",
+      "priority": 3,
+      "status": "verify"
+    },
+    {
+      "id": "yc-cheng-engineering",
+      "name": "YC Cheng Engineering Scholarship",
+      "url": "https://scholar.aas.hku.hk/?action=showonesscheme&ss_id=463",
+      "priority": 3,
+      "status": "verify"
     },
     {
       "id": "spain-consulate-hku",
       "name": "Consulate General of Spain Prize (HKU Spanish Programme)",
       "url": "https://spanish.hku.hk/students/scholarships/",
-      "priority": 4
-    },
-    {
-      "id": "gks-korea",
-      "name": "Global Korea Scholarship (GKS)",
-      "url": "https://www.studyinkorea.go.kr",
-      "priority": 4
-    },
-    {
-      "id": "gsoc",
-      "name": "Google Summer of Code",
-      "url": "https://summerofcode.withgoogle.com",
-      "priority": 4
-    },
-    {
-      "id": "hku-sports",
-      "name": "HKU / USFHK Sports Team Competition Travel",
-      "url": "https://www.cedars.hku.hk/",
-      "priority": 4
-    },
-    {
-      "id": "worldmun",
-      "name": "Harvard WorldMUN + Club Funding",
-      "url": "https://www.worldmun.org",
-      "priority": 4
-    },
-    {
-      "id": "bolashak-later",
-      "name": "Bolashak International Scholarship",
-      "url": "https://bolashak.gov.kz",
-      "priority": 5
-    },
-    {
-      "id": "isdb-scholarship",
-      "name": "Islamic Development Bank Scholarships",
-      "url": "https://www.isdb.org",
-      "priority": 5
-    },
-    {
-      "id": "schwarzman-later",
-      "name": "Schwarzman Scholars",
-      "url": "https://www.schwarzmanscholars.org",
-      "priority": 5
-    },
-    {
-      "id": "yenching-later",
-      "name": "Yenching Academy",
-      "url": "https://yenchingacademy.pku.edu.cn",
-      "priority": 5
-    },
-    {
-      "id": "hyab-unv",
-      "name": "HYAB United Nations Volunteer Internship",
-      "url": "https://www.cedars.hku.hk/unv",
-      "priority": 8
-    },
-    {
-      "id": "cedars-travel-funds",
-      "name": "CEDARS Student Travel Funds / Travel Loan",
-      "url": "https://www.cedars.hku.hk/campuslife/finances/ufa",
-      "priority": 9
-    },
-    {
-      "id": "daad-rise",
-      "name": "DAAD RISE Germany",
-      "url": "https://www.daad.de/rise/en/",
-      "priority": 9
-    },
-    {
-      "id": "sse-ssebr",
-      "name": "EDB Subsidy on Exchange (SSE / SSEBR)",
-      "url": "https://intlaffairs.hku.hk/government-subsidies",
-      "priority": 9
+      "priority": 4,
+      "status": "open"
     },
     {
       "id": "hsbc-global-scholarship",
       "name": "HSBC Global Scholarship",
       "url": "https://intlaffairs.hku.hk/hsbc-overseas-scholarship",
-      "priority": 9
+      "priority": 9,
+      "status": "closed_to_you"
+    },
+    {
+      "id": "sse-ssebr",
+      "name": "EDB Subsidy on Exchange (SSE / SSEBR)",
+      "url": "https://intlaffairs.hku.hk/government-subsidies",
+      "priority": 9,
+      "status": "closed_to_you"
     },
     {
       "id": "innovation-technology-scholarship",
       "name": "Innovation and Technology Scholarship",
       "url": "https://scholar.aas.hku.hk/?action=showonesscheme&ss_id=395",
-      "priority": 9
+      "priority": 9,
+      "status": "closed_to_you"
     },
     {
       "id": "gba-internship-subsidy",
       "name": "UGC GBA Internship Subsidy (HK$6,000)",
       "url": "https://www.chinavision.hku.hk/subsidy-scheme-for-student-learning-acti",
-      "priority": 9
+      "priority": 9,
+      "status": "closed_to_you"
+    },
+    {
+      "id": "cedars-travel-funds",
+      "name": "CEDARS Student Travel Funds / Travel Loan",
+      "url": "https://www.cedars.hku.hk/campuslife/finances/ufa",
+      "priority": 9,
+      "status": "closed_to_you"
+    },
+    {
+      "id": "daad-rise",
+      "name": "DAAD RISE Germany",
+      "url": "https://www.daad.de/rise/en/",
+      "priority": 9,
+      "status": "closed_to_you"
+    },
+    {
+      "id": "hyab-unv",
+      "name": "HYAB United Nations Volunteer Internship",
+      "url": "https://www.cedars.hku.hk/unv",
+      "priority": 8,
+      "status": "closed_to_you"
+    },
+    {
+      "id": "imagine-cup",
+      "name": "Microsoft Imagine Cup",
+      "url": "https://imaginecup.microsoft.com",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "red-bull-basement",
+      "name": "Red Bull Basement",
+      "url": "https://www.redbull.com",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "hult-prize",
+      "name": "Hult Prize",
+      "url": "https://www.hultprize.org",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "igem-jamboree",
+      "name": "iGEM Grand Jamboree",
+      "url": "https://igem.org",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "ieee-embs-travel",
+      "name": "IEEE EMBS / EMBC Student Travel Grants",
+      "url": "https://www.embs.org/student-travel-grants/",
+      "priority": 1,
+      "status": "open"
+    },
+    {
+      "id": "one-young-world",
+      "name": "One Young World Summit Scholarships",
+      "url": "https://www.oneyoungworld.com/scholarships",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "sco-youth-campus",
+      "name": "SCO Youth Campus / Youth Development Forum",
+      "url": "https://eng.sectsco.org",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "otandastar-jas-qazaq",
+      "name": "Otandastar \u00abJas Qazaq\u00bb Ethno-Camp",
+      "url": "https://oq.gov.kz",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "otandastar-scholars",
+      "name": "Otandastar Scholars Forum (NU)",
+      "url": "https://oq.gov.kz",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "taiwan-huayu",
+      "name": "Taiwan Huayu Enrichment Scholarship (HES)",
+      "url": "https://taiwanscholarship.moe.gov.tw",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "jasso-exchange",
+      "name": "JASSO Student Exchange Support Program",
+      "url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "gks-korea",
+      "name": "Global Korea Scholarship (GKS)",
+      "url": "https://www.studyinkorea.go.kr",
+      "priority": 4,
+      "status": "later"
+    },
+    {
+      "id": "sgac-scholarships",
+      "name": "Space Generation Advisory Council Scholarships",
+      "url": "https://spacegeneration.org/scholarships",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "who-internship",
+      "name": "WHO Internship Programme",
+      "url": "https://www.who.int/careers/internship-programme",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "global-shapers-hk",
+      "name": "WEF Global Shapers \u2014 Hong Kong Hub",
+      "url": "https://globalshapers.org/hubs/hong-kong-hub",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "un-mgcy",
+      "name": "UN Major Group for Children and Youth \u2014 Funded Nominations",
+      "url": "https://www.unmgcy.org",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "huawei-seeds",
+      "name": "Huawei Seeds for the Future",
+      "url": "https://www.huawei.com/",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "szu-liyuan",
+      "name": "Shenzhen University Summer in Liyuan / International Youth Study",
+      "url": "https://en.szu.edu.cn",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "nu-issai-srp",
+      "name": "Nazarbayev University ISSAI Summer Research Program",
+      "url": "https://issai.nu.edu.kz",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "iaeste",
+      "name": "IAESTE Internships",
+      "url": "https://iaeste.org",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "gsoc",
+      "name": "Google Summer of Code",
+      "url": "https://summerofcode.withgoogle.com",
+      "priority": 4,
+      "status": "open"
+    },
+    {
+      "id": "daad-kz-database",
+      "name": "DAAD Scholarship Database (Kazakhstan filter)",
+      "url": "https://www.daad.de/en/studying-in-germany/scholarships/",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "bolashak-later",
+      "name": "Bolashak International Scholarship",
+      "url": "https://bolashak.gov.kz",
+      "priority": 5,
+      "status": "later"
+    },
+    {
+      "id": "schwarzman-later",
+      "name": "Schwarzman Scholars",
+      "url": "https://www.schwarzmanscholars.org",
+      "priority": 5,
+      "status": "later"
+    },
+    {
+      "id": "yenching-later",
+      "name": "Yenching Academy",
+      "url": "https://yenchingacademy.pku.edu.cn",
+      "priority": 5,
+      "status": "later"
+    },
+    {
+      "id": "worldmun",
+      "name": "Harvard WorldMUN + Club Funding",
+      "url": "https://www.worldmun.org",
+      "priority": 4,
+      "status": "open"
+    },
+    {
+      "id": "hku-sports",
+      "name": "HKU / USFHK Sports Team Competition Travel",
+      "url": "https://www.cedars.hku.hk/",
+      "priority": 4,
+      "status": "open"
+    },
+    {
+      "id": "isdb-scholarship",
+      "name": "Islamic Development Bank Scholarships",
+      "url": "https://www.isdb.org",
+      "priority": 5,
+      "status": "verify"
+    },
+    {
+      "id": "mpi-internships",
+      "name": "Max Planck Institute Internships",
+      "url": "https://www.mpg.de/en",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "eth-ssrf",
+      "name": "ETH Student Summer Research Fellowship",
+      "url": "https://www.inf.ethz.ch/",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "french-plus-sciences",
+      "name": "French + Sciences (Consulate General of France in HK/Macau)",
+      "url": "https://hongkong.diplomatie.gouv.fr/en/relations-bilaterales/higher-education-and-science-0/scholarships/french-sciences-short-programme",
+      "priority": 1,
+      "status": "open"
+    },
+    {
+      "id": "embl-lautenschlager",
+      "name": "EMBL Lautenschl\u00e4ger Summer School (Visualising Life)",
+      "url": "https://www.embl.org/about/info/undergraduates/events/2026-visualising-life/",
+      "priority": 1,
+      "status": "open"
+    },
+    {
+      "id": "embl-techdev",
+      "name": "EMBL TechDev Internship Programme",
+      "url": "https://www.embl.org/about/info/scientific-visitor-programme/fellowships/techdev/",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "nims-internship",
+      "name": "NIMS Internship Program (Japan)",
+      "url": "https://www.nims.go.jp/eng/hr-development/internship.html",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "sakura-science",
+      "name": "JST Sakura Science Exchange Program",
+      "url": "https://ssp.jst.go.jp/en/",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "ismrm-educational-stipend",
+      "name": "ISMRM Educational Stipend (Annual Meeting)",
+      "url": "https://www.ismrm.org/26m/stipends/educational-program/",
+      "priority": 1,
+      "status": "open"
+    },
+    {
+      "id": "ismrm-zavoisky",
+      "name": "ISMRM E.K. Zavoisky Stipend",
+      "url": "https://www.ismrm.org/26m/stipends/",
+      "priority": 5,
+      "status": "verify"
+    },
+    {
+      "id": "miccai-travel-grants",
+      "name": "MICCAI Society Registration & Travel Grants",
+      "url": "https://miccai.org/index.php/about-miccai/awards/miccai-registration-and-travel-grants/",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "spie-medical-imaging",
+      "name": "SPIE Student Conference Support (Medical Imaging)",
+      "url": "https://spie.org/membership/student-hub/student-conference-support",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "asme-sbc-travel",
+      "name": "ASME Summer Bioengineering Conference Travel Award + Student Paper Competition",
+      "url": "https://event.asme.org/SBC",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "termis-eu-ide",
+      "name": "TERMIS-EU ID&E Conference Scholarship",
+      "url": "https://termis.org/inclusion-diversity-education-ide-scholarships-for-conference-attendance/",
+      "priority": 6,
+      "status": "later"
+    },
+    {
+      "id": "hku-innovation-academy-travel",
+      "name": "HKU Faculty of Engineering Innovation Academy Travel Subsidy",
+      "url": "https://innoacademy.engg.hku.hk/funding-scheme/",
+      "priority": 1,
+      "status": "open"
+    },
+    {
+      "id": "hku-idendron-competition-subsidy",
+      "name": "HKU iDendron / TEC Competition Subsidies",
+      "url": "https://tec.hku.hk/competition-subsidies/",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "falling-walls-lab",
+      "name": "Falling Walls Lab",
+      "url": "https://falling-walls.com/lab/",
+      "priority": 2,
+      "status": "open"
+    },
+    {
+      "id": "james-dyson-award",
+      "name": "James Dyson Award",
+      "url": "https://www.jamesdysonaward.org/en-hk/how-to-enter/",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "climatelaunchpad",
+      "name": "ClimateLaunchpad",
+      "url": "https://climatelaunchpad.org/",
+      "priority": 4,
+      "status": "open"
+    },
+    {
+      "id": "youth4climate",
+      "name": "Youth4Climate Call for Solutions (UNDP / Italy)",
+      "url": "https://www.undp.org/romecentre/our-programmes/youth4climate",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "csc-china-link",
+      "name": "CSC China Link Short-term Scientific Exchange Scholarship",
+      "url": "https://www.campuschina.org/",
+      "priority": 2,
+      "status": "verify"
+    },
+    {
+      "id": "csc-summer-schools",
+      "name": "Chinese Government Scholarship International Summer School Programs",
+      "url": "https://www.campuschina.org/",
+      "priority": 3,
+      "status": "open"
+    },
+    {
+      "id": "turksoy-youth",
+      "name": "T\u00dcRKSOY / Turkic World Youth Forum",
+      "url": "https://www.turksoy.org/",
+      "priority": 4,
+      "status": "verify"
+    },
+    {
+      "id": "jenesys",
+      "name": "JENESYS (Japan-East Asia Network of Exchange for Students and Youths)",
+      "url": "https://www.mofa.go.jp/a_o/rp/page24e_000354.html",
+      "priority": 4,
+      "status": "verify"
+    },
+    {
+      "id": "tohoku-tesp",
+      "name": "Tohoku University Engineering Summer Program (TESP)",
+      "url": "https://sites.google.com/tohoku.ac.jp/tesp/summer-program",
+      "priority": 3,
+      "status": "verify"
+    },
+    {
+      "id": "hkust-lifs-summer",
+      "name": "HKUST LIFS Summer Research Program",
+      "url": "https://life-sci.hkust.edu.hk/",
+      "priority": 3,
+      "status": "verify"
+    },
+    {
+      "id": "pasteur-amgen-europe",
+      "name": "Institut Pasteur Amgen Scholars / Pasteur Foundation Summer",
+      "url": "https://www.pasteur.fr/en/education/programs-and-courses/internships-and-pre-doctoral-programs/amgen-scholars-program",
+      "priority": 9,
+      "status": "closed_to_you"
+    },
+    {
+      "id": "crick-summer",
+      "name": "Francis Crick Institute Summer Student Training Programme",
+      "url": "https://www.crick.ac.uk/careers-and-study/students/summer-students",
+      "priority": 9,
+      "status": "closed_to_you"
+    },
+    {
+      "id": "janelia-undergraduate",
+      "name": "HHMI Janelia Undergraduate Scholars",
+      "url": "https://www.janelia.org/you-janelia/students-postdocs/undergraduate-scholars-program",
+      "priority": 5,
+      "status": "verify"
+    },
+    {
+      "id": "orkhun-exchange",
+      "name": "Orkhun (Orhun) Exchange Programme \u2013 TURKUNIB",
+      "url": "https://turkunib.org/en/orhun",
+      "priority": 9,
+      "status": "closed_to_you"
+    },
+    {
+      "id": "cmbe-travel-postgrad",
+      "name": "CMBE Postgraduate Travel Grants",
+      "url": "https://compbiomed.net/about/cmbe-award/",
+      "priority": 7,
+      "status": "later"
+    },
+    {
+      "id": "bmes-cmbe-grad-travel",
+      "name": "BMES CMBE Graduate Student Travel Award",
+      "url": "https://www.bmes.org/awards/graduate-student-travel-award",
+      "priority": 8,
+      "status": "later"
+    },
+    {
+      "id": "famelab",
+      "name": "FameLab",
+      "url": "https://www.cheltenhamfestivals.org/",
+      "priority": 5,
+      "status": "verify"
     }
   ],
-  "checked_at": "2026-07-13T05:22:39.878383+00:00"
+  "checked_at": null
 }
