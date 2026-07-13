@@ -1,4 +1,5 @@
 import { renderAtlasMap } from "./atlas-map.js";
+import { initLayoutChrome } from "./layout-chrome.js";
 
 const STORAGE_KEY = "fta.v1";
 const GIFT_OPENED_KEY = "fta.gift.opened.v2";
@@ -1035,6 +1036,7 @@ function bind() {
 }
 
 loadStorage();
+initLayoutChrome();
 bind();
 openGiftOverlay(false);
 loadAll().then(() => {

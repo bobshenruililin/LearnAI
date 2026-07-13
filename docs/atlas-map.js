@@ -254,6 +254,9 @@ function ensureMap(stage) {
   document.addEventListener("fta:gift-closed", () => {
     setTimeout(() => map.invalidateSize({ animate: false }), 80);
   });
+  document.addEventListener("fta:layout-changed", () => {
+    setTimeout(() => map.invalidateSize({ animate: false }), 40);
+  });
 
   return state;
 }

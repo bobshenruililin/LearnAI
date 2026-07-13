@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
   <link rel="stylesheet" href="./vendor/leaflet.markercluster/MarkerCluster.css" />
   <link rel="stylesheet" href="./vendor/leaflet.markercluster/MarkerCluster.Default.css" />
-  <link rel="stylesheet" href="./styles.css?v=20260713d" />
+  <link rel="stylesheet" href="./styles.css?v=20260713e" />
   <!-- Critical: author CSS must not keep #giftOverlay visible when [hidden] -->
   <style>
     [hidden] { display: none !important; }
@@ -93,91 +93,18 @@
 
   <section class="stats" id="stats" aria-live="polite"></section>
 
-  <main class="layout">
-    <aside class="filters" aria-label="Filters">
-      <label class="field">
-        <span>Search</span>
-        <input type="search" id="q" placeholder="Laidlaw, Mitacs, Merey, surprise…" autocomplete="off" />
-      </label>
-
-      <label class="field">
-        <span>Category</span>
-        <select id="category">
-          <option value="">All categories</option>
-        </select>
-      </label>
-
-      <label class="field">
-        <span>Funding</span>
-        <select id="funding">
-          <option value="">All funding levels</option>
-          <option value="fully_funded">Fully funded</option>
-          <option value="mostly_funded">Mostly funded</option>
-          <option value="partial">Partial</option>
-          <option value="prize">Prize / cash after</option>
-          <option value="unpaid_but_free">Unpaid but free entry</option>
-        </select>
-      </label>
-
-      <label class="field">
-        <span>Difficulty</span>
-        <select id="difficulty">
-          <option value="">Any difficulty</option>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-          <option value="very_high">Very high</option>
-        </select>
-      </label>
-
-      <label class="field">
-        <span>Year of study</span>
-        <select id="year">
-          <option value="">Any year</option>
-          <option value="Y1">Year 1</option>
-          <option value="Y2">Year 2</option>
-          <option value="Y3">Year 3</option>
-          <option value="Y4">Year 4 / final</option>
-        </select>
-      </label>
-
-      <label class="field">
-        <span>Sort</span>
-        <select id="sort">
-          <option value="priority">Best fit for you</option>
-          <option value="funding">Funding strength</option>
-          <option value="name">Name A–Z</option>
-          <option value="deadline">Deadline hint</option>
-        </select>
-      </label>
-
-      <div class="tag-facets">
-        <h3>Popular tags</h3>
-        <div id="tagFacets" class="chip-cloud"></div>
+  <div class="workspace" id="workspace" data-map-pos="top">
+    <div class="layout-toolbar" id="layoutToolbar">
+      <div class="layout-toolbar-group" role="group" aria-label="Map placement">
+        <span class="layout-toolbar-label">Map</span>
+        <button type="button" class="btn small on" data-map-pos="top">Top</button>
+        <button type="button" class="btn small" data-map-pos="bottom">Bottom</button>
+        <button type="button" class="btn small" data-map-pos="side">Side</button>
+        <button type="button" class="btn small" data-map-pos="hidden">Hide</button>
       </div>
-
-      <div class="legend">
-        <p><span class="dot open"></span> Open to non-HKPR</p>
-        <p><span class="dot closed"></span> Closed / trap</p>
-        <p><span class="dot verify"></span> Verify this year</p>
-        <p><span class="dot later"></span> Later (postgrad)</p>
-      </div>
-
-      <p class="aside-note">Pins and compare selections save in your browser. Link checks update via GitHub Actions.</p>
-    </aside>
-
-    <section class="results" aria-label="Opportunities">
-      <div class="results-head">
-        <h2 id="resultsCount">0 opportunities</h2>
-        <div class="view-toggle" role="group" aria-label="View mode">
-          <button type="button" class="btn small on" data-view="cards">Cards</button>
-          <button type="button" class="btn small" data-view="table">Table</button>
-          <button type="button" class="btn small" data-view="timeline">Timeline</button>
-          <button type="button" class="btn small" data-view="agenda">Agenda</button>
-        </div>
-      </div>
-      <div id="results" class="card-grid"></div>
-    </section>
+      <p class="layout-toolbar-hint">Drag the grips to resize columns and map height. Layout saves in this browser.</p>
+      <button type="button" class="btn small ghost" id="resetLayoutBtn">Reset layout</button>
+    </div>
 
     <section class="atlas-panel" id="atlasPanel" aria-label="Interactive world map">
       <div class="atlas-head">
@@ -194,10 +121,104 @@
       <div class="atlas-stage" data-map-stage id="atlasLeaflet" role="application" aria-label="Leaflet world map"></div>
     </section>
 
-    <aside class="detail empty" id="detail" aria-live="polite">
-      <p class="detail-placeholder" id="detailPlaceholder">Click any opportunity for the full briefing, eligibility traps, and creative angle.</p>
-    </aside>
-  </main>
+    <div class="resizer resizer-h" id="mapResizer" role="separator" aria-orientation="horizontal" aria-label="Resize map height" tabindex="0"></div>
+    <div class="resizer resizer-v side-map-resizer" id="sideMapResizer" role="separator" aria-orientation="vertical" aria-label="Resize map width" tabindex="0"></div>
+
+    <main class="layout" id="mainLayout">
+      <aside class="filters" aria-label="Filters">
+        <label class="field">
+          <span>Search</span>
+          <input type="search" id="q" placeholder="Laidlaw, Mitacs, Merey, surprise…" autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span>Category</span>
+          <select id="category">
+            <option value="">All categories</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Funding</span>
+          <select id="funding">
+            <option value="">All funding levels</option>
+            <option value="fully_funded">Fully funded</option>
+            <option value="mostly_funded">Mostly funded</option>
+            <option value="partial">Partial</option>
+            <option value="prize">Prize / cash after</option>
+            <option value="unpaid_but_free">Unpaid but free entry</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Difficulty</span>
+          <select id="difficulty">
+            <option value="">Any difficulty</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="very_high">Very high</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Year of study</span>
+          <select id="year">
+            <option value="">Any year</option>
+            <option value="Y1">Year 1</option>
+            <option value="Y2">Year 2</option>
+            <option value="Y3">Year 3</option>
+            <option value="Y4">Year 4 / final</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Sort</span>
+          <select id="sort">
+            <option value="priority">Best fit for you</option>
+            <option value="funding">Funding strength</option>
+            <option value="name">Name A–Z</option>
+            <option value="deadline">Deadline hint</option>
+          </select>
+        </label>
+
+        <div class="tag-facets">
+          <h3>Popular tags</h3>
+          <div id="tagFacets" class="chip-cloud"></div>
+        </div>
+
+        <div class="legend">
+          <p><span class="dot open"></span> Open to non-HKPR</p>
+          <p><span class="dot closed"></span> Closed / trap</p>
+          <p><span class="dot verify"></span> Verify this year</p>
+          <p><span class="dot later"></span> Later (postgrad)</p>
+        </div>
+
+        <p class="aside-note">Pins and compare selections save in your browser. Link checks update via GitHub Actions.</p>
+      </aside>
+
+      <div class="resizer resizer-v" data-resize="filters" role="separator" aria-orientation="vertical" aria-label="Resize filters column" tabindex="0"></div>
+
+      <section class="results" aria-label="Opportunities">
+        <div class="results-head">
+          <h2 id="resultsCount">0 opportunities</h2>
+          <div class="view-toggle" role="group" aria-label="View mode">
+            <button type="button" class="btn small on" data-view="cards">Cards</button>
+            <button type="button" class="btn small" data-view="table">Table</button>
+            <button type="button" class="btn small" data-view="timeline">Timeline</button>
+            <button type="button" class="btn small" data-view="agenda">Agenda</button>
+          </div>
+        </div>
+        <div id="results" class="card-grid"></div>
+      </section>
+
+      <div class="resizer resizer-v" data-resize="detail" role="separator" aria-orientation="vertical" aria-label="Resize detail column" tabindex="0"></div>
+
+      <aside class="detail empty" id="detail" aria-live="polite">
+        <p class="detail-placeholder" id="detailPlaceholder">Click any opportunity for the full briefing, eligibility traps, and creative angle.</p>
+      </aside>
+    </main>
+  </div>
 
   <section class="shortlist-panel" id="shortlistPanel" hidden>
     <div class="shortlist-head">
@@ -253,6 +274,6 @@
 
   <script src="./vendor/leaflet/leaflet.js"></script>
   <script src="./vendor/leaflet.markercluster/leaflet.markercluster.js"></script>
-  <script src="./app.js?v=20260713d" type="module"></script>
+  <script src="./app.js?v=20260713e" type="module"></script>
 </body>
 </html>
