@@ -234,9 +234,9 @@ h1 {
 }
 
 .workspace {
-  --filters-w: 250px;
-  --detail-w: 380px;
-  --map-h: 300px;
+  --filters-w: 260px;
+  --detail-w: 340px;
+  --map-h: 440px;
   --map-side-w: 420px;
   display: flex;
   flex-direction: column;
@@ -280,24 +280,36 @@ h1 {
 }
 
 .layout {
-  display: grid;
-  grid-template-columns:
-    var(--filters-w)
-    10px
-    minmax(420px, 1.55fr)
-    10px
-    var(--detail-w);
-  grid-template-areas: "filters g1 results g2 detail";
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
   gap: 0;
-  column-gap: 0;
-  align-items: start;
+  width: 100%;
   min-width: 0;
 }
-.filters { grid-area: filters; }
-.results { grid-area: results; min-width: 0; }
-.detail { grid-area: detail; }
-.layout > [data-resize="filters"] { grid-area: g1; }
-.layout > [data-resize="detail"] { grid-area: g2; }
+.filters {
+  flex: 0 0 var(--filters-w, 260px);
+  width: var(--filters-w, 260px);
+  max-width: min(360px, 32vw);
+  min-width: 200px;
+}
+.results {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+  max-width: none;
+}
+.detail {
+  flex: 0 0 var(--detail-w, 340px);
+  width: var(--detail-w, 340px);
+  max-width: min(420px, 30vw);
+  min-width: 280px;
+}
+.layout > [data-resize="filters"],
+.layout > [data-resize="detail"] {
+  flex: 0 0 10px;
+  width: 10px;
+}
 
 .filters, .detail {
   background: var(--card);
@@ -312,8 +324,17 @@ h1 {
 }
 .results {
   background: transparent;
-  min-width: 0;
-  padding: 0 0.35rem;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
+.results #results,
+.results .card-grid,
+.results .table-wrap,
+.results .timeline,
+.results .calendar {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
 }
 
 /* Map placement modes */
@@ -488,8 +509,8 @@ body.is-resizing iframe {
   overflow: hidden;
   border: 1px solid var(--stroke);
   background: #d8e4dc;
-  min-height: 180px;
-  height: var(--map-h, 300px);
+  min-height: 320px;
+  height: var(--map-h, 440px);
   flex: 1;
   z-index: 0;
 }
@@ -658,8 +679,9 @@ body.is-resizing iframe {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: 0.85rem;
+  width: 100%;
 }
 
 .card {
@@ -1002,7 +1024,7 @@ tr.active td { background: rgba(15, 107, 92, 0.1); }
 .tl-head,
 .tl-row {
   display: grid;
-  grid-template-columns: minmax(140px, 220px) minmax(480px, 1fr);
+  grid-template-columns: minmax(140px, 220px) minmax(0, 1fr);
   gap: 0.6rem;
   align-items: center;
 }
@@ -1498,14 +1520,6 @@ body.gift-locked {
 }
 
 @media (max-width: 1280px) {
-  .layout {
-    grid-template-columns:
-      minmax(180px, var(--filters-w))
-      10px
-      minmax(300px, 1.4fr)
-      10px
-      minmax(240px, var(--detail-w));
-  }
   .stats { grid-template-columns: repeat(3, 1fr); }
 }
 
@@ -1523,14 +1537,19 @@ body.gift-locked {
     width: 100%;
   }
   .layout {
-    grid-template-columns: minmax(180px, var(--filters-w)) 10px minmax(0, 1fr);
-    grid-template-areas:
-      "filters g1 results"
-      "detail detail detail";
+    flex-wrap: wrap;
+  }
+  .filters {
+    flex: 0 0 var(--filters-w, 240px);
+  }
+  .results {
+    flex: 1 1 280px;
   }
   .layout > [data-resize="detail"] { display: none; }
   .detail {
-    grid-area: detail;
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: none;
     position: static;
     max-height: none;
     margin-top: 0.75rem;
@@ -1543,11 +1562,15 @@ body.gift-locked {
   .header-meta { justify-content: start; }
   .layout-toolbar-hint { display: none; }
   .layout {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "filters"
-      "results"
-      "detail";
+    flex-direction: column;
+  }
+  .filters,
+  .results,
+  .detail {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
   }
   .layout > .resizer { display: none; }
   #mapResizer, #sideMapResizer { display: none !important; }
@@ -1557,6 +1580,7 @@ body.gift-locked {
   }
   .atlas-stage {
     height: min(42vh, 280px);
+    min-height: 220px;
   }
   .card-grid {
     grid-template-columns: 1fr;

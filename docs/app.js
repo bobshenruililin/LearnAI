@@ -924,10 +924,17 @@ function render() {
 
   $("#resultsCount").textContent = `${list.length} opportunit${list.length === 1 ? "y" : "ies"}`;
   const root = $("#results");
-  if (state.view === "table") root.innerHTML = tableHtml(list);
-  else if (state.view === "timeline") root.innerHTML = timelineHtml(list);
-  else if (state.view === "agenda") root.innerHTML = agendaHtml(list);
-  else root.innerHTML = `<div class="card-grid">${list.map(cardHtml).join("")}</div>`;
+  root.classList.remove("card-grid");
+  if (state.view === "table") {
+    root.innerHTML = tableHtml(list);
+  } else if (state.view === "timeline") {
+    root.innerHTML = timelineHtml(list);
+  } else if (state.view === "agenda") {
+    root.innerHTML = agendaHtml(list);
+  } else {
+    root.classList.add("card-grid");
+    root.innerHTML = list.map(cardHtml).join("");
+  }
 
   wireResultsClicks(root);
 
