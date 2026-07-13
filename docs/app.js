@@ -325,23 +325,71 @@ function burstStamps() {
   }, 1400);
 }
 
+function storageGet(key) {
+  try { return localStorage.getItem(key); } catch { return null; }
+}
+function storageSet(key, value) {
+  try { localStorage.setItem(key, value); } catch { /* private mode */ }
+}
+
 function openGiftOverlay(force = false) {
-  const overlay = $("#giftOverlay");
-  if (!overlay) return;
-  if (!force && localStorage.getItem(GIFT_OPENED_KEY) === "1") {
-    overlay.hidden = true;
+  let overlay = $("#giftOverlay");
+  if (!force && storageGet(GIFT_OPENED_KEY) === "1") {
+    if (overlay) overlay.remove();
+    document.body.classList.remove("gift-locked");
+    document.body.style.overflow = "";
     return;
   }
+  // Replay: rebuild overlay if it was removed after first open
+  if (!overlay && force) {
+    const wrap = document.createElement("div");
+    wrap.className = "gift-overlay";
+    wrap.id = "giftOverlay";
+    wrap.innerHTML = `
+      <div class="gift-envelope" role="dialog" aria-labelledby="giftTitle" aria-modal="true">
+        <p class="gift-seal">Sealed for one explorer</p>
+        <h2 id="giftTitle">For Merey Yeskara</h2>
+        <p class="gift-body">Your atlas awaits — research summers, Horizons routes, Kazakh unlocks, and every stamp-worthy detour we could find.</p>
+        <p class="gift-from">A gift expedition. Open when ready.</p>
+        <button type="button" class="btn" id="openGiftBtn" onclick="return window.__dismissGift()">Open the map</button>
+        <button type="button" class="linkish gift-skip" id="skipGiftBtn" onclick="return window.__dismissGift()">Skip intro</button>
+      </div>`;
+    document.body.prepend(wrap);
+    overlay = wrap;
+    wireGiftButtons();
+  }
+  if (!overlay) return;
   overlay.hidden = false;
+  overlay.classList.add("is-open");
   document.body.classList.add("gift-locked");
 }
 
 function closeGiftOverlay() {
+  // Prefer the shared failsafe (removes node entirely so CSS cannot keep it visible)
+  if (typeof window.__dismissGift === "function") {
+    window.__dismissGift();
+    return;
+  }
   const overlay = $("#giftOverlay");
-  if (!overlay) return;
-  overlay.hidden = true;
+  if (overlay) overlay.remove();
   document.body.classList.remove("gift-locked");
-  localStorage.setItem(GIFT_OPENED_KEY, "1");
+  document.body.style.overflow = "";
+  storageSet(GIFT_OPENED_KEY, "1");
+}
+
+function wireGiftButtons() {
+  const dismiss = (e) => {
+    e?.preventDefault?.();
+    e?.stopPropagation?.();
+    closeGiftOverlay();
+    burstStamps();
+    showToast("Welcome aboard, Merey. The map is open.");
+  };
+  $("#openGiftBtn")?.addEventListener("click", dismiss);
+  $("#skipGiftBtn")?.addEventListener("click", dismiss);
+  $("#giftOverlay")?.addEventListener("click", (e) => {
+    if (e.target === $("#giftOverlay")) dismiss(e);
+  });
 }
 
 function rotatingMereyNote() {
@@ -950,21 +998,35 @@ function bind() {
   });
   $("#openCompare").addEventListener("click", () => {
     $("#compareModal").hidden = false;
+    $("#compareModal").classList.add("is-open");
     renderCompareMatrix();
   });
   $("#closeCompare").addEventListener("click", () => {
     $("#compareModal").hidden = true;
+    $("#compareModal").classList.remove("is-open");
   });
   $("#compareModal").addEventListener("click", (e) => {
-    if (e.target === $("#compareModal")) $("#compareModal").hidden = true;
+    if (e.target === $("#compareModal")) {
+      $("#compareModal").hidden = true;
+      $("#compareModal").classList.remove("is-open");
+    }
   });
 
-  $("#openGiftBtn")?.addEventListener("click", () => {
-    closeGiftOverlay();
-    burstStamps();
-    showToast("Welcome aboard, Merey. The map is open.");
-  });
+  wireGiftButtons();
   $("#replayGift")?.addEventListener("click", () => openGiftOverlay(true));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if ($("#giftOverlay") && !$("#giftOverlay").hidden) {
+      closeGiftOverlay();
+      return;
+    }
+    const modal = $("#compareModal");
+    if (modal && !modal.hidden) {
+      modal.hidden = true;
+      modal.classList.remove("is-open");
+    }
+  });
 }
 
 loadStorage();
