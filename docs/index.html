@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Merey’s Free Travel Atlas — a gift for Merey Yeskara</title>
+  <meta name="description" content="A gift expedition for Merey Yeskara: funded travel and learning opportunities curated for an HKU Biomedical Engineering student from Kazakhstan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <div class="gift-overlay" id="giftOverlay" hidden>
+    <div class="gift-envelope" role="dialog" aria-labelledby="giftTitle" aria-modal="true">
+      <p class="gift-seal">Sealed for one explorer</p>
+      <h2 id="giftTitle">For Merey Yeskara</h2>
+      <p class="gift-body">Your atlas awaits — research summers, Horizons routes, Kazakh unlocks, and every stamp-worthy detour we could find.</p>
+      <p class="gift-from">A gift expedition. Open when ready.</p>
+      <button type="button" class="btn" id="openGiftBtn">Open the map</button>
+    </div>
+  </div>
+
+  <div class="toast" id="giftToast" hidden role="status" aria-live="polite"></div>
+  <div class="stamp-burst" id="stampBurst" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <p class="eyebrow">A gift expedition</p>
+      <h1>Merey’s Free Travel Atlas</h1>
+      <p class="tagline">For Merey Yeskara — funded research summers, HKU Horizons, competitions, and Kazakhstan unlocks, scouted for a non-HK-PR BME path at HKU.</p>
+    </div>
+    <div class="header-meta">
+      <div class="pill" id="lastUpdated">Loading data…</div>
+      <div class="pill" id="healthPill">Link health: —</div>
+      <div class="pill stamp-pill" id="explorerStamp" hidden>Merey · explorer</div>
+      <button type="button" class="btn ghost" id="shortlistToggle">Notebook · 0</button>
+      <button type="button" class="btn ghost" id="refreshBtn" title="Reload opportunities + status">Refresh</button>
+    </div>
+  </header>
+
+  <section class="profile-bar" aria-label="Your profile filters">
+    <div class="profile-chip on" data-preset="forMerey">For Merey</div>
+    <div class="profile-chip on" data-preset="fit">Best for you</div>
+    <div class="profile-chip on" data-preset="nonHk">Hide HK-PR-only traps</div>
+    <div class="profile-chip" data-preset="kz">Kazakh unlocks</div>
+    <div class="profile-chip" data-preset="full">Fully / mostly funded</div>
+    <div class="profile-chip" data-preset="soon">Deadlines soon</div>
+    <div class="profile-chip" data-preset="showTraps">Show residency traps</div>
+  </section>
+  <p class="merey-dedication" id="mereyDedication">Scouted with care for Merey — collect the stamps, ignore the traps, and go further than the envy list.</p>
+
+  <section class="active-lenses" id="activeLenses" aria-label="Active tag and region filters" hidden></section>
+
+  <section class="region-strip" id="regionStrip" aria-label="Destination regions"></section>
+
+  <section class="stats" id="stats" aria-live="polite"></section>
+
+  <main class="layout">
+    <aside class="filters" aria-label="Filters">
+      <label class="field">
+        <span>Search</span>
+        <input type="search" id="q" placeholder="Laidlaw, Mitacs, Merey, surprise…" autocomplete="off" />
+      </label>
+
+      <label class="field">
+        <span>Category</span>
+        <select id="category">
+          <option value="">All categories</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Funding</span>
+        <select id="funding">
+          <option value="">All funding levels</option>
+          <option value="fully_funded">Fully funded</option>
+          <option value="mostly_funded">Mostly funded</option>
+          <option value="partial">Partial</option>
+          <option value="prize">Prize / cash after</option>
+          <option value="unpaid_but_free">Unpaid but free entry</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Difficulty</span>
+        <select id="difficulty">
+          <option value="">Any difficulty</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="very_high">Very high</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Year of study</span>
+        <select id="year">
+          <option value="">Any year</option>
+          <option value="Y1">Year 1</option>
+          <option value="Y2">Year 2</option>
+          <option value="Y3">Year 3</option>
+          <option value="Y4">Year 4 / final</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Sort</span>
+        <select id="sort">
+          <option value="priority">Best fit for you</option>
+          <option value="funding">Funding strength</option>
+          <option value="name">Name A–Z</option>
+          <option value="deadline">Deadline hint</option>
+        </select>
+      </label>
+
+      <div class="tag-facets">
+        <h3>Popular tags</h3>
+        <div id="tagFacets" class="chip-cloud"></div>
+      </div>
+
+      <div class="legend">
+        <p><span class="dot open"></span> Open to non-HKPR</p>
+        <p><span class="dot closed"></span> Closed / trap</p>
+        <p><span class="dot verify"></span> Verify this year</p>
+        <p><span class="dot later"></span> Later (postgrad)</p>
+      </div>
+
+      <p class="aside-note">Pins and compare selections save in your browser. Link checks update via GitHub Actions.</p>
+    </aside>
+
+    <section class="results" aria-label="Opportunities">
+      <div class="results-head">
+        <h2 id="resultsCount">0 opportunities</h2>
+        <div class="view-toggle" role="group" aria-label="View mode">
+          <button type="button" class="btn small on" data-view="cards">Cards</button>
+          <button type="button" class="btn small" data-view="table">Table</button>
+          <button type="button" class="btn small" data-view="timeline">Timeline</button>
+          <button type="button" class="btn small" data-view="agenda">Agenda</button>
+        </div>
+      </div>
+      <div id="results" class="card-grid"></div>
+    </section>
+
+    <aside class="detail empty" id="detail" aria-live="polite">
+      <p class="detail-placeholder" id="detailPlaceholder">Click any opportunity for the full briefing, eligibility traps, and creative angle.</p>
+    </aside>
+  </main>
+
+  <section class="shortlist-panel" id="shortlistPanel" hidden>
+    <div class="shortlist-head">
+      <h2>Merey’s field notebook</h2>
+      <div class="shortlist-actions">
+        <button type="button" class="btn small" id="exportShortlist">Export JSON</button>
+        <button type="button" class="btn small" id="clearShortlist">Clear</button>
+        <button type="button" class="btn small" id="closeShortlist">Close</button>
+      </div>
+    </div>
+    <div id="shortlistBody" class="shortlist-body"></div>
+  </section>
+
+  <section class="playbook">
+    <h2>Merey’s suggested stack</h2>
+    <ol>
+      <li><strong>Y1–Y2:</strong> Laidlaw + EUREKA pipeline + Mandarin start + one China Vision / Mingde / WZQ trip → claim MES once.</li>
+      <li><strong>Every summer:</strong> Mitacs (via IAO) <em>or</em> Amgen Asia / EPFL E3 / OIST / KAUST — one fully funded research trip.</li>
+      <li><strong>Top-ups:</strong> ROA + Horizons enrichment + Innovation Academy travel + Experience Award video cash.</li>
+      <li><strong>Kazakh unlocks:</strong> SCO Youth, Otandastar, Taiwan Huayu (as KZ, not as HK), TÜRKSOY, embassy camps.</li>
+      <li><strong>Win a ticket:</strong> Imagine Cup / iGEM / Falling Walls / IEEE EMBC or ISMRM paper → travel grant.</li>
+      <li><strong>Ignore:</strong> HSBC/Hang Seng PR awards, SSE/SSEBR, DAAD RISE from HKU, Crick/Pasteur Europe tracks, influencer DMs.</li>
+      <li><strong>And then:</strong> Merey — the map is yours. Bring back stories louder than anyone’s envy list.</li>
+    </ol>
+  </section>
+
+  <footer class="site-footer">
+    <p>Built as a gift for Merey Yeskara. Go get the stamps. Data is research-curated — always verify official pages before applying. Not affiliated with HKU.</p>
+    <p><button type="button" class="linkish replay-gift" id="replayGift">Replay gift note</button></p>
+  </footer>
+
+  <div class="compare-tray" id="compareTray" hidden>
+    <div class="compare-tray-inner">
+      <div class="compare-tray-head">
+        <strong>Compare</strong>
+        <span id="compareCount">0 / 3</span>
+        <button type="button" class="btn small" id="openCompare">Open matrix</button>
+        <button type="button" class="btn small" id="clearCompare">Clear</button>
+      </div>
+      <div id="compareChips" class="compare-chips"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="compareModal" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Side-by-side briefing</h2>
+        <button type="button" class="btn small" id="closeCompare">Close</button>
+      </div>
+      <div id="compareMatrix" class="compare-matrix"></div>
+    </div>
+  </div>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>
