@@ -43,6 +43,8 @@ const state = {
   noteIndex: 0,
   presets: {
     forMerey: true,
+    forBob: false,
+    forMaja: false,
     fit: true,
     nonHk: true,
     kz: false,
@@ -194,6 +196,24 @@ function deadlineSoon(op) {
   return ahead <= 4;
 }
 
+function audiencesFor(op) {
+  const aud = op.audiences;
+  if (Array.isArray(aud) && aud.length) return aud;
+  // Legacy rows without audiences belong to Merey's atlas
+  return ["merey"];
+}
+
+function matchesPeople(op) {
+  const { presets } = state;
+  const wanted = [];
+  if (presets.forMerey) wanted.push("merey");
+  if (presets.forBob) wanted.push("bob");
+  if (presets.forMaja) wanted.push("maja");
+  if (!wanted.length) return true;
+  const aud = audiencesFor(op);
+  return wanted.some((p) => aud.includes(p));
+}
+
 function baseFiltered() {
   const q = $("#q").value.trim().toLowerCase();
   const category = $("#category").value;
@@ -204,6 +224,7 @@ function baseFiltered() {
 
   let list = [...state.data.opportunities];
 
+  list = list.filter(matchesPeople);
   if (!presets.showTraps) list = list.filter((o) => o.status !== "closed_to_you");
   if (presets.nonHk) list = list.filter((o) => o.open_to_non_hk_residents !== false);
   if (presets.fit) list = list.filter((o) => (o.priority ?? 9) <= 3 && o.status !== "closed_to_you");
@@ -216,7 +237,7 @@ function baseFiltered() {
   if (year) list = list.filter((o) => matchesYear(o, year));
   if (q) {
     list = list.filter((o) => {
-      const hay = [o.name, o.funder, o.what_you_get, o.eligibility_summary, o.notes, o.creative_angle, o.destinations?.join(" "), o.tags?.join(" ")].join(" ").toLowerCase();
+      const hay = [o.name, o.funder, o.what_you_get, o.eligibility_summary, o.notes, o.creative_angle, o.destinations?.join(" "), o.tags?.join(" "), audiencesFor(o).join(" ")].join(" ").toLowerCase();
       return hay.includes(q);
     });
   }
@@ -423,13 +444,17 @@ function populateCategorySelect() {
 function renderStats(list) {
   const all = state.data.opportunities;
   const counts = state.data.meta.counts;
-  const forMerey = state.presets.forMerey;
+  const people = [];
+  if (state.presets.forMerey) people.push("Merey");
+  if (state.presets.forBob) people.push("Bob");
+  if (state.presets.forMaja) people.push("Maja");
+  const who = people.length ? people.join(" + ") : "all explorers";
   $("#stats").innerHTML = `
-    <div class="stat"><strong>${list.length}</strong><span>${forMerey ? "Routes for Merey" : "Showing now"}</span></div>
-    <div class="stat"><strong>${counts.open}</strong><span>Open to non-HKPR</span></div>
+    <div class="stat"><strong>${list.length}</strong><span>Routes for ${who}</span></div>
+    <div class="stat"><strong>${counts.open}</strong><span>Open status</span></div>
     <div class="stat"><strong>${counts.fully_or_mostly}</strong><span>Fully / mostly funded</span></div>
     <div class="stat"><strong>${counts.closed_to_you}</strong><span>Residency traps</span></div>
-    <div class="stat"><strong>${all.length}</strong><span>${forMerey ? "Stamps in the atlas" : "Total curated"}</span></div>
+    <div class="stat"><strong>${all.length}</strong><span>Stamps in the atlas</span></div>
   `;
 }
 
