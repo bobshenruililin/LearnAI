@@ -67,9 +67,37 @@ const MONTH_MAP = {
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => [...document.querySelectorAll(sel)];
 
+function on(el, event, handler) {
+  if (!el) return;
+  el.addEventListener(event, handler);
+}
+
+function storageGet(key, fallback = null) {
+  try {
+    const v = localStorage.getItem(key);
+    return v == null ? fallback : v;
+  } catch {
+    return fallback;
+  }
+}
+
+function storageSet(key, value) {
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function isEasterEggQuery(q) {
+  const t = q.trim().toLowerCase();
+  return t === "merey" || t === "yeskara" || t === "merey yeskara" || t === "surprise";
+}
+
 function loadStorage() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = storageGet(STORAGE_KEY);
     if (!raw) return;
     const parsed = JSON.parse(raw);
     state.shortlist = parsed.shortlist || {};
@@ -80,7 +108,7 @@ function loadStorage() {
 }
 
 function saveStorage() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({
+  storageSet(STORAGE_KEY, JSON.stringify({
     shortlist: state.shortlist,
     compareIds: state.compareIds,
   }));
@@ -211,7 +239,7 @@ function baseFiltered() {
   if (funding) list = list.filter((o) => o.funding_level === funding);
   if (difficulty) list = list.filter((o) => o.difficulty === difficulty);
   if (year) list = list.filter((o) => matchesYear(o, year));
-  if (q) {
+  if (q && !isEasterEggQuery(q)) {
     list = list.filter((o) => {
       const hay = [o.name, o.funder, o.what_you_get, o.eligibility_summary, o.notes, o.creative_angle, o.destinations?.join(" "), o.tags?.join(" ")].join(" ").toLowerCase();
       return hay.includes(q);
@@ -232,7 +260,7 @@ function filtered() {
     list = list.filter((o) => regionsFor(o).includes(state.activeRegion));
   }
 
-  const sort = $("#sort").value;
+  const sort = $("#sort")?.value || "priority";
   list.sort((a, b) => {
     if (sort === "name") return a.name.localeCompare(b.name);
     if (sort === "funding") return (FUNDING_RANK[b.funding_level] || 0) - (FUNDING_RANK[a.funding_level] || 0);
@@ -279,9 +307,9 @@ function renderMeta() {
   $("#shortlistToggle").textContent = `Notebook · ${Object.keys(state.shortlist).length}`;
   const stamp = $("#explorerStamp");
   if (stamp) {
-    const show = localStorage.getItem(GIFT_EXPLORER_KEY) === "1" || state.view === "timeline";
+    const show = storageGet(GIFT_EXPLORER_KEY) === "1" || state.view === "timeline";
     stamp.hidden = !show;
-    if (state.view === "timeline") localStorage.setItem(GIFT_EXPLORER_KEY, "1");
+    if (state.view === "timeline") storageSet(GIFT_EXPLORER_KEY, "1");
   }
   const dedication = $("#mereyDedication");
   if (dedication) dedication.hidden = !state.presets.forMerey;
@@ -328,7 +356,7 @@ function burstStamps() {
 function openGiftOverlay(force = false) {
   const overlay = $("#giftOverlay");
   if (!overlay) return;
-  if (!force && localStorage.getItem(GIFT_OPENED_KEY) === "1") {
+  if (!force && storageGet(GIFT_OPENED_KEY) === "1") {
     overlay.hidden = true;
     overlay.classList.remove("is-open");
     document.body.classList.remove("gift-locked");
@@ -337,6 +365,8 @@ function openGiftOverlay(force = false) {
   overlay.hidden = false;
   overlay.classList.add("is-open");
   document.body.classList.add("gift-locked");
+  // Focus CTA for keyboard users; Escape also closes
+  queueMicrotask(() => $("#openGiftBtn")?.focus?.());
 }
 
 function closeGiftOverlay() {
@@ -345,7 +375,22 @@ function closeGiftOverlay() {
   overlay.classList.remove("is-open");
   overlay.hidden = true;
   document.body.classList.remove("gift-locked");
-  localStorage.setItem(GIFT_OPENED_KEY, "1");
+  storageSet(GIFT_OPENED_KEY, "1");
+}
+
+function openCompareModal() {
+  const modal = $("#compareModal");
+  if (!modal) return;
+  modal.hidden = false;
+  modal.classList.add("is-open");
+  renderCompareMatrix();
+}
+
+function closeCompareModal() {
+  const modal = $("#compareModal");
+  if (!modal) return;
+  modal.classList.remove("is-open");
+  modal.hidden = true;
 }
 
 function rotatingMereyNote() {
@@ -355,9 +400,8 @@ function rotatingMereyNote() {
 }
 
 function checkSearchEasterEgg(value) {
-  const q = value.trim().toLowerCase();
-  if (!/(merey|yeskara|surprise)/.test(q)) return;
-  if (state.secretStampFound && q.length < 3) return;
+  if (!isEasterEggQuery(value)) return;
+  if (state.secretStampFound) return;
   state.secretStampFound = true;
   burstStamps();
   showToast("Secret stamp unlocked for Merey Yeskara.");
@@ -883,15 +927,15 @@ function render() {
 
 function bind() {
   ["q", "category", "funding", "difficulty", "year", "sort"].forEach((id) => {
-    $(`#${id}`).addEventListener("input", () => {
+    on($(`#${id}`), "input", () => {
       if (id === "q") checkSearchEasterEgg($("#q").value);
       render();
     });
-    $(`#${id}`).addEventListener("change", render);
+    on($(`#${id}`), "change", render);
   });
 
   $$(".profile-chip").forEach((chip) => {
-    chip.addEventListener("click", () => {
+    on(chip, "click", () => {
       const key = chip.dataset.preset;
       state.presets[key] = !state.presets[key];
       chip.classList.toggle("on", state.presets[key]);
@@ -904,37 +948,40 @@ function bind() {
   });
 
   $$(".view-toggle .btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
+    on(btn, "click", () => {
       state.view = btn.dataset.view;
       $$(".view-toggle .btn").forEach((b) => b.classList.toggle("on", b === btn));
       if (state.view === "timeline") {
-        localStorage.setItem(GIFT_EXPLORER_KEY, "1");
+        storageSet(GIFT_EXPLORER_KEY, "1");
         showToast("Explorer stamp earned — Merey · timeline scout.");
       }
       render();
     });
   });
 
-  $("#refreshBtn").addEventListener("click", () => {
-    $("#refreshBtn").textContent = "Refreshing…";
-    loadAll().finally(() => { $("#refreshBtn").textContent = "Refresh"; });
+  on($("#refreshBtn"), "click", () => {
+    const btn = $("#refreshBtn");
+    if (btn) btn.textContent = "Refreshing…";
+    loadAll().finally(() => {
+      if (btn) btn.textContent = "Refresh";
+    });
   });
 
-  $("#shortlistToggle").addEventListener("click", () => {
+  on($("#shortlistToggle"), "click", () => {
     state.showShortlist = !state.showShortlist;
     renderShortlist();
-    if (state.showShortlist) $("#shortlistPanel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (state.showShortlist) $("#shortlistPanel")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   });
-  $("#closeShortlist").addEventListener("click", () => {
+  on($("#closeShortlist"), "click", () => {
     state.showShortlist = false;
     renderShortlist();
   });
-  $("#clearShortlist").addEventListener("click", () => {
+  on($("#clearShortlist"), "click", () => {
     state.shortlist = {};
     saveStorage();
     render();
   });
-  $("#exportShortlist").addEventListener("click", () => {
+  on($("#exportShortlist"), "click", () => {
     const payload = Object.entries(state.shortlist).map(([id, meta]) => {
       const op = state.data.opportunities.find((o) => o.id === id);
       return { id, name: op?.name, ...meta, official_url: op?.official_url, for: "Merey Yeskara" };
@@ -947,40 +994,43 @@ function bind() {
     URL.revokeObjectURL(a.href);
   });
 
-  $("#clearCompare").addEventListener("click", () => {
+  on($("#clearCompare"), "click", () => {
     state.compareIds = [];
     saveStorage();
     render();
   });
-  $("#openCompare").addEventListener("click", () => {
-    $("#compareModal").hidden = false;
-    renderCompareMatrix();
-  });
-  $("#closeCompare").addEventListener("click", () => {
-    $("#compareModal").hidden = true;
-  });
-  $("#compareModal").addEventListener("click", (e) => {
-    if (e.target === $("#compareModal")) $("#compareModal").hidden = true;
+  on($("#openCompare"), "click", openCompareModal);
+  on($("#closeCompare"), "click", closeCompareModal);
+  on($("#compareModal"), "click", (e) => {
+    if (e.target === $("#compareModal")) closeCompareModal();
   });
 
-  const openBtn = $("#openGiftBtn");
-  if (openBtn) {
-    openBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+  const dismissGift = (e) => {
+    e?.preventDefault?.();
+    e?.stopPropagation?.();
+    closeGiftOverlay();
+    burstStamps();
+    showToast("Welcome aboard, Merey. The map is open.");
+  };
+  on($("#openGiftBtn"), "click", dismissGift);
+  on($("#skipGiftBtn"), "click", dismissGift);
+  on($("#giftOverlay"), "click", (e) => {
+    if (e.target === $("#giftOverlay")) dismissGift(e);
+  });
+  on($("#replayGift"), "click", () => openGiftOverlay(true));
+
+  // Escape closes gift / compare; never leave the page locked
+  on(document, "keydown", (e) => {
+    if (e.key !== "Escape") return;
+    const overlay = $("#giftOverlay");
+    if (overlay && !overlay.hidden) {
       closeGiftOverlay();
-      burstStamps();
-      showToast("Welcome aboard, Merey. The map is open.");
-    });
-  }
-  // Also dismiss if the dimmed backdrop is clicked (not the card)
-  $("#giftOverlay")?.addEventListener("click", (e) => {
-    if (e.target === $("#giftOverlay")) {
-      closeGiftOverlay();
-      showToast("Welcome aboard, Merey. The map is open.");
+      return;
+    }
+    if ($("#compareModal") && !$("#compareModal").hidden) {
+      closeCompareModal();
     }
   });
-  $("#replayGift")?.addEventListener("click", () => openGiftOverlay(true));
 }
 
 loadStorage();
@@ -989,7 +1039,10 @@ openGiftOverlay(false);
 loadAll().then(() => {
   if (!state.selectedId) renderDetail(null);
 }).catch((err) => {
-  $("#results").innerHTML = `<p class="trap">Could not load data: ${escapeHtml(err.message)}</p>`;
+  // Never leave gift lock on if data fails
+  closeGiftOverlay();
+  const root = $("#results");
+  if (root) root.innerHTML = `<p class="trap">Could not load data: ${escapeHtml(err.message)}</p>`;
 });
 
 setInterval(() => { loadAll().catch(() => {}); }, 6 * 60 * 60 * 1000);
