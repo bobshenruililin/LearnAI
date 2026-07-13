@@ -330,15 +330,19 @@ function openGiftOverlay(force = false) {
   if (!overlay) return;
   if (!force && localStorage.getItem(GIFT_OPENED_KEY) === "1") {
     overlay.hidden = true;
+    overlay.classList.remove("is-open");
+    document.body.classList.remove("gift-locked");
     return;
   }
   overlay.hidden = false;
+  overlay.classList.add("is-open");
   document.body.classList.add("gift-locked");
 }
 
 function closeGiftOverlay() {
   const overlay = $("#giftOverlay");
   if (!overlay) return;
+  overlay.classList.remove("is-open");
   overlay.hidden = true;
   document.body.classList.remove("gift-locked");
   localStorage.setItem(GIFT_OPENED_KEY, "1");
@@ -959,10 +963,22 @@ function bind() {
     if (e.target === $("#compareModal")) $("#compareModal").hidden = true;
   });
 
-  $("#openGiftBtn")?.addEventListener("click", () => {
-    closeGiftOverlay();
-    burstStamps();
-    showToast("Welcome aboard, Merey. The map is open.");
+  const openBtn = $("#openGiftBtn");
+  if (openBtn) {
+    openBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeGiftOverlay();
+      burstStamps();
+      showToast("Welcome aboard, Merey. The map is open.");
+    });
+  }
+  // Also dismiss if the dimmed backdrop is clicked (not the card)
+  $("#giftOverlay")?.addEventListener("click", (e) => {
+    if (e.target === $("#giftOverlay")) {
+      closeGiftOverlay();
+      showToast("Welcome aboard, Merey. The map is open.");
+    }
   });
   $("#replayGift")?.addEventListener("click", () => openGiftOverlay(true));
 }

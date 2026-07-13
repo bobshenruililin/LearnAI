@@ -988,14 +988,20 @@ body.gift-locked {
   position: fixed;
   inset: 0;
   z-index: 50;
-  display: grid;
+  display: none;
   place-items: center;
   padding: 1.25rem;
   background:
     radial-gradient(800px 500px at 50% 20%, rgba(176, 141, 60, 0.22), transparent 60%),
     rgba(26, 34, 24, 0.55);
   backdrop-filter: blur(8px);
+}
+.gift-overlay.is-open {
+  display: grid;
   animation: rise 0.5s ease both;
+}
+.gift-overlay[hidden] {
+  display: none !important;
 }
 .gift-envelope {
   width: min(440px, 100%);
