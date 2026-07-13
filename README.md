@@ -1,8 +1,10 @@
-# Free Travel Atlas (HKU BME · Kazakh · Non-HKPR)
+# Free Travel Atlas — a gift for Merey Yeskara
 
-Interactive GitHub Pages atlas of **funded travel and learning opportunities** for a Biomedical Engineering undergraduate at the University of Hong Kong who is a **Kazakhstan citizen** and **not** a Hong Kong permanent resident.
+Interactive GitHub Pages atlas of **funded travel and learning opportunities**, personalized as a gift expedition for **Merey Yeskara** (HKU Biomedical Engineering · Kazakhstan · non-HK permanent resident).
 
 Live site (after Pages is enabled): `https://bobshenruililin.github.io/learnai/`
+
+Open the sealed envelope on first visit. Try searching `Merey`, pin a route, or open Timeline for hidden stamps.
 
 ## What’s inside
 

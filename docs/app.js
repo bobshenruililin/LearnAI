@@ -1,4 +1,6 @@
 const STORAGE_KEY = "fta.v1";
+const GIFT_OPENED_KEY = "fta.gift.opened";
+const GIFT_EXPLORER_KEY = "fta.gift.explorer";
 const SHORTLIST_STATUSES = ["Interested", "Drafting", "Applied", "Outcome"];
 const REGIONS = [
   "Hong Kong",
@@ -13,6 +15,16 @@ const REGIONS = [
 ];
 const MONTH_LABELS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
+const MEREY_NOTES = [
+  "Merey: Berlin is closer than it looks once Laidlaw is on the wall.",
+  "Merey Yeskara — every pin here is a passport page waiting to happen.",
+  "The envy list was a map of someone else’s yeses. This atlas is yours.",
+  "Mandarin can wait until after coffee. The application window might not.",
+  "Gansu, Valencia, London — pick a stamp, then reverse-engineer the funding.",
+  "Smart enough to learn the languages. Stubborn enough to ship the apps.",
+  "Click a route. Leave a note for future Merey. She’ll thank you.",
+];
+
 const state = {
   data: null,
   status: null,
@@ -23,7 +35,11 @@ const state = {
   shortlist: {},
   compareIds: [],
   showShortlist: false,
+  secretStampFound: false,
+  firstPinToasted: false,
+  noteIndex: 0,
   presets: {
+    forMerey: true,
     fit: true,
     nonHk: true,
     kz: false,
@@ -260,7 +276,99 @@ function renderMeta() {
   } else {
     $("#healthPill").textContent = `Last check: ${checked ? new Date(checked).toLocaleString() : "not yet"}`;
   }
-  $("#shortlistToggle").textContent = `Shortlist · ${Object.keys(state.shortlist).length}`;
+  $("#shortlistToggle").textContent = `Notebook · ${Object.keys(state.shortlist).length}`;
+  const stamp = $("#explorerStamp");
+  if (stamp) {
+    const show = localStorage.getItem(GIFT_EXPLORER_KEY) === "1" || state.view === "timeline";
+    stamp.hidden = !show;
+    if (state.view === "timeline") localStorage.setItem(GIFT_EXPLORER_KEY, "1");
+  }
+  const dedication = $("#mereyDedication");
+  if (dedication) dedication.hidden = !state.presets.forMerey;
+}
+
+function showToast(message) {
+  const el = $("#giftToast");
+  if (!el) return;
+  el.textContent = message;
+  el.hidden = false;
+  el.classList.remove("show");
+  void el.offsetWidth;
+  el.classList.add("show");
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => {
+    el.classList.remove("show");
+    el.hidden = true;
+  }, 3200);
+}
+
+function burstStamps() {
+  const root = $("#stampBurst");
+  if (!root) return;
+  root.innerHTML = "";
+  root.classList.add("on");
+  const marks = ["M", "Y", "MY", "HK", "KZ", "★"];
+  for (let i = 0; i < 10; i++) {
+    const s = document.createElement("span");
+    s.className = "burst-stamp";
+    s.textContent = marks[i % marks.length];
+    s.style.setProperty("--dx", `${(Math.random() * 220 - 110).toFixed(0)}px`);
+    s.style.setProperty("--dy", `${(Math.random() * -160 - 40).toFixed(0)}px`);
+    s.style.setProperty("--rot", `${(Math.random() * 50 - 25).toFixed(0)}deg`);
+    s.style.animationDelay = `${(i * 0.04).toFixed(2)}s`;
+    root.appendChild(s);
+  }
+  clearTimeout(burstStamps._t);
+  burstStamps._t = setTimeout(() => {
+    root.classList.remove("on");
+    root.innerHTML = "";
+  }, 1400);
+}
+
+function openGiftOverlay(force = false) {
+  const overlay = $("#giftOverlay");
+  if (!overlay) return;
+  if (!force && localStorage.getItem(GIFT_OPENED_KEY) === "1") {
+    overlay.hidden = true;
+    return;
+  }
+  overlay.hidden = false;
+  document.body.classList.add("gift-locked");
+}
+
+function closeGiftOverlay() {
+  const overlay = $("#giftOverlay");
+  if (!overlay) return;
+  overlay.hidden = true;
+  document.body.classList.remove("gift-locked");
+  localStorage.setItem(GIFT_OPENED_KEY, "1");
+}
+
+function rotatingMereyNote() {
+  // Stable for a few minutes so filters don't thrash the dedication
+  const slot = Math.floor(Date.now() / 180000) % MEREY_NOTES.length;
+  return MEREY_NOTES[slot];
+}
+
+function checkSearchEasterEgg(value) {
+  const q = value.trim().toLowerCase();
+  if (!/(merey|yeskara|surprise)/.test(q)) return;
+  if (state.secretStampFound && q.length < 3) return;
+  state.secretStampFound = true;
+  burstStamps();
+  showToast("Secret stamp unlocked for Merey Yeskara.");
+  const panel = $("#detail");
+  if (panel) {
+    panel.classList.remove("empty");
+    panel.innerHTML = `
+      <div class="gift-secret">
+        <p class="gift-seal">Secret stamp</p>
+        <h2>You found it, Merey</h2>
+        <p class="lead">Typing your name on your own atlas counts as claiming the first stamp. The rest are out there — Laidlaw, Mitacs, Horizons, and every route we hid in plain sight.</p>
+        <div class="angle"><strong>Creative angle:</strong> Keep searching for funding the way you searched for this note. The map rewards the curious.</div>
+      </div>
+    `;
+  }
 }
 
 function populateCategorySelect() {
@@ -274,12 +382,13 @@ function populateCategorySelect() {
 function renderStats(list) {
   const all = state.data.opportunities;
   const counts = state.data.meta.counts;
+  const forMerey = state.presets.forMerey;
   $("#stats").innerHTML = `
-    <div class="stat"><strong>${list.length}</strong><span>Showing now</span></div>
+    <div class="stat"><strong>${list.length}</strong><span>${forMerey ? "Routes for Merey" : "Showing now"}</span></div>
     <div class="stat"><strong>${counts.open}</strong><span>Open to non-HKPR</span></div>
     <div class="stat"><strong>${counts.fully_or_mostly}</strong><span>Fully / mostly funded</span></div>
     <div class="stat"><strong>${counts.closed_to_you}</strong><span>Residency traps</span></div>
-    <div class="stat"><strong>${all.length}</strong><span>Total curated</span></div>
+    <div class="stat"><strong>${all.length}</strong><span>${forMerey ? "Stamps in the atlas" : "Total curated"}</span></div>
   `;
 }
 
@@ -369,8 +478,15 @@ function isPinned(id) {
 
 function togglePin(id, e) {
   e?.stopPropagation?.();
-  if (state.shortlist[id]) delete state.shortlist[id];
-  else state.shortlist[id] = { status: "Interested", note: "", updated: new Date().toISOString() };
+  const wasPinned = Boolean(state.shortlist[id]);
+  if (wasPinned) delete state.shortlist[id];
+  else {
+    state.shortlist[id] = { status: "Interested", note: "", updated: new Date().toISOString() };
+    if (!state.firstPinToasted) {
+      state.firstPinToasted = true;
+      showToast("Pinned for Merey — one step closer to the stamp collection.");
+    }
+  }
   saveStorage();
   render();
 }
@@ -530,7 +646,8 @@ function renderDetail(op) {
   const panel = $("#detail");
   if (!op) {
     panel.classList.add("empty");
-    panel.innerHTML = `<p class="detail-placeholder">Click any opportunity for the full briefing, eligibility traps, and creative angle.</p>`;
+    panel.innerHTML = `<p class="detail-placeholder merey-note">${escapeHtml(rotatingMereyNote())}</p>
+      <p class="meta-line">Click any opportunity for the full briefing, eligibility traps, and creative angle.</p>`;
     return;
   }
   panel.classList.remove("empty");
@@ -599,7 +716,8 @@ function renderShortlist() {
   panel.hidden = !state.showShortlist;
   const ids = Object.keys(state.shortlist);
   if (!ids.length) {
-    $("#shortlistBody").innerHTML = `<p class="meta-line">Pin opportunities with ★ to build your field notebook.</p>`;
+    $("#shortlistBody").innerHTML = `<p class="merey-note">Merey — this notebook is blank on purpose. Pin the first route and start your stamp collection.</p>
+      <p class="meta-line">Use ★ on any card to add it here.</p>`;
     return;
   }
   $("#shortlistBody").innerHTML = ids.map((id) => {
@@ -754,12 +872,17 @@ function render() {
       state.selectedId = null;
       renderDetail(null);
     }
+  } else if (!state.secretStampFound) {
+    renderDetail(null);
   }
 }
 
 function bind() {
   ["q", "category", "funding", "difficulty", "year", "sort"].forEach((id) => {
-    $(`#${id}`).addEventListener("input", render);
+    $(`#${id}`).addEventListener("input", () => {
+      if (id === "q") checkSearchEasterEgg($("#q").value);
+      render();
+    });
     $(`#${id}`).addEventListener("change", render);
   });
 
@@ -780,6 +903,10 @@ function bind() {
     btn.addEventListener("click", () => {
       state.view = btn.dataset.view;
       $$(".view-toggle .btn").forEach((b) => b.classList.toggle("on", b === btn));
+      if (state.view === "timeline") {
+        localStorage.setItem(GIFT_EXPLORER_KEY, "1");
+        showToast("Explorer stamp earned — Merey · timeline scout.");
+      }
       render();
     });
   });
@@ -806,12 +933,12 @@ function bind() {
   $("#exportShortlist").addEventListener("click", () => {
     const payload = Object.entries(state.shortlist).map(([id, meta]) => {
       const op = state.data.opportunities.find((o) => o.id === id);
-      return { id, name: op?.name, ...meta, official_url: op?.official_url };
+      return { id, name: op?.name, ...meta, official_url: op?.official_url, for: "Merey Yeskara" };
     });
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "travel-atlas-shortlist.json";
+    a.download = "merey-travel-atlas-shortlist.json";
     a.click();
     URL.revokeObjectURL(a.href);
   });
@@ -831,11 +958,21 @@ function bind() {
   $("#compareModal").addEventListener("click", (e) => {
     if (e.target === $("#compareModal")) $("#compareModal").hidden = true;
   });
+
+  $("#openGiftBtn")?.addEventListener("click", () => {
+    closeGiftOverlay();
+    burstStamps();
+    showToast("Welcome aboard, Merey. The map is open.");
+  });
+  $("#replayGift")?.addEventListener("click", () => openGiftOverlay(true));
 }
 
 loadStorage();
 bind();
-loadAll().catch((err) => {
+openGiftOverlay(false);
+loadAll().then(() => {
+  if (!state.selectedId) renderDetail(null);
+}).catch((err) => {
   $("#results").innerHTML = `<p class="trap">Could not load data: ${escapeHtml(err.message)}</p>`;
 });
 
