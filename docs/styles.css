@@ -22,6 +22,11 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
+/* Prevent display:* rules from keeping [hidden] elements visible (gift modal bug class) */
+[hidden] {
+  display: none !important;
+}
 body {
   margin: 0;
   min-height: 100vh;
@@ -934,9 +939,12 @@ tr.active td { background: rgba(15, 107, 92, 0.1); }
   inset: 0;
   z-index: 30;
   background: rgba(26, 34, 24, 0.45);
-  display: grid;
+  display: none;
   place-items: center;
   padding: 1rem;
+}
+.modal.is-open {
+  display: grid;
 }
 .modal-card {
   width: min(960px, 100%);
@@ -1047,6 +1055,12 @@ body.gift-locked {
   color: var(--muted);
   font-style: italic;
 }
+.gift-skip {
+  display: block;
+  margin: 0.85rem auto 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
 .gift-secret {
   animation: rise 0.45s ease both;
 }
@@ -1094,7 +1108,7 @@ body.gift-locked {
   pointer-events: none;
   transition: transform 0.35s ease, opacity 0.35s ease;
 }
-.toast.show {
+.toast.show:not([hidden]) {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
 }
