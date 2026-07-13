@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HKU Free Travel Atlas — BME · Kazakh · Non-HKPR</title>
+  <meta name="description" content="Interactive atlas of funded travel and learning opportunities for a Biomedical Engineering student at HKU who is a Kazakhstan citizen and not an HK permanent resident." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <p class="eyebrow">Expedition briefing</p>
+      <h1>Free Travel Atlas</h1>
+      <p class="tagline">Funded research summers, HKU Horizons, competitions, and Kazakhstan-only unlocks — curated for a non-HK-PR BME student at HKU.</p>
+    </div>
+    <div class="header-meta">
+      <div class="pill" id="lastUpdated">Loading data…</div>
+      <div class="pill" id="healthPill">Link health: —</div>
+      <button type="button" class="btn ghost" id="refreshBtn" title="Reload opportunities + status">Refresh</button>
+    </div>
+  </header>
+
+  <section class="profile-bar" aria-label="Your profile filters">
+    <div class="profile-chip on" data-preset="fit">Best for you</div>
+    <div class="profile-chip on" data-preset="nonHk">Hide HK-PR-only traps</div>
+    <div class="profile-chip" data-preset="kz">Kazakh unlocks</div>
+    <div class="profile-chip" data-preset="full">Fully / mostly funded</div>
+    <div class="profile-chip" data-preset="soon">Deadlines soon</div>
+    <div class="profile-chip" data-preset="showTraps">Show residency traps</div>
+  </section>
+
+  <section class="stats" id="stats" aria-live="polite"></section>
+
+  <main class="layout">
+    <aside class="filters" aria-label="Filters">
+      <label class="field">
+        <span>Search</span>
+        <input type="search" id="q" placeholder="Laidlaw, Mitacs, Gansu, Spain…" autocomplete="off" />
+      </label>
+
+      <label class="field">
+        <span>Category</span>
+        <select id="category">
+          <option value="">All categories</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Funding</span>
+        <select id="funding">
+          <option value="">All funding levels</option>
+          <option value="fully_funded">Fully funded</option>
+          <option value="mostly_funded">Mostly funded</option>
+          <option value="partial">Partial</option>
+          <option value="prize">Prize / cash after</option>
+          <option value="unpaid_but_free">Unpaid but free entry</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Difficulty</span>
+        <select id="difficulty">
+          <option value="">Any difficulty</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="very_high">Very high</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Year of study</span>
+        <select id="year">
+          <option value="">Any year</option>
+          <option value="Y1">Year 1</option>
+          <option value="Y2">Year 2</option>
+          <option value="Y3">Year 3</option>
+          <option value="Y4">Year 4 / final</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Sort</span>
+        <select id="sort">
+          <option value="priority">Best fit for you</option>
+          <option value="funding">Funding strength</option>
+          <option value="name">Name A–Z</option>
+          <option value="deadline">Deadline hint</option>
+        </select>
+      </label>
+
+      <div class="legend">
+        <p><span class="dot open"></span> Open to non-HKPR</p>
+        <p><span class="dot closed"></span> Closed / trap</p>
+        <p><span class="dot verify"></span> Verify this year</p>
+        <p><span class="dot later"></span> Later (postgrad)</p>
+      </div>
+
+      <p class="aside-note">Routine checks run via GitHub Actions (weekly). Status timestamps update in <code>data/status.json</code>.</p>
+    </aside>
+
+    <section class="results" aria-label="Opportunities">
+      <div class="results-head">
+        <h2 id="resultsCount">0 opportunities</h2>
+        <div class="view-toggle" role="group" aria-label="View mode">
+          <button type="button" class="btn small on" data-view="cards">Cards</button>
+          <button type="button" class="btn small" data-view="table">Table</button>
+          <button type="button" class="btn small" data-view="calendar">Calendar</button>
+        </div>
+      </div>
+      <div id="results" class="card-grid"></div>
+    </section>
+
+    <aside class="detail empty" id="detail" aria-live="polite">
+      <p class="detail-placeholder">Click any opportunity for the full briefing, eligibility traps, and creative angle.</p>
+    </aside>
+  </main>
+
+  <section class="playbook">
+    <h2>Suggested stack</h2>
+    <ol>
+      <li><strong>Y1–Y2:</strong> Laidlaw + EUREKA pipeline + Mandarin start + one China Vision / Mingde / WZQ trip → claim MES once.</li>
+      <li><strong>Every summer:</strong> Mitacs (via IAO) <em>or</em> Amgen Asia / EPFL E3 / OIST / KAUST — one fully funded research trip.</li>
+      <li><strong>Top-ups:</strong> ROA + Horizons enrichment + Experience Award video cash.</li>
+      <li><strong>Kazakh unlocks:</strong> SCO Youth, Otandastar, Taiwan Huayu (as KZ, not as HK), embassy camps.</li>
+      <li><strong>Win a ticket:</strong> Imagine Cup / iGEM / IEEE EMBC paper → travel grant.</li>
+      <li><strong>Ignore:</strong> HSBC/Hang Seng PR awards, SSE/SSEBR, DAAD RISE from HKU, influencer “ambassador” DMs.</li>
+    </ol>
+  </section>
+
+  <footer class="site-footer">
+    <p>Built for GitHub Pages. Data is research-curated — always verify official pages before applying. Not affiliated with HKU.</p>
+  </footer>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>

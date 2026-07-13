@@ -1,0 +1,44 @@
+name: Update Travel Atlas
+
+on:
+  schedule:
+    # Every Monday and Thursday at 06:00 UTC
+    - cron: "0 6 * * 1,4"
+  workflow_dispatch:
+  push:
+    paths:
+      - "data/opportunities.json"
+      - "scripts/check_opportunities.py"
+      - ".github/workflows/update-opportunities.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  check-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sync data into docs/ and check links
+        run: |
+          mkdir -p docs/data
+          python scripts/check_opportunities.py
+
+      - name: Commit updated status (if changed)
+        run: |
+          git config user.name "travel-atlas-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/opportunities.json data/sources.json data/status.json docs/data/opportunities.json docs/data/status.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: refresh travel atlas link status"
+            git push
+          fi
