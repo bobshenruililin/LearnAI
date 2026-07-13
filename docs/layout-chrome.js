@@ -3,13 +3,13 @@
  * Prefs persist in localStorage.
  */
 
-const LAYOUT_KEY = "fta.layout.v1";
+const LAYOUT_KEY = "fta.layout.v2";
 
 const DEFAULTS = {
   mapPos: "top", // top | bottom | side | hidden
-  filtersW: 250,
-  detailW: 380,
-  mapH: 300,
+  filtersW: 260,
+  detailW: 340,
+  mapH: 440,
   mapSideW: 420,
 };
 
@@ -21,7 +21,12 @@ function loadPrefs() {
   try {
     const raw = localStorage.getItem(LAYOUT_KEY);
     if (!raw) return { ...DEFAULTS };
-    return { ...DEFAULTS, ...JSON.parse(raw) };
+    const prefs = { ...DEFAULTS, ...JSON.parse(raw) };
+    // Guard against collapsed map / crushed columns from bad drags
+    prefs.mapH = clamp(Number(prefs.mapH) || DEFAULTS.mapH, 280, 720);
+    prefs.filtersW = clamp(Number(prefs.filtersW) || DEFAULTS.filtersW, 200, 360);
+    prefs.detailW = clamp(Number(prefs.detailW) || DEFAULTS.detailW, 280, 420);
+    return prefs;
   } catch {
     return { ...DEFAULTS };
   }
@@ -113,7 +118,7 @@ export function initLayoutChrome() {
 
       const onMove = (ev) => {
         const dy = ev.clientY - startY;
-        prefs.mapH = clamp(startH + (growingDown ? dy : -dy), 160, 640);
+        prefs.mapH = clamp(startH + (growingDown ? dy : -dy), 280, 720);
         workspace.style.setProperty("--map-h", `${prefs.mapH}px`);
         pingMap();
       };
@@ -144,10 +149,10 @@ export function initLayoutChrome() {
       const onMove = (ev) => {
         const dx = ev.clientX - startX;
         if (kind === "filters") {
-          prefs.filtersW = clamp(startFilters + dx, 180, 420);
+          prefs.filtersW = clamp(startFilters + dx, 200, 360);
           workspace.style.setProperty("--filters-w", `${prefs.filtersW}px`);
         } else if (kind === "detail") {
-          prefs.detailW = clamp(startDetail - dx, 260, 560);
+          prefs.detailW = clamp(startDetail - dx, 280, 420);
           workspace.style.setProperty("--detail-w", `${prefs.detailW}px`);
         } else if (kind === "map-side") {
           prefs.mapSideW = clamp(startSide - dx, 280, 640);
