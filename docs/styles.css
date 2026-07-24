@@ -88,7 +88,9 @@ body {
 .site-footer,
 .region-strip,
 .active-lenses,
-.merey-dedication {
+.merey-dedication,
+.mode-tabs,
+.mode-blurb {
   position: relative;
   z-index: 1;
   width: min(1600px, calc(100% - 2rem));
@@ -204,6 +206,114 @@ h1 {
   border-color: rgba(15, 107, 92, 0.45);
   color: var(--teal-deep);
   font-weight: 600;
+}
+
+.mode-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0.55rem;
+  animation: rise 0.75s ease both;
+  animation-delay: 0.1s;
+}
+.mode-tab {
+  border: 1px solid var(--stroke);
+  background: rgba(255, 252, 245, 0.55);
+  color: var(--ink-soft);
+  border-radius: 0.65rem;
+  padding: 0.55rem 1.1rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.mode-tab:hover { transform: translateY(-1px); border-color: rgba(15, 107, 92, 0.35); }
+.mode-tab.on {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.mode-blurb {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  animation: rise 0.75s ease both;
+  animation-delay: 0.12s;
+}
+
+.hack-filters {
+  margin: 0.35rem 0 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px dashed rgba(15, 107, 92, 0.35);
+  border-radius: 0.75rem;
+  background: rgba(15, 107, 92, 0.05);
+}
+.hack-filters .field { margin-bottom: 0.65rem; }
+.hack-criteria h3 {
+  margin: 0.35rem 0 0.4rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  font-family: inherit;
+  font-weight: 600;
+}
+.hack-criteria ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+.hack-criteria li { margin-bottom: 0.25rem; }
+
+.badge.barrier-low { background: rgba(47, 107, 58, 0.14); color: var(--ok); }
+.badge.barrier-medium { background: rgba(176, 141, 60, 0.16); color: #7a611f; }
+.badge.barrier-high { background: rgba(196, 92, 38, 0.14); color: var(--coral); }
+.badge.barrier-very_high { background: rgba(139, 46, 46, 0.14); color: var(--danger); }
+.badge.status-verify_annually { background: rgba(154, 107, 31, 0.16); color: var(--warn); }
+
+.skill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.35rem 0 0.5rem;
+}
+.skill-chip {
+  display: inline-block;
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.35rem;
+  background: rgba(15, 107, 92, 0.08);
+  color: var(--teal-deep);
+  border: 1px solid rgba(15, 107, 92, 0.18);
+}
+.card-hack {
+  border-color: rgba(15, 107, 92, 0.22);
+}
+.hack-brief {
+  margin: 0.75rem 0 1rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(145deg, rgba(15, 107, 92, 0.08), rgba(196, 92, 38, 0.06));
+  border: 1px solid rgba(15, 107, 92, 0.18);
+}
+.hack-why { margin: 0 0 0.75rem; font-size: 0.92rem; line-height: 1.45; }
+.hack-dl { margin: 0; }
+.hack-dl > div { margin-bottom: 0.55rem; }
+.barrier-note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+body.mode-hackathons .merey-dedication {
+  opacity: 0.85;
 }
 
 .stats {
