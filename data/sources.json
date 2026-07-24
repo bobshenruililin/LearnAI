@@ -1,6 +1,12 @@
 {
   "sources": [
     {
+      "id": "aalto-design-factory-sprints",
+      "name": "Aalto Design Factory product sprints / courses",
+      "url": "https://designfactory.aalto.fi/",
+      "priority": 1
+    },
+    {
       "id": "aalto-tech-international-internship-travel-grant",
       "name": "Aalto TECH International Internship & Travel Grant",
       "url": "https://www.aalto.fi/en/other-studies/tech-international-internship",
@@ -28,6 +34,18 @@
       "id": "cern-technical-studentship-materials",
       "name": "CERN Technical Studentship (incl. Material & Surface Science)",
       "url": "https://careers.cern/programmes/technical-studentship/",
+      "priority": 1
+    },
+    {
+      "id": "hack-cathay-hackathon",
+      "name": "Cathay Hackathon",
+      "url": "https://hackathon.cathaypacific.com/",
+      "priority": 1
+    },
+    {
+      "id": "hack-cyberport-cupp",
+      "name": "Cyberport University Partnership Programme (CUPP)",
+      "url": "https://www.cyberport.hk/en/entrepreneurship/ccmf_cyberport_university_partnership_programme/",
       "priority": 1
     },
     {
@@ -73,6 +91,12 @@
       "priority": 1
     },
     {
+      "id": "hack-hkstp-ideation",
+      "name": "HKSTP Ideation Programme",
+      "url": "https://www.hkstp.org/en/programmes/ideation",
+      "priority": 1
+    },
+    {
       "id": "hku-innovation-academy-travel",
       "name": "HKU Faculty of Engineering Innovation Academy Travel Subsidy",
       "url": "https://innoacademy.engg.hku.hk/funding-scheme/",
@@ -85,9 +109,27 @@
       "priority": 1
     },
     {
+      "id": "hack-hkust-entrepreneurship-bootcamp",
+      "name": "HKUST Entrepreneurship Bootcamp",
+      "url": "https://ec.hkust.edu.hk/events/hkust-entrepreneurship-bootcamp-2026",
+      "priority": 1
+    },
+    {
       "id": "hzb-international-summer-student-programme",
       "name": "HZB International Summer Student Programme (ISSP)",
       "url": "https://www.helmholtz-berlin.de/jobskarriere/schule-und-studium/summer-schools/sommerstudierende/index_en.html",
+      "priority": 1
+    },
+    {
+      "id": "hack-hksec",
+      "name": "Hong Kong Social Enterprise Challenge (HKSEC)",
+      "url": "https://hksec.hk/",
+      "priority": 1
+    },
+    {
+      "id": "hack-hk-techathon-plus",
+      "name": "Hong Kong Techathon+",
+      "url": "https://www.hktechathon.com/",
       "priority": 1
     },
     {
@@ -97,9 +139,21 @@
       "priority": 1
     },
     {
+      "id": "hack-iot-data-hackathon",
+      "name": "IOT Data Hackathon",
+      "url": "https://www.gs1hk.org/iotdatahackathon/2026",
+      "priority": 1
+    },
+    {
       "id": "ismrm-educational-stipend",
       "name": "ISMRM Educational Stipend (Annual Meeting)",
       "url": "https://www.ismrm.org/26m/stipends/educational-program/",
+      "priority": 1
+    },
+    {
+      "id": "hack-genai-sdg-interuni",
+      "name": "Inter-University GenAI Hackathon for the SDGs",
+      "url": "https://www.hack4sdg.com/",
       "priority": 1
     },
     {
@@ -118,6 +172,18 @@
       "id": "non-means-tested-mes",
       "name": "Non-means-tested Mainland Experience Scheme (MES)",
       "url": "https://www.chinavision.hku.hk/non-means-tested-mainland-experienc",
+      "priority": 1
+    },
+    {
+      "id": "startup-weekend-university",
+      "name": "Startup Weekend University editions (global)",
+      "url": "https://www.techstars.com/communities/startup-weekend",
+      "priority": 1
+    },
+    {
+      "id": "hack-startup-weekend-hk",
+      "name": "techstars Startup Weekend Hong Kong (for Social Good)",
+      "url": "https://cisl.hkbu.edu.hk/triangle/Social-Entrepreneurship-Education/techstars_Startup-Weekend/techstars_Startup-Weekend-2025.html",
       "priority": 1
     },
     {
@@ -148,6 +214,18 @@
       "id": "bmes-annual-meeting-travel",
       "name": "BMES Annual Meeting Travel Awards",
       "url": "https://www.bmes.org",
+      "priority": 2
+    },
+    {
+      "id": "hack-bnp-sustainable-finance",
+      "name": "BNP Paribas Sustainable Finance Hackathon Hong Kong",
+      "url": "https://www.bnpparibas.com.hk/en/about-us/sustainable-finance/university-hackathon/",
+      "priority": 2
+    },
+    {
+      "id": "hack-buhack",
+      "name": "BUHack",
+      "url": "https://buhack-28545.devpost.com/",
       "priority": 2
     },
     {
@@ -184,6 +262,12 @@
       "id": "cgi-u",
       "name": "Clinton Global Initiative University (CGI U)",
       "url": "https://www.cgiu.org",
+      "priority": 2
+    },
+    {
+      "id": "hack-community-shaper",
+      "name": "Community Shaper Hackathon",
+      "url": "https://cs-2025-hackathon-beta.devpost.com/",
       "priority": 2
     },
     {
@@ -259,9 +343,33 @@
       "priority": 2
     },
     {
+      "id": "hack-gdg-hkust",
+      "name": "GDG On Campus Hackathon (HKUST)",
+      "url": "https://cse.hkust.edu.hk/GDGoChackathon2026/hackathon",
+      "priority": 2
+    },
+    {
+      "id": "garage48",
+      "name": "Garage48",
+      "url": "https://garage48.org/",
+      "priority": 2
+    },
+    {
       "id": "gates-cambridge",
       "name": "Gates Cambridge Scholarship",
       "url": "https://www.gatescambridge.org/apply/eligibility",
+      "priority": 2
+    },
+    {
+      "id": "global-service-jam",
+      "name": "Global Service Jam",
+      "url": "https://www.globalservicejam.org/",
+      "priority": 2
+    },
+    {
+      "id": "hack-hkmu-hackathon",
+      "name": "HKMU Hackathon",
+      "url": "https://www.hkmu.edu.hk/sao/hkmu-hackathon/",
       "priority": 2
     },
     {
@@ -325,15 +433,51 @@
       "priority": 2
     },
     {
+      "id": "hack-hack-the-east",
+      "name": "Hack The East",
+      "url": "https://hacktheeast.com/",
+      "priority": 2
+    },
+    {
+      "id": "hackcu",
+      "name": "HackCU",
+      "url": "https://hackcu.org/",
+      "priority": 2
+    },
+    {
+      "id": "hackzurich",
+      "name": "HackZurich",
+      "url": "https://hackzurich.com/",
+      "priority": 2
+    },
+    {
+      "id": "hackathon-com-global",
+      "name": "Hackathon.com / Devpost featured product challenges",
+      "url": "https://devpost.com/hackathons",
+      "priority": 2
+    },
+    {
       "id": "hague-academy-summer-scholarship",
       "name": "Hague Academy of International Law – Summer Courses Scholarships",
       "url": "https://www.hagueacademy.nl/scholarships-summer-courses/",
       "priority": 2
     },
     {
+      "id": "health-hack-oxford-style",
+      "name": "Healthcare hackathons (MIT Hacking Medicine network editions)",
+      "url": "https://hackingmedicine.mit.edu/",
+      "priority": 2
+    },
+    {
       "id": "hkpfs",
       "name": "Hong Kong PhD Fellowship Scheme (HKPFS)",
       "url": "https://cerg1.ugc.edu.hk/hkpfs/index.html",
+      "priority": 2
+    },
+    {
+      "id": "hack-hk-web3-ideathon",
+      "name": "Hong Kong Web3 Ideathon",
+      "url": "https://web3ideathon.hkust.edu.hk/",
       "priority": 2
     },
     {
@@ -403,6 +547,12 @@
       "priority": 2
     },
     {
+      "id": "lean-startup-machine",
+      "name": "Lean Startup Machine / Lean weekends",
+      "url": "https://www.leanstartupmachine.com/",
+      "priority": 2
+    },
+    {
       "id": "lindau-nobel",
       "name": "Lindau Nobel Laureate Meetings",
       "url": "https://www.lindau-nobel.org/young-scientists",
@@ -421,9 +571,21 @@
       "priority": 2
     },
     {
+      "id": "hackcon-adjacent-organizer-path",
+      "name": "MLH Hackcon (Organizer Track)",
+      "url": "https://www.mlh.com/event-membership",
+      "priority": 2
+    },
+    {
       "id": "max-planck-matter-to-life-uro",
       "name": "Max Planck School Matter to Life — Undergraduate Research Opportunities (MtL-URO)",
       "url": "https://mattertolife.maxplanckschools.org/uro-research-internship",
+      "priority": 2
+    },
+    {
+      "id": "hack-medtech-gba",
+      "name": "MedTech Hackathon GBA",
+      "url": "https://tec.hku.hk/medtech-hackathon-2026/",
       "priority": 2
     },
     {
@@ -436,6 +598,12 @@
       "id": "nims-internship",
       "name": "NIMS Internship Program (Japan)",
       "url": "https://www.nims.go.jp/eng/hr-development/internship.html",
+      "priority": 2
+    },
+    {
+      "id": "city-hack-singapore",
+      "name": "NUS / NTU / Singapore city hackathons (rotate)",
+      "url": "https://www.nushackers.org/",
       "priority": 2
     },
     {
@@ -466,6 +634,12 @@
       "id": "jessup-moot-hku",
       "name": "Philip C. Jessup International Law Moot – HKU Team (HK Rounds → Washington DC)",
       "url": "https://www.law.hku.hk/experiential-learning/experiential-learning-mooting/",
+      "priority": 2
+    },
+    {
+      "id": "hack-polyu-ifc",
+      "name": "PolyU International Future Challenge (IFC)",
+      "url": "https://www.polyu.edu.hk/kteo/competitions-and-events/polyu-ifc/polyu-ifc-2026/",
       "priority": 2
     },
     {
@@ -517,6 +691,12 @@
       "priority": 2
     },
     {
+      "id": "slush-side-hackathons",
+      "name": "Slush & Side Events (Helsinki startup week)",
+      "url": "https://www.slush.org/",
+      "priority": 2
+    },
+    {
       "id": "st-gallen-symposium",
       "name": "St. Gallen Symposium (Wings of Excellence)",
       "url": "https://www.symposium.org",
@@ -559,6 +739,12 @@
       "priority": 2
     },
     {
+      "id": "tartanhacks",
+      "name": "TartanHacks",
+      "url": "https://tartanhacks.com/",
+      "priority": 2
+    },
+    {
       "id": "tsinghua-icampus-sjtu-visiting",
       "name": "Tsinghua iCampus & SJTU Visiting Student Programme",
       "url": "https://www.tsinghua.edu.cn/en/",
@@ -586,6 +772,12 @@
       "id": "utrecht-eu-summer-schools",
       "name": "Utrecht University Summer School + EU Summer Schools",
       "url": "https://www.utrechtsummerschool.nl",
+      "priority": 2
+    },
+    {
+      "id": "vhacks",
+      "name": "VHacks",
+      "url": "https://www.vhacks.org/",
       "priority": 2
     },
     {
@@ -619,9 +811,27 @@
       "priority": 3
     },
     {
+      "id": "hack-autodesk-apac-designathon",
+      "name": "Autodesk APAC Student Designathon",
+      "url": "https://www.evertop.com.tw/var/file/0/1000/img/19/index.html",
+      "priority": 3
+    },
+    {
       "id": "cern-summer",
       "name": "CERN Summer Student Programme",
       "url": "https://careers.cern/summer",
+      "priority": 3
+    },
+    {
+      "id": "hack-cuhk-data-hack",
+      "name": "CUHK Data Hack",
+      "url": "https://www.lib.cuhk.edu.hk/en/about/events/cuhk-data-hack-2026/",
+      "priority": 3
+    },
+    {
+      "id": "cal-hacks",
+      "name": "Cal Hacks",
+      "url": "https://calhacks.io/",
       "priority": 3
     },
     {
@@ -649,6 +859,18 @@
       "priority": 3
     },
     {
+      "id": "euvsvirus-style-eic-hack",
+      "name": "EIC / EU Innovation Challenges & Hackathons",
+      "url": "https://eic.ec.europa.eu/",
+      "priority": 3
+    },
+    {
+      "id": "euhackathon-climate-health-circuit",
+      "name": "EIT / EU Climate & Health Innovation Challenges",
+      "url": "https://www.eit.europa.eu/our-activities/opportunities/climathon-2026",
+      "priority": 3
+    },
+    {
       "id": "eit-innoenergy-masters-plus-scholarships",
       "name": "EIT InnoEnergy Masters+ Scholarships / Fee Waivers",
       "url": "https://mastersplus.innoenergy.com/fees-and-funding/scholarships/",
@@ -661,9 +883,27 @@
       "priority": 3
     },
     {
+      "id": "ethglobal",
+      "name": "ETHGlobal Hackathons",
+      "url": "https://ethglobal.com/events",
+      "priority": 3
+    },
+    {
+      "id": "code4rena-or-eth-global-product",
+      "name": "ETHGlobal Superhack / Pragma (product tracks)",
+      "url": "https://ethglobal.com/",
+      "priority": 3
+    },
+    {
       "id": "eureka",
       "name": "EUREKA Undergraduate Research Programme",
       "url": "https://eureka.hku.hk/",
+      "priority": 3
+    },
+    {
+      "id": "earth-hacks",
+      "name": "Earth Hacks",
+      "url": "https://www.earthhacks.io/p-home",
       "priority": 3
     },
     {
@@ -676,6 +916,18 @@
       "id": "foundation-aalto-science-technology-thesis-grants",
       "name": "Foundation for Aalto University Science and Technology — Thesis Grants",
       "url": "https://www.aalto.fi/en/foundation-for-aalto-university-science-and-technology",
+      "priority": 3
+    },
+    {
+      "id": "global-designing-out-waste-jam",
+      "name": "Global Sustainability Jam / Design Jams",
+      "url": "https://planet.globalservicejam.org/",
+      "priority": 3
+    },
+    {
+      "id": "hack-metrochallenge",
+      "name": "HKMU MetroChallenge",
+      "url": "https://www.hkmu.edu.hk/sao/entrepreneurship/metrochallenge/",
       "priority": 3
     },
     {
@@ -703,6 +955,30 @@
       "priority": 3
     },
     {
+      "id": "hackduke-code-for-good",
+      "name": "HackDuke Code for Good",
+      "url": "https://hackduke.org/",
+      "priority": 3
+    },
+    {
+      "id": "hackharvard",
+      "name": "HackHarvard",
+      "url": "https://hackharvard.io/",
+      "priority": 3
+    },
+    {
+      "id": "hackmit",
+      "name": "HackMIT",
+      "url": "https://hackmit.org/",
+      "priority": 3
+    },
+    {
+      "id": "hacknyu",
+      "name": "HackNYU",
+      "url": "https://hacknyu.org/",
+      "priority": 3
+    },
+    {
       "id": "huawei-seeds",
       "name": "Huawei Seeds for the Future",
       "url": "https://www.huawei.com/",
@@ -721,6 +997,12 @@
       "priority": 3
     },
     {
+      "id": "hack-jumpstarter",
+      "name": "JUMPSTARTER Global Pitch Competition",
+      "url": "https://www.jumpstarter.hk/en/",
+      "priority": 3
+    },
+    {
       "id": "james-dyson-award",
       "name": "James Dyson Award",
       "url": "https://www.jamesdysonaward.org/en-hk/how-to-enter/",
@@ -733,6 +1015,12 @@
       "priority": 3
     },
     {
+      "id": "la-hacks",
+      "name": "LA Hacks",
+      "url": "https://www.lahacks.com/",
+      "priority": 3
+    },
+    {
       "id": "lshtm-fund-scholarship",
       "name": "LSHTM Fund Scholarship (London-based MSc)",
       "url": "https://www.lshtm.ac.uk/study/fees-and-funding/funding-scholarships/2026-27-lshtm-fund-scholarship",
@@ -742,6 +1030,18 @@
       "id": "lky-spp-graduate-scholarships",
       "name": "Lee Kuan Yew School of Public Policy (NUS) – Merit Graduate Scholarships",
       "url": "https://lkyspp.nus.edu.sg/graduate-admissions/fees-and-funding",
+      "priority": 3
+    },
+    {
+      "id": "major-league-hacking-fellowship-adjacent",
+      "name": "MLH Fellowship (hack-adjacent build program)",
+      "url": "https://fellowship.mlh.io/",
+      "priority": 3
+    },
+    {
+      "id": "hack-make-an-impact-eduhk",
+      "name": "Make an Impact Product Design Competition",
+      "url": "https://ceie.eduhk.hk/make-an-impact-product-design-competition-2026/",
       "priority": 3
     },
     {
@@ -781,9 +1081,27 @@
       "priority": 3
     },
     {
+      "id": "pennapps",
+      "name": "PennApps",
+      "url": "https://www.pennapps.com/",
+      "priority": 3
+    },
+    {
       "id": "philip-kh-wong",
       "name": "Philip K H Wong Foundation Student Enrichment Scholarships",
       "url": "https://scholar.aas.hku.hk/?action=showonesscheme&ss_id=389",
+      "priority": 3
+    },
+    {
+      "id": "hack-polyu-innovation-challenge",
+      "name": "PolyU Innovation Challenge",
+      "url": "https://www.polyu.edu.hk/kteo/entrepreneurship/education/polyu-innovation-challenge_round-1_smart-city/",
+      "priority": 3
+    },
+    {
+      "id": "qhacks",
+      "name": "QHacks",
+      "url": "https://qhacks.io/",
       "priority": 3
     },
     {
@@ -796,6 +1114,30 @@
       "id": "red-bull-basement",
       "name": "Red Bull Basement",
       "url": "https://www.redbull.com",
+      "priority": 3
+    },
+    {
+      "id": "seedstars-competition",
+      "name": "Seedstars World Competition",
+      "url": "https://www.seedstars.com/",
+      "priority": 3
+    },
+    {
+      "id": "hackathon-races-shenzhen",
+      "name": "Shenzhen / GBA hardware & maker hackathons",
+      "url": "https://www.seeedstudio.com/",
+      "priority": 3
+    },
+    {
+      "id": "ship-for-good",
+      "name": "Ship For Good",
+      "url": "https://www.shipforgood.org/en",
+      "priority": 3
+    },
+    {
+      "id": "hack-smart-qs",
+      "name": "Smart QS Hackathon",
+      "url": "https://www.arch.hku.hk/event_/smart-qs-hackathon-2026/",
       "priority": 3
     },
     {
@@ -817,6 +1159,12 @@
       "priority": 3
     },
     {
+      "id": "hack-tencent-cloud",
+      "name": "Tencent Cloud Hackathon (Game Dev / AI Challenges)",
+      "url": "https://tch.cloud.tencent.com/",
+      "priority": 3
+    },
+    {
       "id": "tohoku-tesp",
       "name": "Tohoku University Engineering Summer Program (TESP)",
       "url": "https://sites.google.com/tohoku.ac.jp/tesp/summer-program",
@@ -832,6 +1180,12 @@
       "id": "urfp",
       "name": "Undergraduate Research Fellowship Programme (URFP)",
       "url": "https://tl.hku.hk/urfp/",
+      "priority": 3
+    },
+    {
+      "id": "undiagnosed-hackathon",
+      "name": "Undiagnosed Hackathon",
+      "url": "https://undiagnosedhackathon.org/",
       "priority": 3
     },
     {
@@ -871,6 +1225,12 @@
       "priority": 3
     },
     {
+      "id": "nwhacks",
+      "name": "nwHacks",
+      "url": "https://nwhacks.io/",
+      "priority": 3
+    },
+    {
       "id": "3-campus-east-asia",
       "name": "3 Campus East Asia (Keio–Yonsei–HKU)",
       "url": "https://tl.hku.hk/horizons/3campus/",
@@ -886,6 +1246,12 @@
       "id": "aiche-international-student-chapter-travel-grant",
       "name": "AIChE International Student Chapter Leadership Development Travel Grant",
       "url": "https://www.aiche.org/community/awards/international-student-chapter-leadership-development-travel-grant",
+      "priority": 4
+    },
+    {
+      "id": "angelhack",
+      "name": "AngelHack Global Hackathons",
+      "url": "https://angelhack.com/events/",
       "priority": 4
     },
     {
@@ -907,6 +1273,12 @@
       "priority": 4
     },
     {
+      "id": "climathon",
+      "name": "Climathon (EIT Climate-KIC)",
+      "url": "https://climathon.climate-kic.org/",
+      "priority": 4
+    },
+    {
       "id": "spain-consulate-hku",
       "name": "Consulate General of Spain Prize (HKU Spanish Programme)",
       "url": "https://spanish.hku.hk/students/scholarships/",
@@ -916,6 +1288,18 @@
       "id": "daad-university-summer-courses",
       "name": "DAAD University Summer Courses in Germany for Foreign Students and Graduates",
       "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50035295",
+      "priority": 4
+    },
+    {
+      "id": "design-sprint-weekends",
+      "name": "Design Sprint Weekends (GV-style local sprints)",
+      "url": "https://designsprintkit.withgoogle.com/",
+      "priority": 4
+    },
+    {
+      "id": "hack-ethglobal-asia",
+      "name": "ETHGlobal (Singapore / Asia events)",
+      "url": "https://ethglobal.com/events",
       "priority": 4
     },
     {
@@ -937,9 +1321,63 @@
       "priority": 4
     },
     {
+      "id": "hack-for-earth",
+      "name": "Hack for Earth / Earth Prize adjacent youth challenges",
+      "url": "https://www.hackforearth.com/",
+      "priority": 4
+    },
+    {
+      "id": "hack-the-gap",
+      "name": "Hack the Gap (Product Hackathon)",
+      "url": "https://luma.com/jpkb61kb",
+      "priority": 4
+    },
+    {
+      "id": "junction-hack-the-wind-energy",
+      "name": "Hack the Wind / Cleantech make-a-thons (Nordic)",
+      "url": "https://www.slush.org/",
+      "priority": 4
+    },
+    {
+      "id": "hack-n-roll",
+      "name": "Hack&Roll",
+      "url": "https://hacknroll.nushackers.org/",
+      "priority": 4
+    },
+    {
+      "id": "hack-asia-jardines",
+      "name": "Hack.Asia",
+      "url": "https://www.openinnovationnetwork.gov.sg/innovation-challenges/hack.asia-2022-innovate-the-sustainable-future",
+      "priority": 4
+    },
+    {
+      "id": "hackdelft",
+      "name": "HackDelft",
+      "url": "https://hackdelft.com/",
+      "priority": 4
+    },
+    {
       "id": "worldmun",
       "name": "Harvard WorldMUN + Club Funding",
       "url": "https://www.worldmun.org",
+      "priority": 4
+    },
+    {
+      "id": "hack-imperial-hk",
+      "name": "Imperial Hackathon Hong Kong",
+      "url": "https://www.imperial.ac.uk/study/visit/events/imperial-breakthrough-science-challenge/hackathon/",
+      "priority": 4
+    },
+    {
+      "id": "hack-innospace-for-good",
+      "name": "Inno Space Hackathon for Good",
+      "url": "https://innospace.hkpc.org/en/event/hackathonforgood2026",
+      "priority": 4
+    },
+    {
+      "id": "jp-morgan-code-for-good",
+      "name": "J.P. Morgan Code for Good",
+      "url": "https://www.jpmorganchase.com/careers/explore-opportunities/programs/tfsg-hackathons",
       "priority": 4
     },
     {
@@ -955,9 +1393,57 @@
       "priority": 4
     },
     {
+      "id": "junction-platform-events",
+      "name": "Junction Platform City Hacks",
+      "url": "https://hackjunction.app/",
+      "priority": 4
+    },
+    {
+      "id": "junctionx-lisbon",
+      "name": "JunctionX Lisbon",
+      "url": "https://lisbon.hackjunction.com/",
+      "priority": 4
+    },
+    {
+      "id": "mlh-season-member-events",
+      "name": "MLH Season Member Events",
+      "url": "https://www.mlh.com/",
+      "priority": 4
+    },
+    {
+      "id": "morgan-stanley-code-to-give",
+      "name": "Morgan Stanley Code to Give (Asia)",
+      "url": "https://ug.hkubs.hku.hk/competition/morgan-stanley-asia-code-to-give-hackathon-2024",
+      "priority": 4
+    },
+    {
+      "id": "hack-polyu-design-hatch",
+      "name": "PolyU Design Hatch Awards",
+      "url": "https://www.polyu.edu.hk/sd/news-and-events/events/2026/hatch-awards/hatch/",
+      "priority": 4
+    },
+    {
       "id": "rotary-peace-fellowship",
       "name": "Rotary Peace Fellowship (Master’s / Professional Certificate)",
       "url": "https://www.rotary.org/en/our-programs/peace-fellowships/",
+      "priority": 4
+    },
+    {
+      "id": "since-ai-hackathon",
+      "name": "Since AI Hackathon",
+      "url": "https://sinceai.ai/hackathon",
+      "priority": 4
+    },
+    {
+      "id": "sui-overflow-or-solana-hyperdrive",
+      "name": "Solana Hyperdrive / major L1 global hackathons",
+      "url": "https://solana.com/hackathon",
+      "priority": 4
+    },
+    {
+      "id": "treehacks",
+      "name": "TreeHacks",
+      "url": "https://treehacks.com/",
       "priority": 4
     },
     {
@@ -991,9 +1477,21 @@
       "priority": 5
     },
     {
+      "id": "google-solution-challenge",
+      "name": "Google Solution Challenge",
+      "url": "https://developers.google.com/community/gdsc-solution-challenge",
+      "priority": 5
+    },
+    {
       "id": "janelia-undergraduate",
       "name": "HHMI Janelia Undergraduate Scholars",
       "url": "https://www.janelia.org/you-janelia/students-postdocs/undergraduate-scholars-program",
+      "priority": 5
+    },
+    {
+      "id": "hack-the-north",
+      "name": "Hack the North",
+      "url": "https://hackthenorth.com/",
       "priority": 5
     },
     {
@@ -1009,9 +1507,51 @@
       "priority": 5
     },
     {
+      "id": "junction",
+      "name": "Junction",
+      "url": "https://2026.hackjunction.com/",
+      "priority": 5
+    },
+    {
+      "id": "mit-hacking-medicine-grand-hack",
+      "name": "MIT Hacking Medicine Grand Hack",
+      "url": "https://hackingmedicine.mit.edu/",
+      "priority": 5
+    },
+    {
+      "id": "mlh-global-hack-week",
+      "name": "MLH Global Hack Week",
+      "url": "https://ghw.mlh.com/",
+      "priority": 5
+    },
+    {
+      "id": "nasa-space-apps",
+      "name": "NASA Space Apps Challenge",
+      "url": "https://spaceappschallenge.org/",
+      "priority": 5
+    },
+    {
+      "id": "start-hack",
+      "name": "START Hack",
+      "url": "https://www.startglobal.org/start-hack",
+      "priority": 5
+    },
+    {
       "id": "schwarzman-later",
       "name": "Schwarzman Scholars",
       "url": "https://www.schwarzmanscholars.org",
+      "priority": 5
+    },
+    {
+      "id": "techstars-startup-weekend",
+      "name": "Techstars Startup Weekend",
+      "url": "https://www.techstars.com/communities/startup-weekend",
+      "priority": 5
+    },
+    {
+      "id": "yc-startup-school",
+      "name": "Y Combinator Startup School",
+      "url": "https://startupschool.org/",
       "priority": 5
     },
     {
@@ -1024,6 +1564,12 @@
       "id": "nawa-zawacka-outgoing",
       "name": "Zawacka NAWA (Outgoing Bilateral Mobility)",
       "url": "https://nawa.gov.pl/en/wspolpraca-i-wymiana-miedzynarodowa/zawacka-nawa/wyjazdy/oferta-na-rok-akademicki-2026-2027",
+      "priority": 5
+    },
+    {
+      "id": "hackust",
+      "name": "hackUST",
+      "url": "https://ec.hkust.edu.hk/events/hackust-2023",
       "priority": 5
     },
     {
@@ -1105,5 +1651,5 @@
       "priority": 9
     }
   ],
-  "checked_at": "2026-07-23T12:11:13.712015+00:00"
+  "checked_at": "2026-07-24T09:31:49.322533+00:00"
 }
