@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./vendor/leaflet/leaflet.css" />
   <link rel="stylesheet" href="./vendor/leaflet.markercluster/MarkerCluster.css" />
   <link rel="stylesheet" href="./vendor/leaflet.markercluster/MarkerCluster.Default.css" />
-  <link rel="stylesheet" href="./styles.css?v=20260713g" />
+  <link rel="stylesheet" href="./styles.css?v=20260724h" />
   <!-- Critical: author CSS must not keep #giftOverlay visible when [hidden] -->
   <style>
     [hidden] { display: none !important; }
@@ -89,6 +89,12 @@
   </section>
   <p class="merey-dedication" id="mereyDedication">Scouted with care for Merey — collect the stamps, ignore the traps, and go further than the envy list.</p>
 
+  <section class="mode-tabs" aria-label="Atlas sections">
+    <button type="button" class="mode-tab on" data-mode="atlas">Funded atlas</button>
+    <button type="button" class="mode-tab" data-mode="hackathons">Hackathons &amp; make-a-thons</button>
+  </section>
+  <p class="mode-blurb" id="modeBlurb">Funded travel and learning routes. Switch to Hackathons for product-design + entrepreneurship practice arenas.</p>
+
   <section class="active-lenses" id="activeLenses" aria-label="Active tag and region filters" hidden></section>
 
   <section class="region-strip" id="regionStrip" aria-label="Destination regions"></section>
@@ -163,6 +169,48 @@
           </select>
         </label>
 
+        <div id="hackFilters" class="hack-filters" hidden>
+          <label class="field">
+            <span>Barrier of entry</span>
+            <select id="barrier">
+              <option value="">Any barrier</option>
+              <option value="low">Low — walk in / open register</option>
+              <option value="medium">Medium — apply or team up</option>
+              <option value="high">High — selective / travel heavy</option>
+              <option value="very_high">Very high — brand-name / invite</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Format</span>
+            <select id="format">
+              <option value="">Any format</option>
+              <option value="in_person">In person</option>
+              <option value="hybrid">Hybrid</option>
+              <option value="online">Online</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Reach from HK</span>
+            <select id="hackReach">
+              <option value="">Worldwide</option>
+              <option value="hk_local">HK / GBA local</option>
+              <option value="asia_reachable">Asia-reachable from HK</option>
+              <option value="online_easy">Online / no visa</option>
+              <option value="overlap">HK + global overlap picks</option>
+            </select>
+          </label>
+          <div class="hack-criteria">
+            <h3>What makes one great</h3>
+            <ul>
+              <li>Real users or industry briefs (not toy problems)</li>
+              <li>Product + pitch, not only code</li>
+              <li>Mentors who ship or invest</li>
+              <li>Path after the weekend (incubator, prize, portfolio)</li>
+              <li>Barrier you can clear <em>this term</em></li>
+            </ul>
+          </div>
+        </div>
+
         <label class="field">
           <span>Year of study</span>
           <select id="year">
@@ -179,6 +227,7 @@
           <select id="sort">
             <option value="priority">Best fit for you</option>
             <option value="funding">Funding strength</option>
+            <option value="barrier">Barrier (low → high)</option>
             <option value="name">Name A–Z</option>
             <option value="deadline">Deadline hint</option>
           </select>
@@ -248,7 +297,7 @@
   </section>
 
   <footer class="site-footer">
-    <p>Built as a gift for Merey Yeskara. Go get the stamps. Data is research-curated — always verify official pages before applying. Not affiliated with HKU.</p>
+    <p>Built as a gift for Merey Yeskara. Go get the stamps — including the Hackathons &amp; make-a-thons tab for product + entrepreneurship practice. Data is research-curated — always verify official pages before applying. Not affiliated with HKU.</p>
     <p><button type="button" class="linkish replay-gift" id="replayGift">Replay gift note</button></p>
   </footer>
 
@@ -276,6 +325,6 @@
 
   <script src="./vendor/leaflet/leaflet.js"></script>
   <script src="./vendor/leaflet.markercluster/leaflet.markercluster.js"></script>
-  <script src="./app.js?v=20260713g" type="module"></script>
+  <script src="./app.js?v=20260724h" type="module"></script>
 </body>
 </html>

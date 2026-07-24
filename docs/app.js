@@ -31,6 +31,7 @@ const MEREY_NOTES = [
 const state = {
   data: null,
   status: null,
+  mode: "atlas", // atlas | hackathons
   view: "cards",
   selectedId: null,
   activeTags: [],
@@ -60,6 +61,13 @@ const FUNDING_RANK = {
   partial: 3,
   prize: 2,
   unpaid_but_free: 1,
+};
+
+const BARRIER_RANK = {
+  low: 1,
+  medium: 2,
+  high: 3,
+  very_high: 4,
 };
 
 const MONTH_MAP = {
@@ -203,6 +211,43 @@ function audiencesFor(op) {
   return ["merey"];
 }
 
+function isHackathon(op) {
+  if (!op) return false;
+  if (op.category === "hackathon") return true;
+  const tags = (op.tags || []).map((t) => String(t).toLowerCase());
+  return tags.includes("for_hackathon_tab") || tags.includes("hackathon");
+}
+
+function hackReachBucket(op) {
+  const tags = (op.tags || []).map((t) => String(t).toLowerCase());
+  const dest = (op.destinations || []).join(" ").toLowerCase();
+  const hay = `${tags.join(" ")} ${dest} ${op.name || ""}`.toLowerCase();
+  const online = op.format === "online" || /online|remote|virtual/.test(hay);
+  const hkLocal = /hong kong|hk\b|gba|shenzhen|guangzhou|cyberport|hkust|hku|polyu|cuhk/.test(hay)
+    || tags.includes("hk_accessible") && /hong kong|gba/.test(dest);
+  const asia = /singapore|asia|tokyo|seoul|taipei|bangkok|kuala|jakarta|manila|vietnam|nus|ntu|hack\.asia|apac/.test(hay);
+  return { online, hkLocal, asia, global: true };
+}
+
+function matchesHackReach(op, reach) {
+  if (!reach) return true;
+  const b = hackReachBucket(op);
+  if (reach === "online_easy") return b.online || op.format === "hybrid";
+  if (reach === "hk_local") return b.hkLocal || /hong kong|gba|shenzhen/i.test((op.destinations || []).join(" "));
+  if (reach === "asia_reachable") {
+    return b.hkLocal || b.asia || b.online
+      || /hong kong|singapore|asia|japan|korea|taiwan|thailand|malaysia|gba/i.test((op.destinations || []).join(" "));
+  }
+  if (reach === "overlap") {
+    // Events useful both as HK-accessible practice and as global brand signals
+    const tags = (op.tags || []).map((t) => String(t).toLowerCase());
+    const globalBrand = /junction|ethglobal|imagine|nasa|mlh|techstars|startup weekend|angelhack|hack\.asia|devpost|space apps/i.test(op.name || "");
+    const reachable = b.hkLocal || b.asia || b.online || tags.includes("hk_accessible");
+    return reachable && (globalBrand || tags.includes("hk_accessible") || op.format === "online" || op.format === "hybrid");
+  }
+  return true;
+}
+
 function matchesPeople(op) {
   const { presets } = state;
   const wanted = [];
@@ -220,24 +265,44 @@ function baseFiltered() {
   const funding = $("#funding").value;
   const difficulty = $("#difficulty").value;
   const year = $("#year").value;
+  const barrier = $("#barrier")?.value || "";
+  const format = $("#format")?.value || "";
+  const hackReach = $("#hackReach")?.value || "";
   const { presets } = state;
+  const hackMode = state.mode === "hackathons";
 
   let list = [...state.data.opportunities];
+
+  if (hackMode) {
+    list = list.filter(isHackathon);
+  }
 
   list = list.filter(matchesPeople);
   if (!presets.showTraps) list = list.filter((o) => o.status !== "closed_to_you");
   if (presets.nonHk) list = list.filter((o) => o.open_to_non_hk_residents !== false);
-  if (presets.fit) list = list.filter((o) => (o.priority ?? 9) <= 3 && o.status !== "closed_to_you");
+  // "Best for you" is a funded-travel lens; in hackathon mode it hides most make-a-thons
+  if (presets.fit && !hackMode) list = list.filter((o) => (o.priority ?? 9) <= 3 && o.status !== "closed_to_you");
   if (presets.kz) list = list.filter(isKzUnlock);
-  if (presets.full) list = list.filter((o) => ["fully_funded", "mostly_funded"].includes(o.funding_level));
+  if (presets.full && !hackMode) list = list.filter((o) => ["fully_funded", "mostly_funded"].includes(o.funding_level));
   if (presets.soon) list = list.filter(deadlineSoon);
-  if (category) list = list.filter((o) => o.category === category);
+  if (category && !hackMode) list = list.filter((o) => o.category === category);
+  if (hackMode && category && category !== "hackathon") {
+    // still allow narrowing if user picks competition-tagged etc via category — but hack mode already filtered
+  }
   if (funding) list = list.filter((o) => o.funding_level === funding);
   if (difficulty) list = list.filter((o) => o.difficulty === difficulty);
+  if (hackMode && barrier) list = list.filter((o) => o.barrier_of_entry === barrier);
+  if (hackMode && format) list = list.filter((o) => o.format === format);
+  if (hackMode && hackReach) list = list.filter((o) => matchesHackReach(o, hackReach));
   if (year) list = list.filter((o) => matchesYear(o, year));
   if (q) {
     list = list.filter((o) => {
-      const hay = [o.name, o.funder, o.what_you_get, o.eligibility_summary, o.notes, o.creative_angle, o.destinations?.join(" "), o.tags?.join(" "), audiencesFor(o).join(" ")].join(" ").toLowerCase();
+      const hay = [
+        o.name, o.funder, o.what_you_get, o.eligibility_summary, o.notes, o.creative_angle,
+        o.why_great, o.format, o.duration, o.typical_cost, o.barrier_of_entry,
+        o.destinations?.join(" "), o.tags?.join(" "), o.skills_practiced?.join(" "),
+        audiencesFor(o).join(" "),
+      ].join(" ").toLowerCase();
       return hay.includes(q);
     });
   }
@@ -261,6 +326,10 @@ function filtered() {
     if (sort === "name") return a.name.localeCompare(b.name);
     if (sort === "funding") return (FUNDING_RANK[b.funding_level] || 0) - (FUNDING_RANK[a.funding_level] || 0);
     if (sort === "deadline") return String(a.next_deadline_hint || "").localeCompare(String(b.next_deadline_hint || ""));
+    if (sort === "barrier") {
+      return (BARRIER_RANK[a.barrier_of_entry] || 9) - (BARRIER_RANK[b.barrier_of_entry] || 9)
+        || (a.priority ?? 9) - (b.priority ?? 9);
+    }
     return (a.priority ?? 9) - (b.priority ?? 9) || a.name.localeCompare(b.name);
   });
   return list;
@@ -449,6 +518,21 @@ function renderStats(list) {
   if (state.presets.forBob) people.push("Bob");
   if (state.presets.forMaja) people.push("Maja");
   const who = people.length ? people.join(" + ") : "all explorers";
+  if (state.mode === "hackathons") {
+    const hackAll = all.filter(isHackathon);
+    const byBarrier = ["low", "medium", "high", "very_high"].map((b) =>
+      list.filter((o) => o.barrier_of_entry === b).length
+    );
+    const hkish = list.filter((o) => matchesHackReach(o, "asia_reachable") || matchesHackReach(o, "hk_local")).length;
+    $("#stats").innerHTML = `
+      <div class="stat"><strong>${list.length}</strong><span>Make-a-thons for ${who}</span></div>
+      <div class="stat"><strong>${hackAll.length}</strong><span>In hackathon atlas</span></div>
+      <div class="stat"><strong>${byBarrier[0]}</strong><span>Low barrier (filtered)</span></div>
+      <div class="stat"><strong>${hkish}</strong><span>HK / Asia reachable</span></div>
+      <div class="stat"><strong>${list.filter((o) => o.format === "online").length}</strong><span>Online (filtered)</span></div>
+    `;
+    return;
+  }
   $("#stats").innerHTML = `
     <div class="stat"><strong>${list.length}</strong><span>Routes for ${who}</span></div>
     <div class="stat"><strong>${counts.open}</strong><span>Open status</span></div>
@@ -579,14 +663,26 @@ function tagButtons(op) {
 }
 
 function cardHtml(op, idx) {
+  const hack = isHackathon(op) && state.mode === "hackathons";
   const badges = [
+    hack && op.barrier_of_entry
+      ? `<span class="badge barrier-${op.barrier_of_entry}">Barrier · ${labelize(op.barrier_of_entry)}</span>`
+      : "",
     `<span class="badge fund-${op.funding_level}">${labelize(op.funding_level)}</span>`,
     `<span class="badge">${labelize(op.category)}</span>`,
-    op.priority <= 2 ? `<span class="badge priority">Priority ${op.priority}</span>` : "",
+    hack && op.format ? `<span class="badge">${labelize(op.format)}</span>` : "",
+    !hack && op.priority <= 2 ? `<span class="badge priority">Priority ${op.priority}</span>` : "",
     op.status !== "open" ? `<span class="badge status-${op.status}">${labelize(op.status)}</span>` : "",
   ].filter(Boolean).join("");
+  const blurb = hack && op.why_great ? op.why_great : op.what_you_get;
+  const meta = hack
+    ? `${op.duration || "Duration TBD"} · ${labelize(op.typical_cost || "cost TBD")} · ${(op.destinations || []).slice(0, 2).join(", ") || "Various"}`
+    : `${op.next_deadline_hint || op.apply_window || "Window TBD"} · ${(op.destinations || []).slice(0, 2).join(", ") || "Various"}`;
+  const skills = hack && op.skills_practiced?.length
+    ? `<div class="skill-row">${op.skills_practiced.slice(0, 5).map((s) => `<span class="skill-chip">${escapeHtml(labelize(s))}</span>`).join("")}</div>`
+    : "";
   return `
-    <article class="card ${state.selectedId === op.id ? "active" : ""}" data-id="${op.id}" style="animation-delay:${Math.min(idx, 12) * 0.03}s">
+    <article class="card ${hack ? "card-hack" : ""} ${state.selectedId === op.id ? "active" : ""}" data-id="${op.id}" style="animation-delay:${Math.min(idx, 12) * 0.03}s">
       <div class="card-top">
         <h3>${escapeHtml(op.name)}</h3>
         <div class="card-actions">
@@ -595,23 +691,27 @@ function cardHtml(op, idx) {
         </div>
       </div>
       <div class="badges">${badges}</div>
-      <p>${escapeHtml(op.what_you_get)}</p>
+      <p>${escapeHtml(blurb)}</p>
+      ${skills}
       <div class="tag-row">${tagButtons(op)}</div>
-      <div class="meta-line">${escapeHtml(op.next_deadline_hint || op.apply_window || "Window TBD")} · ${escapeHtml((op.destinations || []).slice(0, 2).join(", ") || "Various")}</div>
+      <div class="meta-line">${escapeHtml(meta)}</div>
     </article>
   `;
 }
 
 function tableHtml(list) {
+  const hack = state.mode === "hackathons";
   const rows = list.map((op) => `
     <tr class="${state.selectedId === op.id ? "active" : ""}" data-id="${op.id}">
       <td>
         <strong>${escapeHtml(op.name)}</strong>
-        <div class="meta-line">${escapeHtml(labelize(op.category))}</div>
+        <div class="meta-line">${escapeHtml(hack ? (op.why_great || op.what_you_get || "").slice(0, 90) : labelize(op.category))}</div>
       </td>
-      <td>${escapeHtml(labelize(op.funding_level))}</td>
-      <td>${escapeHtml(op.next_deadline_hint || "—")}</td>
-      <td>${op.open_to_non_hk_residents === false ? "No" : op.open_to_non_hk_residents == null ? "Verify" : "Yes"}</td>
+      <td>${escapeHtml(hack ? labelize(op.barrier_of_entry || "—") : labelize(op.funding_level))}</td>
+      <td>${escapeHtml(hack ? labelize(op.format || "—") : (op.next_deadline_hint || "—"))}</td>
+      <td>${hack
+        ? escapeHtml(op.duration || "—")
+        : (op.open_to_non_hk_residents === false ? "No" : op.open_to_non_hk_residents == null ? "Verify" : "Yes")}</td>
       <td>
         <button type="button" class="icon-btn ${isPinned(op.id) ? "on" : ""}" data-pin="${op.id}">${isPinned(op.id) ? "★" : "☆"}</button>
         <button type="button" class="icon-btn ${state.compareIds.includes(op.id) ? "on" : ""}" data-compare="${op.id}">⇄</button>
@@ -622,7 +722,13 @@ function tableHtml(list) {
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th>Opportunity</th><th>Funding</th><th>Deadline</th><th>Non-HKPR</th><th></th></tr>
+          <tr>
+            <th>Opportunity</th>
+            <th>${hack ? "Barrier" : "Funding"}</th>
+            <th>${hack ? "Format" : "Deadline"}</th>
+            <th>${hack ? "Duration" : "Non-HKPR"}</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>${rows}</tbody>
       </table>
@@ -712,8 +818,11 @@ function renderDetail(op) {
   const panel = $("#detail");
   if (!op) {
     panel.classList.add("empty");
+    const hint = state.mode === "hackathons"
+      ? "Click a hackathon for barrier of entry, why it’s worth your weekend, and skills you’ll practice."
+      : "Click any opportunity for the full briefing, eligibility traps, and creative angle.";
     panel.innerHTML = `<p class="detail-placeholder merey-note">${escapeHtml(rotatingMereyNote())}</p>
-      <p class="meta-line">Click any opportunity for the full briefing, eligibility traps, and creative angle.</p>`;
+      <p class="meta-line">${escapeHtml(hint)}</p>`;
     return;
   }
   panel.classList.remove("empty");
@@ -721,6 +830,23 @@ function renderDetail(op) {
   const trap = op.open_to_non_hk_residents === false
     || op.status === "closed_to_you"
     || (op.tags || []).some((t) => /trap|local_only|ineligible|scam|closed/i.test(t));
+  const hack = isHackathon(op);
+
+  const hackBlock = hack ? `
+    <div class="hack-brief">
+      ${op.why_great ? `<p class="hack-why"><strong>Why it’s great:</strong> ${escapeHtml(op.why_great)}</p>` : ""}
+      <dl class="hack-dl">
+        <div><dt>Barrier of entry</dt><dd><span class="badge barrier-${op.barrier_of_entry || "medium"}">${escapeHtml(labelize(op.barrier_of_entry || "verify"))}</span>
+          ${barrierExplain(op.barrier_of_entry)}</dd></div>
+        <div><dt>Format</dt><dd>${escapeHtml(labelize(op.format || "—"))}</dd></div>
+        <div><dt>Duration</dt><dd>${escapeHtml(op.duration || "—")}</dd></div>
+        <div><dt>Typical cost</dt><dd>${escapeHtml(op.typical_cost || "—")}</dd></div>
+        <div><dt>Skills practiced</dt><dd>${(op.skills_practiced || []).length
+          ? op.skills_practiced.map((s) => `<span class="skill-chip">${escapeHtml(labelize(s))}</span>`).join(" ")
+          : "—"}</dd></div>
+      </dl>
+    </div>
+  ` : "";
 
   panel.innerHTML = `
     <div class="detail-actions">
@@ -728,6 +854,7 @@ function renderDetail(op) {
       <button type="button" class="btn small ${state.compareIds.includes(op.id) ? "on-solid" : ""}" data-compare="${op.id}">${state.compareIds.includes(op.id) ? "In compare" : "Compare"}</button>
     </div>
     <div class="badges" style="margin-bottom:0.75rem">
+      ${hack && op.barrier_of_entry ? `<span class="badge barrier-${op.barrier_of_entry}">Barrier · ${labelize(op.barrier_of_entry)}</span>` : ""}
       <span class="badge fund-${op.funding_level}">${labelize(op.funding_level)}</span>
       <span class="badge">${labelize(op.category)}</span>
       <span class="badge status-${op.status}">${labelize(op.status)}</span>
@@ -735,6 +862,7 @@ function renderDetail(op) {
     </div>
     <h2>${escapeHtml(op.name)}</h2>
     <p class="lead">${escapeHtml(op.what_you_get)}</p>
+    ${hackBlock}
     <div class="tag-row detail-tags">${tagButtons(op)}</div>
     <dl>
       <div><dt>Funder</dt><dd>${escapeHtml(op.funder || "—")}</dd></div>
@@ -766,6 +894,17 @@ function renderDetail(op) {
       toggleTag(btn.dataset.tag);
     });
   });
+}
+
+function barrierExplain(level) {
+  const map = {
+    low: "Open registration or light form — good first reps.",
+    medium: "Team building, short application, or local heat — plan 2–4 weeks ahead.",
+    high: "Selective admit, strong portfolio, or costly travel — treat as a stretch goal.",
+    very_high: "Brand-name / invite / year-long commitment — apply only with a clear edge.",
+  };
+  const text = map[level];
+  return text ? `<span class="barrier-note">${escapeHtml(text)}</span>` : "";
 }
 
 function bindActionButtons(root = document) {
@@ -858,6 +997,10 @@ function renderCompareMatrix() {
   const ops = ids.map((id) => state.data.opportunities.find((o) => o.id === id)).filter(Boolean);
   const fields = [
     ["Funding", (o) => labelize(o.funding_level)],
+    ["Barrier", (o) => labelize(o.barrier_of_entry || "—")],
+    ["Format", (o) => labelize(o.format || "—")],
+    ["Duration", (o) => o.duration || "—"],
+    ["Why great", (o) => o.why_great || "—"],
     ["Difficulty", (o) => labelize(o.difficulty)],
     ["Year", (o) => o.year_of_study || "—"],
     ["Deadline", (o) => o.next_deadline_hint || "—"],
@@ -910,8 +1053,25 @@ function wireResultsClicks(root) {
   bindActionButtons(root);
 }
 
+function syncModeChrome() {
+  const hack = state.mode === "hackathons";
+  $$(".mode-tab").forEach((btn) => btn.classList.toggle("on", btn.dataset.mode === state.mode));
+  const blurb = $("#modeBlurb");
+  if (blurb) {
+    blurb.textContent = hack
+      ? "Product design + hands-on entrepreneurship arenas — barrier, format, and HK reach filters on the left. “Best for you” / full-funding chips are paused here so prize make-a-thons stay visible."
+      : "Funded travel and learning routes. Switch to Hackathons for product-design + entrepreneurship practice arenas.";
+  }
+  const hackFilters = $("#hackFilters");
+  if (hackFilters) hackFilters.hidden = !hack;
+  document.body.classList.toggle("mode-hackathons", hack);
+  const catField = $("#category")?.closest(".field");
+  if (catField) catField.hidden = hack;
+}
+
 function render() {
   if (!state.data) return;
+  syncModeChrome();
   const forFacets = baseFiltered();
   const list = filtered();
   renderStats(list);
@@ -922,10 +1082,17 @@ function render() {
   renderShortlist();
   renderCompareTray();
 
-  $("#resultsCount").textContent = `${list.length} opportunit${list.length === 1 ? "y" : "ies"}`;
+  const noun = state.mode === "hackathons"
+    ? (list.length === 1 ? "hackathon" : "hackathons")
+    : (list.length === 1 ? "opportunity" : "opportunities");
+  $("#resultsCount").textContent = `${list.length} ${noun}`;
   const root = $("#results");
   root.classList.remove("card-grid");
-  if (state.view === "table") {
+  if (!list.length) {
+    root.innerHTML = `<p class="trap">${state.mode === "hackathons"
+      ? "No hackathons match these filters — try lowering barrier, switching Reach to Worldwide, or clearing tags."
+      : "No opportunities match these filters. Try clearing a chip or tag."}</p>`;
+  } else if (state.view === "table") {
     root.innerHTML = tableHtml(list);
   } else if (state.view === "timeline") {
     root.innerHTML = timelineHtml(list);
@@ -963,12 +1130,27 @@ function render() {
 }
 
 function bind() {
-  ["q", "category", "funding", "difficulty", "year", "sort"].forEach((id) => {
-    $(`#${id}`).addEventListener("input", () => {
+  ["q", "category", "funding", "difficulty", "year", "sort", "barrier", "format", "hackReach"].forEach((id) => {
+    const el = $(`#${id}`);
+    if (!el) return;
+    el.addEventListener("input", () => {
       if (id === "q") checkSearchEasterEgg($("#q").value);
       render();
     });
-    $(`#${id}`).addEventListener("change", render);
+    el.addEventListener("change", render);
+  });
+
+  $$(".mode-tab").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (state.mode === btn.dataset.mode) return;
+      state.mode = btn.dataset.mode;
+      state.selectedId = null;
+      state.activeTags = state.activeTags.filter((t) => t !== "for_hackathon_tab");
+      if (state.mode === "hackathons") {
+        showToast("Hackathons mode — sort by barrier, filter HK reach, pin your practice ladder.");
+      }
+      render();
+    });
   });
 
   $$(".profile-chip").forEach((chip) => {
